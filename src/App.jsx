@@ -1,9 +1,29 @@
-import { Stats, Environment, PointerLockControls } from "@react-three/drei";
+import {
+  Stats,
+  Environment,
+  PointerLockControls as PointerLockControlsr,
+} from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import Game from "./Game";
+import { useThree, useFrame } from "@react-three/fiber";
 import Overlay from "./Overlay";
+import React from "react";
+import { PointerLockControls as PointerLockControlsImpl } from "./PointerLockControls";
+
+function PointerLockControls() {
+  const { camera, gl } = useThree();
+  const controls = React.useRef();
+
+  React.useEffect(() => {
+    controls.current = new PointerLockControlsImpl(camera, gl.domElement);
+  }, [camera, gl.domElement]);
+
+  return null;
+}
 
 export default function App() {
+  const isMobile = window.innerWidth <= 800;
+
   return (
     <>
       <Canvas shadows>
@@ -22,7 +42,7 @@ export default function App() {
         />
         {/* <Environment files="/img/rustig_koppie_puresky_1k.hdr" background /> */}
         <Game />
-        <PointerLockControls />
+        {isMobile ? <PointerLockControls /> : <PointerLockControlsr />}
         <Stats />
       </Canvas>
       <Overlay />

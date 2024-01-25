@@ -1,8 +1,16 @@
-import { useRef, useEffect, useMemo } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  mountRef,
+  useMemo,
+  memo,
+} from "react";
 import { Capsule } from "three/examples/jsm/math/Capsule.js";
 import { Vector3 } from "three";
 import { useFrame, useThree } from "@react-three/fiber";
 import useKeyboard from "./useKeyboard";
+import { Html } from "@react-three/drei";
 
 const GRAVITY = 30;
 const STEPS_PER_FRAME = 5;
@@ -132,4 +140,78 @@ export default function Player({ octree }) {
     }
     teleportPlayerIfOob(camera, capsule, playerVelocity);
   });
+
+  const Controls = memo(() => {
+    const [upPressed, setUpPressed] = useState(false);
+    const [downPressed, setDownPressed] = useState(false);
+    const [leftPressed, setLeftPressed] = useState(false);
+    const [rightPressed, setRightPressed] = useState(false);
+
+    useEffect(() => {
+      if (upPressed) {
+        keyboard["KeyW"] = true;
+      } else {
+        keyboard["KeyW"] = false;
+      }
+
+      if (downPressed) {
+        keyboard["KeyS"] = true;
+      } else {
+        keyboard["KeyS"] = false;
+      }
+
+      if (leftPressed) {
+        keyboard["KeyA"] = true;
+      } else {
+        keyboard["KeyA"] = false;
+      }
+
+      if (rightPressed) {
+        keyboard["KeyD"] = true;
+      } else {
+        keyboard["KeyD"] = false;
+      }
+    }, [upPressed, downPressed, leftPressed, rightPressed]);
+
+    return (
+      <div
+        id="controls"
+        style={{ position: "absolute", bottom: "10px", left: "10px" }}
+      >
+        <button
+          onTouchStart={() => setUpPressed(true)}
+          onTouchEnd={() => setUpPressed(false)}
+        >
+          Up
+        </button>
+        <button
+          onTouchStart={() => setDownPressed(true)}
+          onTouchEnd={() => setDownPressed(false)}
+        >
+          Down
+        </button>
+        <button
+          onTouchStart={() => setLeftPressed(true)}
+          onTouchEnd={() => setLeftPressed(false)}
+        >
+          Left
+        </button>
+        <button
+          onTouchStart={() => setRightPressed(true)}
+          onTouchEnd={() => setRightPressed(false)}
+        >
+          Right
+        </button>
+      </div>
+    );
+  });
+
+  return (
+    <>
+      <Html>
+        <Controls />
+        <div ref={mountRef} />
+      </Html>
+    </>
+  );
 }
