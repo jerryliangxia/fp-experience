@@ -1,14 +1,27 @@
-import { Euler, EventDispatcher, Vector3 } from "three";
+import { Euler, EventDispatcher, Vector3, Vector2 } from "three";
 
 var mobile;
 mobile = false;
 var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 var ww = document.body.clientWidth / 2;
-var wh = document.body.clientHeight / 0.2;
+var wh = document.body.clientHeight / 2;
 
-var h = window.innerHeight;
+var array_x = [];
+var array_y = [];
+var touches_x, touches_y;
+var last_x, last_y;
 
+var eulerX_angle = [].map(Number);
+var eulerY_angle = [].map(Number);
+var eulerY, eulerX;
+var eulerY_final = 0;
+var eulerX_final = 0;
+var eulerY_total, eulerX_total;
+var euler = new Euler(0, 0, 0, "YXZ");
+var PI_2 = Math.PI / 2;
+var PI_2y = 2 * Math.PI;
+var vec = new Vector3();
 var PointerLockControls = function (camera, domElement) {
   if (isMobile) {
     mobile = true;
@@ -25,43 +38,66 @@ var PointerLockControls = function (camera, domElement) {
 
   this.domElement = domElement;
   this.isLocked = false;
-
+  this.minPolarAngle = 0; // radians
+  this.maxPolarAngle = 2 * Math.PI; // radians
   var scope = this;
 
-  var changeEvent = { type: "change" };
-  var lockEvent = { type: "lock" };
-  var unlockEvent = { type: "unlock" };
+  var changeEvent = {
+    type: "change",
+  };
+  var lockEvent = {
+    type: "lock",
+  };
+  var unlockEvent = {
+    type: "unlock",
+  };
 
-  var euler = new Euler(0, 0, 0, "YXZ");
-
-  var PI_2 = Math.PI / 2;
-  var PI_2y = Math.PI / 3.8;
-
-  var PI_2_mobile = Math.PI / 9;
-
-  var vec = new Vector3();
-  var clientX, clientY;
-  var xfromtouch = 0;
-  var yfromtouch = 0;
-  var lastxpos = 0;
-  var lastypos = 0;
-
-  function onTouch() {}
+  //Function for getting arrays fires on touchmove
+  function arrayTouches(e) {
+    // array for touches
+    touches_x = e.changedTouches[0].clientX - ww;
+    touches_y = e.changedTouches[0].clientY - wh;
+    array_x.push(touches_x);
+    array_y.push(touches_y);
+    last_x = array_x[array_x.length - 2];
+    last_y = array_y[array_y.length - 2];
+    // array for euler
+    eulerY = (touches_x - last_x) * 0.004;
+    eulerX = (touches_y - last_y) * 0.004;
+    if (eulerY) {
+      eulerY_angle.push(eulerY);
+      eulerX_angle.push(eulerX);
+    } else {
+      eulerY_angle.push(0);
+      eulerX_angle.push(0);
+    }
+    scope.dispatchEvent(changeEvent);
+  }
+  //Function for set rotation from set arrays fires on  touchmove
   function onTouchMove(e) {
-    clientY = e.touches[0].clientY;
-    clientX = e.touches[0].clientX;
-    xfromtouch = clientX - ww;
-    yfromtouch = clientY - (h - 100);
-    euler.setFromQuaternion(camera.quaternion);
-    euler.y = xfromtouch * 0.005;
-    euler.x = yfromtouch * 0.005;
-    euler.x = Math.max(-PI_2, Math.min(PI_2_mobile, euler.x));
-    euler.y = Math.max(-PI_2y, Math.min(PI_2y, euler.y));
+    euler.setFromQuaternion(camera.rotation);
+    eulerY_total = eulerY_angle.reduce(function (sum, element) {
+      return sum + element;
+    }, 0);
+    eulerX_total = eulerX_angle.reduce(function (sum, element) {
+      return sum + element;
+    }, 0);
+    euler.y = eulerY_final + eulerY_total;
+    euler.x = eulerX_final + eulerX_total;
     camera.quaternion.setFromEuler(euler);
     scope.dispatchEvent(changeEvent);
-    console.log(yfromtouch);
   }
-  function onTouchEnd(e) {}
+  // the delta value of euler and touchmove  should be offset for recalibration from where the last move stopped
+  function onTouchEnd(e) {
+    eulerY_final = euler.y;
+    eulerX_final = euler.x;
+    eulerY_angle = [];
+    eulerX_angle = [];
+    array_x = [];
+    array_y = [];
+    scope.dispatchEvent(changeEvent);
+  }
+  //    mouseevent
   function onMouseMove(event) {
     if (scope.isLocked === false) return;
     var movementX =
@@ -71,7 +107,10 @@ var PointerLockControls = function (camera, domElement) {
     euler.setFromQuaternion(camera.quaternion);
     euler.y -= movementX * 0.002;
     euler.x -= movementY * 0.002;
-    euler.x = Math.max(-PI_2, Math.min(PI_2, euler.x));
+    euler.x = Math.max(
+      PI_2 - scope.maxPolarAngle,
+      Math.min(PI_2 - scope.minPolarAngle, euler.x)
+    );
     euler.y = Math.max(-PI_2y, Math.min(PI_2y, euler.y));
     camera.quaternion.setFromEuler(euler);
     scope.dispatchEvent(changeEvent);
@@ -93,16 +132,18 @@ var PointerLockControls = function (camera, domElement) {
 
   this.connect = function () {
     document.addEventListener("mousemove", onMouseMove, false);
-    document.addEventListener("touchstart", onTouch, false);
     document.addEventListener("touchmove", onTouchMove, false);
+    document.addEventListener("touchmove", arrayTouches, false);
+    document.addEventListener("touchend", onTouchEnd, false);
     document.addEventListener("pointerlockchange", onPointerlockChange, false);
     document.addEventListener("pointerlockerror", onPointerlockError, false);
   };
 
   this.disconnect = function () {
     document.removeEventListener("mousemove", onMouseMove, false);
+    document.removeEventListener("touchmove", arrayTouches, false);
     document.removeEventListener("touchend", onTouchEnd, false);
-    document.removeEventListener("touchmove", onTouchmove, false);
+    document.removeEventListener("touchmove", onTouchMove, false);
     document.removeEventListener(
       "pointerlockchange",
       onPointerlockChange,
@@ -128,6 +169,11 @@ var PointerLockControls = function (camera, domElement) {
   })();
 
   this.moveForward = function (distance) {
+    vec.setFromMatrixColumn(camera.matrix, 0);
+    vec.crossVectors(camera.up, vec);
+    camera.position.addScaledVector(vec, distance);
+  };
+  this.moveBackward = function (distance) {
     vec.setFromMatrixColumn(camera.matrix, 0);
     vec.crossVectors(camera.up, vec);
     camera.position.addScaledVector(vec, distance);
