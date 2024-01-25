@@ -4,6 +4,7 @@ import Player from "./Player";
 import useOctreeHelper from "./useOctreeHelper";
 import Model from "./Platform";
 import Sky from "./Sky";
+import GalaxyEffect from "./Galaxy";
 
 export default function Physics() {
   const { nodes, scene } = useGLTF("/models/scene.glb");
@@ -12,6 +13,7 @@ export default function Physics() {
 
   return (
     <>
+      <GalaxyEffect />
       <Sky />
       <Model />
       <Player octree={octree} />
