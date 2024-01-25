@@ -35,7 +35,6 @@ const controls = {
   rotationSpeed: { value: 0.02, min: 0, max: 5 },
   insideColor: palette[0],
   outsideColor: palette[1 + Math.floor(Math.random() * (palette.length - 2))],
-  positionY: { value: 40, min: 40, max: 100, step: 1 },
 };
 
 function Galaxy() {
