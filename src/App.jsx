@@ -10,6 +10,7 @@ import Overlay from "./Overlay";
 import React, { useState } from "react";
 import { PointerLockControls as PointerLockControlsImpl } from "./PointerLockControls";
 import { GameContext } from "./GameContext";
+import { isMobile } from "react-device-detect";
 
 function PointerLockControls() {
   const { camera, gl } = useThree();
@@ -23,8 +24,6 @@ function PointerLockControls() {
 }
 
 export default function App() {
-  const isMobile = window.innerWidth <= 800;
-
   const [controlsMobile, setControlsMobile] = useState({
     upPressed: false,
     downPressed: false,

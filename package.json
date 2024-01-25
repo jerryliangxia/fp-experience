@@ -19,6 +19,7 @@
     "nice-color-palettes": "^3.0.0",
     "r3f-pack": "^2.6.0",
     "react": "18.2",
+    "react-device-detect": "^2.2.3",
     "react-dom": "18.2",
     "three": "^0.157.0"
   }

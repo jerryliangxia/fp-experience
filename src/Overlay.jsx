@@ -1,9 +1,9 @@
 import { GameContext } from "./GameContext";
 import { useContext } from "react";
+import { isMobile } from "react-device-detect";
 
 export default function Overlay() {
   const { handleControlChange } = useContext(GameContext);
-  const isMobile = window.innerWidth <= 800;
 
   return (
     isMobile && (

@@ -1,8 +1,8 @@
 import { Euler, EventDispatcher, Vector3, Vector2 } from "three";
 
 var mobile;
-mobile = false;
-var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+mobile = true;
+var isMobile = true;
 
 var ww = document.body.clientWidth / 2;
 var wh = document.body.clientHeight / 2;
