@@ -5,7 +5,6 @@ export default function Overlay() {
       <br />
       Space to jump.
       <br />
-      Mouse click to shoot.
     </div>
-  )
+  );
 }
