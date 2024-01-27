@@ -55,6 +55,11 @@ var PointerLockControls = function (camera, domElement) {
   //Function for getting arrays fires on touchmove
   function arrayTouches(e) {
     e.preventDefault();
+    if (
+      e.changedTouches[0].clientX < 100 &&
+      e.changedTouches[0].clientY > window.innerHeight - 100
+    )
+      return;
     // array for touches
     touches_x = e.changedTouches[0].clientX - ww;
     touches_y = e.changedTouches[0].clientY - wh;
@@ -77,6 +82,11 @@ var PointerLockControls = function (camera, domElement) {
   //Function for set rotation from set arrays fires on  touchmove
   function onTouchMove(e) {
     e.preventDefault();
+    if (
+      e.changedTouches[0].clientX < 100 &&
+      e.changedTouches[0].clientY > window.innerHeight - 100
+    )
+      return;
     euler.setFromQuaternion(camera.rotation);
     eulerY_total = eulerY_angle.reduce(function (sum, element) {
       return sum + element;
