@@ -4,6 +4,7 @@ body,
   height: 100%;
   margin: 0;
   background: #000000;
+  touch-action: none;
 }
 #instructions {
   color: white;
