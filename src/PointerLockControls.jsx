@@ -7,6 +7,9 @@ var isMobile = true;
 var ww = document.body.clientWidth / 2;
 var wh = document.body.clientHeight / 2;
 
+var bw = 200;
+var bh = 200;
+
 var array_x = [];
 var array_y = [];
 var touches_x, touches_y;
@@ -56,8 +59,8 @@ var PointerLockControls = function (camera, domElement) {
   function arrayTouches(e) {
     e.preventDefault();
     if (
-      e.changedTouches[0].clientX < 100 &&
-      e.changedTouches[0].clientY > window.innerHeight - 100
+      e.changedTouches[0].clientX < bw &&
+      e.changedTouches[0].clientY > window.innerHeight - bh
     )
       return;
     // array for touches
@@ -83,8 +86,8 @@ var PointerLockControls = function (camera, domElement) {
   function onTouchMove(e) {
     e.preventDefault();
     if (
-      e.changedTouches[0].clientX < 100 &&
-      e.changedTouches[0].clientY > window.innerHeight - 100
+      e.changedTouches[0].clientX < bw &&
+      e.changedTouches[0].clientY > window.innerHeight - bh
     )
       return;
     euler.setFromQuaternion(camera.rotation);

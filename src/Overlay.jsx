@@ -1,6 +1,7 @@
 import { GameContext } from "./GameContext";
 import { useContext } from "react";
 import { isMobile } from "react-device-detect";
+import { Button, Flex } from "@radix-ui/themes";
 
 export default function Overlay() {
   const { handleControlChange } = useContext(GameContext);
@@ -9,36 +10,37 @@ export default function Overlay() {
     isMobile && (
       <div
         id="controls"
-        style={{ position: "absolute", bottom: "10px", left: "10px" }}
+        style={{
+          position: "fixed",
+          bottom: "5vh",
+          left: "10vw",
+          zIndex: 1,
+        }}
       >
-        <button
-          style={{ userSelect: "none" }}
-          onTouchStart={() => handleControlChange("upPressed", true)}
-          onTouchEnd={() => handleControlChange("upPressed", false)}
-        >
-          Up
-        </button>
-        <button
-          style={{ userSelect: "none" }}
-          onTouchStart={() => handleControlChange("downPressed", true)}
-          onTouchEnd={() => handleControlChange("downPressed", false)}
-        >
-          Down
-        </button>
-        <button
-          style={{ userSelect: "none" }}
-          onTouchStart={() => handleControlChange("leftPressed", true)}
-          onTouchEnd={() => handleControlChange("leftPressed", false)}
-        >
-          Left
-        </button>
-        <button
-          style={{ userSelect: "none" }}
-          onTouchStart={() => handleControlChange("rightPressed", true)}
-          onTouchEnd={() => handleControlChange("rightPressed", false)}
-        >
-          Right
-        </button>
+        <Flex direction="column" gap="2" align="center" justify="center">
+          <Button
+            style={{ userSelect: "none", width: "80%" }}
+            onTouchStart={() => handleControlChange("upPressed", true)}
+            onTouchEnd={() => handleControlChange("upPressed", false)}
+          ></Button>
+          <Flex direction="row" gap="2" align="center" justify="center">
+            <Button
+              style={{ userSelect: "none", width: "80%" }}
+              onTouchStart={() => handleControlChange("leftPressed", true)}
+              onTouchEnd={() => handleControlChange("leftPressed", false)}
+            ></Button>
+            <Button
+              style={{ userSelect: "none", width: "80%" }}
+              onTouchStart={() => handleControlChange("rightPressed", true)}
+              onTouchEnd={() => handleControlChange("rightPressed", false)}
+            ></Button>
+          </Flex>
+          <Button
+            style={{ userSelect: "none", width: "80%" }}
+            onTouchStart={() => handleControlChange("downPressed", true)}
+            onTouchEnd={() => handleControlChange("downPressed", false)}
+          ></Button>
+        </Flex>
       </div>
     )
   );

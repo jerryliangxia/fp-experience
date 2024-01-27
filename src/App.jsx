@@ -41,7 +41,13 @@ export default function App() {
   return (
     <>
       <GameContext.Provider value={{ controlsMobile, handleControlChange }}>
-        <Canvas shadows>
+        <Canvas
+          onCreated={({ gl }) => {
+            gl.domElement.style.zIndex = "0";
+          }}
+          shadows
+          style={{ position: "fixed" }}
+        >
           <directionalLight
             intensity={1}
             castShadow={true}
