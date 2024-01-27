@@ -13,7 +13,7 @@ export default function Physics() {
 
   return (
     <>
-      <GalaxyEffect />
+      {/* <GalaxyEffect /> */}
       <Sky />
       <Model />
       <Player octree={octree} />
