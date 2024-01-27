@@ -18,28 +18,81 @@ export default function Overlay() {
         }}
       >
         <Flex direction="column" gap="2" align="center" justify="center">
-          <Button
-            style={{ userSelect: "none", width: "80%" }}
-            onTouchStart={() => handleControlChange("upPressed", true)}
-            onTouchEnd={() => handleControlChange("upPressed", false)}
-          ></Button>
-          <Flex direction="row" gap="2" align="center" justify="center">
+          <Flex direction="row" gap="1" align="center" justify="center">
             <Button
-              style={{ userSelect: "none", width: "80%" }}
+              style={{ userSelect: "none" }}
+              onTouchStart={() => {
+                handleControlChange("upPressed", true);
+                handleControlChange("leftPressed", true);
+              }}
+              onTouchEnd={() => {
+                handleControlChange("upPressed", false);
+                handleControlChange("leftPressed", false);
+              }}
+            ></Button>
+            <Button
+              style={{ userSelect: "none" }}
+              onTouchStart={() => handleControlChange("upPressed", true)}
+              onTouchEnd={() => handleControlChange("upPressed", false)}
+            ></Button>
+            <Button
+              style={{ userSelect: "none" }}
+              onTouchStart={() => {
+                handleControlChange("upPressed", true);
+                handleControlChange("rightPressed", true);
+              }}
+              onTouchEnd={() => {
+                handleControlChange("upPressed", false);
+                handleControlChange("rightPressed", false);
+              }}
+            ></Button>
+          </Flex>
+          <Flex direction="row" gap="1" align="center" justify="center">
+            <Button
+              style={{ userSelect: "none" }}
               onTouchStart={() => handleControlChange("leftPressed", true)}
               onTouchEnd={() => handleControlChange("leftPressed", false)}
             ></Button>
             <Button
-              style={{ userSelect: "none", width: "80%" }}
+              style={{ userSelect: "none" }}
+              onTouchStart={() => handleControlChange("spacePressed", true)}
+              onTouchEnd={() => handleControlChange("spacePressed", false)}
+            ></Button>
+            <Button
+              style={{ userSelect: "none" }}
               onTouchStart={() => handleControlChange("rightPressed", true)}
               onTouchEnd={() => handleControlChange("rightPressed", false)}
             ></Button>
           </Flex>
-          <Button
-            style={{ userSelect: "none", width: "80%" }}
-            onTouchStart={() => handleControlChange("downPressed", true)}
-            onTouchEnd={() => handleControlChange("downPressed", false)}
-          ></Button>
+          <Flex direction="row" gap="1" align="center" justify="center">
+            <Button
+              style={{ userSelect: "none" }}
+              onTouchStart={() => {
+                handleControlChange("downPressed", true);
+                handleControlChange("leftPressed", true);
+              }}
+              onTouchEnd={() => {
+                handleControlChange("downPressed", false);
+                handleControlChange("leftPressed", false);
+              }}
+            ></Button>
+            <Button
+              style={{ userSelect: "none" }}
+              onTouchStart={() => handleControlChange("downPressed", true)}
+              onTouchEnd={() => handleControlChange("downPressed", false)}
+            ></Button>
+            <Button
+              style={{ userSelect: "none" }}
+              onTouchStart={() => {
+                handleControlChange("downPressed", true);
+                handleControlChange("rightPressed", true);
+              }}
+              onTouchEnd={() => {
+                handleControlChange("downPressed", false);
+                handleControlChange("rightPressed", false);
+              }}
+            ></Button>
+          </Flex>
         </Flex>
       </div>
     )

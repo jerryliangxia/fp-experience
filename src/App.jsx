@@ -29,6 +29,7 @@ export default function App() {
     downPressed: false,
     leftPressed: false,
     rightPressed: false,
+    spacePressed: false,
   });
 
   const handleControlChange = (control, value) => {

@@ -10,7 +10,8 @@ const STEPS_PER_FRAME = 5;
 
 export default function Player({ octree }) {
   const { controlsMobile } = useContext(GameContext);
-  const { upPressed, downPressed, leftPressed, rightPressed } = controlsMobile;
+  const { upPressed, downPressed, leftPressed, rightPressed, spacePressed } =
+    controlsMobile;
 
   const playerOnFloor = useRef(false);
   const playerVelocity = useMemo(() => new Vector3(), []);
@@ -142,5 +143,6 @@ export default function Player({ octree }) {
     keyboard["KeyS"] = downPressed;
     keyboard["KeyA"] = leftPressed;
     keyboard["KeyD"] = rightPressed;
-  }, [upPressed, downPressed, leftPressed, rightPressed]);
+    keyboard["Space"] = spacePressed;
+  }, [upPressed, downPressed, leftPressed, rightPressed, spacePressed]);
 }
