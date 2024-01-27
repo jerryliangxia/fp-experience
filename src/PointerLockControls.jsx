@@ -54,6 +54,7 @@ var PointerLockControls = function (camera, domElement) {
 
   //Function for getting arrays fires on touchmove
   function arrayTouches(e) {
+    e.preventDefault();
     // array for touches
     touches_x = e.changedTouches[0].clientX - ww;
     touches_y = e.changedTouches[0].clientY - wh;
@@ -75,6 +76,7 @@ var PointerLockControls = function (camera, domElement) {
   }
   //Function for set rotation from set arrays fires on  touchmove
   function onTouchMove(e) {
+    e.preventDefault();
     euler.setFromQuaternion(camera.rotation);
     eulerY_total = eulerY_angle.reduce(function (sum, element) {
       return sum + element;
@@ -89,6 +91,7 @@ var PointerLockControls = function (camera, domElement) {
   }
   // the delta value of euler and touchmove  should be offset for recalibration from where the last move stopped
   function onTouchEnd(e) {
+    e.preventDefault();
     eulerY_final = euler.y;
     eulerX_final = euler.x;
     eulerY_angle = [];
@@ -132,9 +135,9 @@ var PointerLockControls = function (camera, domElement) {
 
   this.connect = function () {
     document.addEventListener("mousemove", onMouseMove, false);
-    document.addEventListener("touchmove", onTouchMove, false);
-    document.addEventListener("touchmove", arrayTouches, false);
-    document.addEventListener("touchend", onTouchEnd, false);
+    document.addEventListener("touchmove", onTouchMove, { passive: false }); // Modify this line
+    document.addEventListener("touchmove", arrayTouches, { passive: false }); // Modify this line
+    document.addEventListener("touchend", onTouchEnd, { passive: false }); // Modify this line
     document.addEventListener("pointerlockchange", onPointerlockChange, false);
     document.addEventListener("pointerlockerror", onPointerlockError, false);
   };

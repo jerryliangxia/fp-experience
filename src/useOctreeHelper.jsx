@@ -9,6 +9,7 @@ export default function useOctreeHelper(octree) {
     console.log("new OctreeHelper");
     const helper = new OctreeHelper(octree, "hotpink");
     helper.name = "octreeHelper";
+    helper.visible = false;
     scene.add(helper);
     return () => {
       console.log("removing OctreeHelper");
@@ -16,13 +17,13 @@ export default function useOctreeHelper(octree) {
     };
   }, [octree, scene]);
 
-  useControls("Octree Helper", {
-    visible: {
-      value: false,
-      onChange: (v) => {
-        scene.getObjectByName("octreeHelper").visible = v;
-        //if (document.getElementById('Octree Helper.visible')) document.getElementById('Octree Helper.visible').blur()
-      },
-    },
-  });
+  // useControls("Octree Helper", {
+  //   visible: {
+  //     value: false,
+  //     onChange: (v) => {
+  //       scene.getObjectByName("octreeHelper").visible = v;
+  //       //if (document.getElementById('Octree Helper.visible')) document.getElementById('Octree Helper.visible').blur()
+  //     },
+  //   },
+  // });
 }

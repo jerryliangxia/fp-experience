@@ -38,19 +38,32 @@ const controls = {
 };
 
 function Galaxy() {
-  const {
-    count,
-    size,
-    textureType,
-    radius,
-    branches,
-    spin,
-    randomness,
-    randomnessPower,
-    rotationSpeed,
-    insideColor,
-    outsideColor,
-  } = useControls(controls);
+  // const {
+  //   count,
+  //   size,
+  //   textureType,
+  //   radius,
+  //   branches,
+  //   spin,
+  //   randomness,
+  //   randomnessPower,
+  //   rotationSpeed,
+  //   insideColor,
+  //   outsideColor,
+  // } = useControls(controls);
+  const count = 4000;
+  const size = 1.9;
+  const textureType = 8;
+  const radius = 1500;
+  const branches = 1;
+  const spin = -3.0;
+  const randomness = 0.04;
+  const randomnessPower = 1;
+  const rotationSpeed = 0.02;
+  const insideColor = palette[0];
+  const outsideColor =
+    palette[1 + Math.floor(Math.random() * (palette.length - 2))];
+
   const particlesRef = useRef();
   const particleTexture = useTexture(particleTextures[textureType]);
   useFrame(
