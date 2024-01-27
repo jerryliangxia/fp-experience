@@ -49,6 +49,13 @@ export default function Overlay() {
     }
   };
 
+  function resetAllControls() {
+    handleControlChange("upPressed", false);
+    handleControlChange("downPressed", false);
+    handleControlChange("leftPressed", false);
+    handleControlChange("rightPressed", false);
+  }
+
   return (
     isMobile && (
       <div
@@ -61,6 +68,7 @@ export default function Overlay() {
           zIndex: 1,
         }}
         onTouchMove={handleTouchMove}
+        onTouchEnd={resetAllControls}
       >
         <Flex direction="column" align="center" justify="center">
           <Flex direction="row" align="center" justify="center">
@@ -71,8 +79,7 @@ export default function Overlay() {
                 handleControlChange("leftPressed", true);
               }}
               onTouchEnd={() => {
-                handleControlChange("upPressed", false);
-                handleControlChange("leftPressed", false);
+                resetAllControls();
               }}
             ></Button>
             <Button
@@ -87,8 +94,7 @@ export default function Overlay() {
                 handleControlChange("rightPressed", true);
               }}
               onTouchEnd={() => {
-                handleControlChange("upPressed", false);
-                handleControlChange("rightPressed", false);
+                resetAllControls();
               }}
             ></Button>
           </Flex>
@@ -100,13 +106,13 @@ export default function Overlay() {
             ></Button>
             <Button
               style={{ userSelect: "none", opacity: buttonOpacity }}
-              onTouchStart={() => handleControlChange("spacePressed", true)}
-              onTouchEnd={() => handleControlChange("spacePressed", false)}
+              // onTouchStart={() => handleControlChange("spacePressed", true)}
+              // onTouchEnd={() => resetAllControls()}
             ></Button>
             <Button
               style={{ userSelect: "none", opacity: buttonOpacity }}
               onTouchStart={() => handleControlChange("rightPressed", true)}
-              onTouchEnd={() => handleControlChange("rightPressed", false)}
+              onTouchEnd={() => resetAllControls()}
             ></Button>
           </Flex>
           <Flex direction="row" align="center" justify="center">
@@ -117,14 +123,13 @@ export default function Overlay() {
                 handleControlChange("leftPressed", true);
               }}
               onTouchEnd={() => {
-                handleControlChange("downPressed", false);
-                handleControlChange("leftPressed", false);
+                resetAllControls();
               }}
             ></Button>
             <Button
               style={{ userSelect: "none", opacity: buttonOpacity }}
               onTouchStart={() => handleControlChange("downPressed", true)}
-              onTouchEnd={() => handleControlChange("downPressed", false)}
+              onTouchEnd={() => resetAllControls()}
             ></Button>
             <Button
               style={{ userSelect: "none", opacity: buttonOpacity }}
@@ -133,8 +138,7 @@ export default function Overlay() {
                 handleControlChange("rightPressed", true);
               }}
               onTouchEnd={() => {
-                handleControlChange("downPressed", false);
-                handleControlChange("rightPressed", false);
+                resetAllControls();
               }}
             ></Button>
           </Flex>
