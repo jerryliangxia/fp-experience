@@ -24,8 +24,8 @@ function PointerLockControls() {
 }
 
 export default function App() {
-  const bw = isTablet ? document.body.clientWidth / 5 : 200;
-  const bh = isTablet ? document.body.clientHeight / 5 : 200;
+  const bw = isTablet ? document.body.clientWidth / 6 : 200;
+  const bh = isTablet ? document.body.clientHeight / 6 : 200;
 
   const [controlsMobile, setControlsMobile] = useState({
     upPressed: false,
@@ -68,13 +68,13 @@ export default function App() {
           {/* <Environment files="/img/rustig_koppie_puresky_1k.hdr" background /> */}
           <Game />
           {isMobile || isTablet ? (
-            <PointerLockControls bw={bw} bh={bh} />
+            <PointerLockControls />
           ) : (
             <PointerLockControlsr />
           )}
           <Stats />
         </Canvas>
-        <Overlay bw={bw} bh={bh} />
+        <Overlay />
       </GameContext.Provider>
     </>
   );

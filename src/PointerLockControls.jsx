@@ -1,13 +1,10 @@
 import { Euler, EventDispatcher, Vector3 } from "three";
-import { isTablet } from "./Constants";
+import { bw, bh } from "./Constants";
 
 var mobile = true;
 
 var ww = document.body.clientWidth / 2;
 var wh = document.body.clientHeight / 2;
-
-const bw = isTablet ? document.body.clientWidth / 5 : 200;
-const bh = isTablet ? document.body.clientHeight / 5 : 200;
 
 var array_x = [];
 var array_y = [];

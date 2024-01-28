@@ -1,11 +1,9 @@
 import { GameContext } from "./GameContext";
 import { useContext, useRef, useState } from "react";
-import { isMobile } from "react-device-detect";
+import { bw, bh, isMobile } from "./Constants";
 
-export default function Overlay(props) {
+export default function Overlay() {
   const { handleControlChange } = useContext(GameContext);
-  const bw = props.bw;
-  const bh = props.bh;
   const dpadRef = useRef();
   const [isTouched, setIsTouched] = useState(false);
 
@@ -58,36 +56,34 @@ export default function Overlay(props) {
   }
 
   return (
-    isMobile && (
+    <div
+      ref={dpadRef}
+      id="controls"
+      style={{
+        position: "fixed",
+        left: "1vw",
+        bottom: "1vh",
+        zIndex: 1,
+        opacity: isTouched ? 0.5 : 0,
+        transition: "opacity 0.25s ease-in-out",
+        width: bw,
+        height: bh,
+      }}
+      onTouchStart={() => setIsTouched(true)}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={() => {
+        resetAllControls();
+        setIsTouched(false);
+      }}
+    >
       <div
-        ref={dpadRef}
-        id="controls"
         style={{
-          position: "fixed",
-          left: "1vw",
-          bottom: "1vh",
-          zIndex: 1,
-          opacity: isTouched ? 0.5 : 0,
-          transition: "opacity 0.25s ease-in-out",
-          width: bw,
-          height: bh,
+          background: "black",
+          width: "100%",
+          height: "100%",
+          borderRadius: "8px",
         }}
-        onTouchStart={() => setIsTouched(true)}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={() => {
-          resetAllControls();
-          setIsTouched(false);
-        }}
-      >
-        <div
-          style={{
-            background: "black",
-            width: "100%",
-            height: "100%",
-            borderRadius: "8px",
-          }}
-        ></div>
-      </div>
-    )
+      ></div>
+    </div>
   );
 }
