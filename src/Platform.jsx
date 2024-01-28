@@ -27,6 +27,13 @@ export default function Model(props) {
         position={[0, -0.44, -0.803]}
         scale={21.027}
       />
+      <mesh
+        geometry={nodes.Suzanne.geometry}
+        material={materials.Stone}
+        position={[-0.386, 7.531, -128.377]}
+        rotation={[-0.544, 0.484, 0.352]}
+        scale={24.51}
+      />
     </group>
   );
 }
