@@ -12,41 +12,56 @@ import oceanVertexShader from "./ocean/vertex.glsl";
 import oceanFragmentShader from "./ocean/fragment.glsl";
 
 function RagingSea() {
-  const {
-    animate,
-    bigWavesElevation,
-    bigWavesFrequency,
-    bigWaveSpeed,
-    surfaceColor,
-    depthColor,
-    colorOffset,
-    colorMultiplier,
-    smallWavesElevation,
-    smallWavesFrequency,
-    smallWavesSpeed,
-    smallIterations,
-  } = useControls({
+  //   const {
+  //     animate,
+  //     bigWavesElevation,
+  //     bigWavesFrequency,
+  //     bigWaveSpeed,
+  //     surfaceColor,
+  //     depthColor,
+  //     colorOffset,
+  //     colorMultiplier,
+  //     smallWavesElevation,
+  //     smallWavesFrequency,
+  //     smallWavesSpeed,
+  //     smallIterations,
+  //   } = useControls({
+  //     animate: true,
+  //     colors: folder({
+  //       surfaceColor: "#ffffff",
+  //       depthColor: "#35c7d2",
+  //       colorOffset: 0.02,
+  //       colorMultiplier: 4.0,
+  //     }),
+  //     bigWaves: folder({
+  //       bigWavesElevation: 0.1,
+  //       bigWavesFrequency: [0.03, 0.04],
+  //       bigWaveSpeed: 0.1,
+  //     }),
+  //     smallWaves: folder({
+  //       smallWavesElevation: 0.1,
+  //       smallWavesFrequency: 1.0,
+  //       smallWavesSpeed: 0.2,
+  //       smallIterations: 1.0,
+  //     }),
+  //   });
+  const values = {
     animate: true,
-    colors: folder({
-      surfaceColor: "#ffffff",
-      depthColor: "#35c7d2",
-      colorOffset: 0.02,
-      colorMultiplier: 4.0,
-    }),
-    bigWaves: folder({
-      bigWavesElevation: 0.1,
-      bigWavesFrequency: [0.03, 0.04],
-      bigWaveSpeed: 0.1,
-    }),
-    smallWaves: folder({
-      smallWavesElevation: 0.1,
-      smallWavesFrequency: 1.0,
-      smallWavesSpeed: 0.2,
-      smallIterations: 1.0,
-    }),
-  });
+    bigWavesElevation: 0.1,
+    bigWavesFrequency: [0.03, 0.04],
+    bigWaveSpeed: 0.1,
+    surfaceColor: "#ffffff",
+    depthColor: "#35c7d2",
+    colorOffset: 0.02,
+    colorMultiplier: 4.0,
+    smallWavesElevation: 0.1,
+    smallWavesFrequency: 1.0,
+    smallWavesSpeed: 0.2,
+    smallIterations: 1.0,
+  };
+
   const shaderRef = useRef();
-  useFrame((_, delta) => animate && (shaderRef.current.uTime += delta));
+  useFrame((_, delta) => values.animate && (shaderRef.current.uTime += delta));
   return (
     <Plane
       args={[400, 400, 1024, 1024]}
@@ -56,17 +71,17 @@ function RagingSea() {
       <ragingSeaMaterial
         key={RagingSeaMaterial.key}
         ref={shaderRef}
-        uBigWavesElevation={bigWavesElevation}
-        uBigWavesFrequency={bigWavesFrequency}
-        uBigWavesSpeed={bigWaveSpeed}
-        uSurfaceColor={surfaceColor}
-        uDepthColor={depthColor}
-        uColorOffset={colorOffset}
-        uColorMultiplier={colorMultiplier}
-        uSmallWavesElevation={smallWavesElevation}
-        uSmallWavesFrequency={smallWavesFrequency}
-        uSmallWavesSpeed={smallWavesSpeed}
-        uSmallIterations={smallIterations}
+        uBigWavesElevation={values.bigWavesElevation}
+        uBigWavesFrequency={values.bigWavesFrequency}
+        uBigWavesSpeed={values.bigWaveSpeed}
+        uSurfaceColor={values.surfaceColor}
+        uDepthColor={values.depthColor}
+        uColorOffset={values.colorOffset}
+        uColorMultiplier={values.colorMultiplier}
+        uSmallWavesElevation={values.smallWavesElevation}
+        uSmallWavesFrequency={values.smallWavesFrequency}
+        uSmallWavesSpeed={values.smallWavesSpeed}
+        uSmallIterations={values.smallIterations}
       />
       <PositionalAudio autoplay url="/sounds/ocean.mp3" loop distance={5} />{" "}
     </Plane>
@@ -100,7 +115,7 @@ export default function Ocean() {
   return (
     <Suspense fallback={null}>
       <RagingSea />
-      <color attach="background" args={["#141852"]} />
+      {/* <color attach="background" args={["#141852"]} /> */}
       <Stars
         radius={100}
         depth={50}
