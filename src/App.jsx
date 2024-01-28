@@ -10,7 +10,7 @@ import Overlay from "./Overlay";
 import React, { useState } from "react";
 import { PointerLockControls as PointerLockControlsImpl } from "./PointerLockControls";
 import { GameContext } from "./GameContext";
-import { isMobile } from "react-device-detect";
+import { isTablet, isMobile } from "./Constants";
 
 function PointerLockControls() {
   const { camera, gl } = useThree();
@@ -24,6 +24,9 @@ function PointerLockControls() {
 }
 
 export default function App() {
+  const bw = isTablet ? document.body.clientWidth / 5 : 200;
+  const bh = isTablet ? document.body.clientHeight / 5 : 200;
+
   const [controlsMobile, setControlsMobile] = useState({
     upPressed: false,
     downPressed: false,
@@ -64,10 +67,14 @@ export default function App() {
           />
           {/* <Environment files="/img/rustig_koppie_puresky_1k.hdr" background /> */}
           <Game />
-          {isMobile ? <PointerLockControls /> : <PointerLockControlsr />}
+          {isMobile || isTablet ? (
+            <PointerLockControls bw={bw} bh={bh} />
+          ) : (
+            <PointerLockControlsr />
+          )}
           <Stats />
         </Canvas>
-        <Overlay />
+        <Overlay bw={bw} bh={bh} />
       </GameContext.Provider>
     </>
   );

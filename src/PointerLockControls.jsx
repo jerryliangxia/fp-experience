@@ -1,14 +1,13 @@
-import { Euler, EventDispatcher, Vector3, Vector2 } from "three";
+import { Euler, EventDispatcher, Vector3 } from "three";
+import { isTablet } from "./Constants";
 
-var mobile;
-mobile = true;
-var isMobile = true;
+var mobile = true;
 
 var ww = document.body.clientWidth / 2;
 var wh = document.body.clientHeight / 2;
 
-var bw = 200;
-var bh = 200;
+const bw = isTablet ? document.body.clientWidth / 5 : 200;
+const bh = isTablet ? document.body.clientHeight / 5 : 200;
 
 var array_x = [];
 var array_y = [];
@@ -26,12 +25,7 @@ var PI_2 = Math.PI / 2;
 var PI_2y = 2 * Math.PI;
 var vec = new Vector3();
 var PointerLockControls = function (camera, domElement) {
-  if (isMobile) {
-    mobile = true;
-  } else {
-    mobile = false;
-  }
-
+  console.log(bw, bh);
   if (domElement === undefined) {
     console.warn(
       'THREE.PointerLockControls: The second parameter "domElement" is now mandatory.'

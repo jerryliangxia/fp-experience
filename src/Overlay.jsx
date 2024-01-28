@@ -1,10 +1,11 @@
 import { GameContext } from "./GameContext";
 import { useContext, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
-import { Button, Flex } from "@radix-ui/themes";
 
-export default function Overlay() {
+export default function Overlay(props) {
   const { handleControlChange } = useContext(GameContext);
+  const bw = props.bw;
+  const bh = props.bh;
   const dpadRef = useRef();
   const [isTouched, setIsTouched] = useState(false);
 
@@ -63,11 +64,13 @@ export default function Overlay() {
         id="controls"
         style={{
           position: "fixed",
-          left: "2vw",
+          left: "1vw",
           bottom: "1vh",
           zIndex: 1,
           opacity: isTouched ? 0.5 : 0,
           transition: "opacity 0.25s ease-in-out",
+          width: bw,
+          height: bh,
         }}
         onTouchStart={() => setIsTouched(true)}
         onTouchMove={handleTouchMove}
@@ -79,8 +82,8 @@ export default function Overlay() {
         <div
           style={{
             background: "black",
-            width: "40vw",
-            height: "25vh",
+            width: "100%",
+            height: "100%",
             borderRadius: "8px",
           }}
         ></div>
