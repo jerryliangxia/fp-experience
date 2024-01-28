@@ -9,12 +9,12 @@ export default function Model(props) {
   const { nodes, materials } = useGLTF("models/dreamscene.glb");
   return (
     <group {...props} dispose={null}>
-      <mesh
+      {/* <mesh
         geometry={nodes.Plane.geometry}
         material={materials.Ocean}
         position={[0, -0.44, -23.938]}
         scale={114.693}
-      />
+      /> */}
       <mesh
         geometry={nodes.Cube001.geometry}
         material={materials.Grass}
