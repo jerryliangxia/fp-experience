@@ -24,6 +24,7 @@ function PointerLockControls() {
 }
 
 export default function App() {
+  console.log(isDesktop);
   const [controlsMobile, setControlsMobile] = useState({
     upPressed: false,
     downPressed: false,

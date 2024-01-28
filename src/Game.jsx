@@ -7,7 +7,7 @@ import Sky from "./Sky";
 import GalaxyEffect from "./Galaxy";
 
 export default function Physics() {
-  const { nodes, scene } = useGLTF("/models/scene.glb");
+  const { nodes, scene } = useGLTF("/models/dreamscene.glb");
   const octree = useOctree(scene);
   useOctreeHelper(octree);
 
