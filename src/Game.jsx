@@ -16,7 +16,7 @@ export default function Physics() {
   return (
     <>
       {/* <Sky /> */}
-      <Grass />
+      <Grass scale={0.85} position={[-30.75, 0, -16.5]} />
       <Ocean />
       <Clouds position-z={-300} position-y={-5} scale={10} />
       <Model />

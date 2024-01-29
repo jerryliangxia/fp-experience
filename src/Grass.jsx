@@ -1,5 +1,6 @@
 import React, { useRef, useMemo, useEffect } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 const vertexShader = `
@@ -67,9 +68,10 @@ void main() {
 }
 `; // Your fragment shader code
 
-export default function Grass() {
+export default function Grass(props) {
   const meshRef = useRef();
   const { clock } = useThree();
+  const { nodes } = useGLTF("/grass.glb");
 
   const uniforms = useMemo(
     () => ({
@@ -96,16 +98,18 @@ export default function Grass() {
   }, []);
 
   useEffect(() => {
-    const instanceNumber = 5000;
+    const instanceNumber = 30000;
     const dummy = new THREE.Object3D();
+    const ovalRadiusX = 20 * props.scale; // The x radius of the oval
+    const ovalRadiusZ = 10 * props.scale; // The z radius of the oval
 
     for (let i = 0; i < instanceNumber; i++) {
-      dummy.position.set(
-        (Math.random() - 0.5) * 10,
-        0,
-        (Math.random() - 0.5) * 10
-      );
+      const angle = Math.random() * Math.PI * 2; // Random angle
+      const radiusValue = Math.sqrt(Math.random()); // Uniformly distributed radius
+      const x = Math.cos(angle) * ovalRadiusX * radiusValue;
+      const z = Math.sin(angle) * ovalRadiusZ * radiusValue;
 
+      dummy.position.set(x, 0, z);
       dummy.scale.setScalar(0.5 + Math.random() * 0.5);
       dummy.rotation.y = Math.random() * Math.PI;
 
@@ -121,6 +125,10 @@ export default function Grass() {
   });
 
   return (
-    <instancedMesh ref={meshRef} args={[geometry, leavesMaterial, 5000]} />
+    <instancedMesh
+      position={props.position}
+      ref={meshRef}
+      args={[geometry, leavesMaterial, 5000]}
+    />
   );
 }
