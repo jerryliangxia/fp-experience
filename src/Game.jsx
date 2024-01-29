@@ -6,6 +6,7 @@ import Model from "./Platform";
 import Sky from "./Sky";
 import Ocean from "./Ocean";
 import Clouds from "./Clouds";
+import Grass from "./Grass";
 
 export default function Physics() {
   const { nodes, scene } = useGLTF("/dreamscene.glb");
@@ -15,6 +16,7 @@ export default function Physics() {
   return (
     <>
       {/* <Sky /> */}
+      <Grass />
       <Ocean />
       <Clouds position-z={-300} position-y={-5} scale={10} />
       <Model />
