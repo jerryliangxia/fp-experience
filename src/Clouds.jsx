@@ -22,7 +22,7 @@ export default function Model(props) {
     <group ref={groupRef} {...props} dispose={null}>
       <mesh
         geometry={nodes.Cube002.geometry}
-        // material={{ ...materials.Material, transparent: true, opacity: 0.8 }}
+        material={materials.Material}
         position={[16.034, 0.915, 0]}
       >
         <meshPhysicalMaterial
@@ -34,6 +34,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube001.geometry}
+        material={materials.Material}
         position={[21.227, 2.015, -3.831]}
         scale={[1, 0.903, 1]}
       >
@@ -46,6 +47,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube003.geometry}
+        material={materials.Material}
         position={[16.706, 1.041, 0.246]}
         rotation={[-Math.PI, 0, 0]}
         scale={[-0.405, -0.366, -0.405]}
@@ -59,6 +61,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube004.geometry}
+        material={materials.Material}
         position={[20.952, 1.467, -1.194]}
         rotation={[-Math.PI, 0, 0]}
         scale={[-0.218, -0.197, -0.218]}
@@ -72,6 +75,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube005.geometry}
+        material={materials.Material}
         position={[16.819, 0.569, 2.745]}
         rotation={[0, -0.083, -Math.PI]}
         scale={[-0.218, -0.197, -0.218]}
@@ -85,6 +89,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube006.geometry}
+        material={materials.Material}
         position={[15.796, 3.95, -6.114]}
         rotation={[0, -0.083, -Math.PI]}
         scale={[-0.345, -0.197, -0.219]}
@@ -98,6 +103,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube007.geometry}
+        material={materials.Material}
         position={[-25.89, 2.015, -4.451]}
         rotation={[-Math.PI, 0.004, -Math.PI]}
         scale={[0.928, 0.749, 0.841]}
@@ -111,6 +117,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube008.geometry}
+        material={materials.Material}
         position={[-14.656, 1.398, -2.7]}
         rotation={[-Math.PI, 0, 0]}
         scale={[-0.218, -0.197, -0.218]}
@@ -124,6 +131,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube009.geometry}
+        material={materials.Material}
         position={[-19.812, 3.881, -7.619]}
         rotation={[0, -0.083, -Math.PI]}
         scale={[-0.345, -0.197, -0.219]}
@@ -137,6 +145,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube010.geometry}
+        material={materials.Material}
         position={[-3.29, 2.833, -8.775]}
         scale={[0.418, 0.319, 0.336]}
       >
@@ -149,6 +158,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube011.geometry}
+        material={materials.Material}
         position={[-3.998, 2.536, -7.254]}
         rotation={[-Math.PI, 0, 0]}
         scale={[-0.238, -0.19, -0.182]}
@@ -162,6 +172,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube012.geometry}
+        material={materials.Material}
         position={[-12.644, 3.638, -11.893]}
         scale={[0.337, 0.197, 0.218]}
       >
@@ -174,6 +185,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube013.geometry}
+        material={materials.Material}
         position={[-15.055, 4.15, -13.89]}
         scale={[0.337, 0.197, 0.218]}
       >
@@ -186,6 +198,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube014.geometry}
+        material={materials.Material}
         position={[-7.129, 2.115, -7.092]}
         rotation={[-Math.PI, 0, 0]}
         scale={[-0.149, -0.134, -0.149]}
@@ -199,6 +212,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube015.geometry}
+        material={materials.Material}
         position={[-9.441, 4.623, -18.974]}
         rotation={[-Math.PI, 0, 0]}
         scale={[-0.249, -0.101, -0.149]}
@@ -212,6 +226,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube016.geometry}
+        material={materials.Material}
         position={[24.752, 3.38, -7.511]}
         rotation={[-Math.PI, 0, 0]}
         scale={[-0.418, -0.319, -0.336]}
@@ -225,6 +240,7 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube017.geometry}
+        material={materials.Material}
         position={[21.401, 4.8, -15.672]}
         scale={[0.55, 0.146, 0.162]}
       >
@@ -237,8 +253,1515 @@ export default function Model(props) {
       </mesh>
       <mesh
         geometry={nodes.Cube018.geometry}
+        material={materials.Material}
         position={[22.621, 4.97, -16.496]}
         rotation={[-Math.PI, 0, 0]}
+        scale={[-0.296, -0.079, -0.087]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube019.geometry}
+        material={materials.Material}
+        position={[85.302, 0.915, 21.909]}
+        rotation={[0, -0.348, 0]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube020.geometry}
+        material={materials.Material}
+        position={[91.491, 2.015, 20.08]}
+        rotation={[0, -0.348, 0]}
+        scale={[1, 0.903, 1]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube021.geometry}
+        material={materials.Material}
+        position={[85.851, 1.041, 22.369]}
+        rotation={[-Math.PI, 0.348, 0]}
+        scale={[-0.405, -0.366, -0.405]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube022.geometry}
+        material={materials.Material}
+        position={[90.333, 1.467, 22.465]}
+        rotation={[-Math.PI, 0.348, 0]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube023.geometry}
+        material={materials.Material}
+        position={[85.104, 0.569, 24.757]}
+        rotation={[0, -0.431, -Math.PI]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube024.geometry}
+        material={materials.Material}
+        position={[87.165, 3.95, 16.081]}
+        rotation={[0, -0.431, -Math.PI]}
+        scale={[-0.345, -0.197, -0.219]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube025.geometry}
+        material={materials.Material}
+        position={[47.414, 2.015, 3.418]}
+        rotation={[-Math.PI, 0.353, -Math.PI]}
+        scale={[0.928, 0.749, 0.841]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube026.geometry}
+        material={materials.Material}
+        position={[57.376, 1.398, 8.898]}
+        rotation={[-Math.PI, 0.348, 0]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube027.geometry}
+        material={materials.Material}
+        position={[54.208, 3.881, 2.514]}
+        rotation={[0, -0.431, -Math.PI]}
+        scale={[-0.345, -0.197, -0.219]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube028.geometry}
+        material={materials.Material}
+        position={[70.133, 2.833, 7.067]}
+        rotation={[0, -0.348, 0]}
+        scale={[0.418, 0.319, 0.336]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube029.geometry}
+        material={materials.Material}
+        position={[68.948, 2.536, 8.254]}
+        rotation={[-Math.PI, 0.348, 0]}
+        scale={[-0.238, -0.19, -0.182]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube030.geometry}
+        material={materials.Material}
+        position={[62.405, 3.638, 0.944]}
+        rotation={[0, -0.348, 0]}
+        scale={[0.337, 0.197, 0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube031.geometry}
+        material={materials.Material}
+        position={[60.82, 4.15, -1.756]}
+        rotation={[0, -0.348, 0]}
+        scale={[0.337, 0.197, 0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube032.geometry}
+        material={materials.Material}
+        position={[65.95, 2.115, 7.338]}
+        rotation={[-Math.PI, 0.348, 0]}
+        scale={[-0.149, -0.134, -0.149]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube033.geometry}
+        material={materials.Material}
+        position={[67.832, 4.623, -4.619]}
+        rotation={[-Math.PI, 0.348, 0]}
+        scale={[-0.249, -0.101, -0.149]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube034.geometry}
+        material={materials.Material}
+        position={[96.06, 3.38, 17.824]}
+        rotation={[-Math.PI, 0.348, 0]}
+        scale={[-0.418, -0.319, -0.336]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube035.geometry}
+        material={materials.Material}
+        position={[95.696, 4.8, 9.009]}
+        rotation={[0, -0.348, 0]}
+        scale={[0.55, 0.146, 0.162]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube036.geometry}
+        material={materials.Material}
+        position={[97.124, 4.97, 8.652]}
+        rotation={[-Math.PI, 0.348, 0]}
+        scale={[-0.296, -0.079, -0.087]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube037.geometry}
+        material={materials.Material}
+        position={[92.312, 0.915, 71.292]}
+        rotation={[0, -1.521, 0]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube038.geometry}
+        material={materials.Material}
+        position={[96.398, 2.015, 76.288]}
+        rotation={[0, -1.521, 0]}
+        scale={[1, 0.903, 1]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube039.geometry}
+        material={materials.Material}
+        position={[92.101, 1.041, 71.976]}
+        rotation={[-Math.PI, 1.521, 0]}
+        scale={[-0.405, -0.366, -0.405]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube040.geometry}
+        material={materials.Material}
+        position={[93.751, 1.467, 76.145]}
+        rotation={[-Math.PI, 1.521, 0]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube041.geometry}
+        material={materials.Material}
+        position={[89.61, 0.569, 72.213]}
+        rotation={[Math.PI, -1.538, 0]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube042.geometry}
+        material={materials.Material}
+        position={[98.407, 3.95, 70.75]}
+        rotation={[Math.PI, -1.538, 0]}
+        scale={[-0.345, -0.197, -0.219]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube043.geometry}
+        material={materials.Material}
+        position={[94.665, 2.015, 29.198]}
+        rotation={[-Math.PI, 1.525, -Math.PI]}
+        scale={[0.928, 0.749, 0.841]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube044.geometry}
+        material={materials.Material}
+        position={[93.477, 1.398, 40.505]}
+        rotation={[-Math.PI, 1.521, 0]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube045.geometry}
+        material={materials.Material}
+        position={[98.133, 3.881, 35.11]}
+        rotation={[Math.PI, -1.538, 0]}
+        scale={[-0.345, -0.197, -0.219]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube046.geometry}
+        material={materials.Material}
+        position={[100.112, 2.833, 51.554]}
+        rotation={[0, -1.521, 0]}
+        scale={[0.418, 0.319, 0.336]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube047.geometry}
+        material={materials.Material}
+        position={[98.558, 2.536, 50.923]}
+        rotation={[-Math.PI, 1.521, 0]}
+        scale={[-0.238, -0.19, -0.182]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube048.geometry}
+        material={materials.Material}
+        position={[102.759, 3.638, 42.057]}
+        rotation={[0, -1.521, 0]}
+        scale={[0.337, 0.197, 0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube049.geometry}
+        material={materials.Material}
+        position={[104.633, 4.15, 39.549]}
+        rotation={[0, -1.521, 0]}
+        scale={[0.337, 0.197, 0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube050.geometry}
+        material={materials.Material}
+        position={[98.239, 2.115, 47.804]}
+        rotation={[-Math.PI, 1.521, 0]}
+        scale={[-0.149, -0.134, -0.149]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube051.geometry}
+        material={materials.Material}
+        position={[109.991, 4.623, 44.902]}
+        rotation={[-Math.PI, 1.521, 0]}
+        scale={[-0.249, -0.101, -0.149]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube052.geometry}
+        material={materials.Material}
+        position={[100.249, 3.38, 79.624]}
+        rotation={[-Math.PI, 1.521, 0]}
+        scale={[-0.418, -0.319, -0.336]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube053.geometry}
+        material={materials.Material}
+        position={[108.233, 4.8, 75.87]}
+        rotation={[0, -1.521, 0]}
+        scale={[0.55, 0.146, 0.162]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube054.geometry}
+        material={materials.Material}
+        position={[109.116, 4.97, 77.048]}
+        rotation={[-Math.PI, 1.521, 0]}
+        scale={[-0.296, -0.079, -0.087]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube055.geometry}
+        material={materials.Material}
+        position={[41.078, 0.915, 87.209]}
+        rotation={[Math.PI, -0.436, Math.PI]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube056.geometry}
+        material={materials.Material}
+        position={[37.991, 2.015, 92.876]}
+        rotation={[Math.PI, -0.436, Math.PI]}
+        scale={[1, 0.903, 1]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube057.geometry}
+        material={materials.Material}
+        position={[40.365, 1.041, 87.271]}
+        rotation={[0, 0.436, -Math.PI]}
+        scale={[-0.405, -0.366, -0.405]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube058.geometry}
+        material={materials.Material}
+        position={[37.125, 1.467, 90.371]}
+        rotation={[0, 0.436, -Math.PI]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube059.geometry}
+        material={materials.Material}
+        position={[39.206, 0.569, 85.054]}
+        rotation={[Math.PI, -0.353, 0]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube060.geometry}
+        material={materials.Material}
+        position={[43.878, 3.95, 92.65]}
+        rotation={[Math.PI, -0.353, 0]}
+        scale={[-0.345, -0.197, -0.219]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube061.geometry}
+        material={materials.Material}
+        position={[80.955, 2.015, 73.524]}
+        rotation={[0, 0.432, 0]}
+        scale={[0.928, 0.749, 0.841]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube062.geometry}
+        material={materials.Material}
+        position={[70.033, 1.398, 76.685]}
+        rotation={[0, 0.436, -Math.PI]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube063.geometry}
+        material={materials.Material}
+        position={[76.786, 3.881, 78.964]}
+        rotation={[Math.PI, -0.353, 0]}
+        scale={[-0.345, -0.197, -0.219]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube064.geometry}
+        material={materials.Material}
+        position={[62.3, 2.833, 86.994]}
+        rotation={[Math.PI, -0.436, Math.PI]}
+        scale={[0.418, 0.319, 0.336]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube065.geometry}
+        material={materials.Material}
+        position={[62.299, 2.536, 85.317]}
+        rotation={[0, 0.436, -Math.PI]}
+        scale={[-0.238, -0.19, -0.182]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube066.geometry}
+        material={materials.Material}
+        position={[72.095, 3.638, 85.867]}
+        rotation={[Math.PI, -0.436, Math.PI]}
+        scale={[0.337, 0.197, 0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube067.geometry}
+        material={materials.Material}
+        position={[75.124, 4.15, 86.658]}
+        rotation={[Math.PI, -0.436, Math.PI]}
+        scale={[0.337, 0.197, 0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube068.geometry}
+        material={materials.Material}
+        position={[65.068, 2.115, 83.847]}
+        rotation={[0, 0.436, -Math.PI]}
+        scale={[-0.149, -0.134, -0.149]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube069.geometry}
+        material={materials.Material}
+        position={[72.185, 4.623, 93.638]}
+        rotation={[0, 0.436, -Math.PI]}
+        scale={[-0.249, -0.101, -0.149]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube070.geometry}
+        material={materials.Material}
+        position={[36.352, 3.38, 97.701]}
+        rotation={[0, 0.436, -Math.PI]}
+        scale={[-0.418, -0.319, -0.336]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube071.geometry}
+        material={materials.Material}
+        position={[42.838, 4.8, 103.682]}
+        rotation={[Math.PI, -0.436, Math.PI]}
+        scale={[0.55, 0.146, 0.162]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube072.geometry}
+        material={materials.Material}
+        position={[42.08, 4.97, 104.943]}
+        rotation={[0, 0.436, -Math.PI]}
+        scale={[-0.296, -0.079, -0.087]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube073.geometry}
+        material={materials.Material}
+        position={[-22.311, 0.915, 91.168]}
+        rotation={[Math.PI, -0.09, Math.PI]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube074.geometry}
+        material={materials.Material}
+        position={[-27.14, 2.015, 95.448]}
+        rotation={[Math.PI, -0.09, Math.PI]}
+        scale={[1, 0.903, 1]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube075.geometry}
+        material={materials.Material}
+        position={[-23.003, 1.041, 90.983]}
+        rotation={[0, 0.09, -Math.PI]}
+        scale={[-0.405, -0.366, -0.405]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube076.geometry}
+        material={materials.Material}
+        position={[-27.103, 1.467, 92.798]}
+        rotation={[0, 0.09, -Math.PI]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube077.geometry}
+        material={materials.Material}
+        position={[-23.339, 0.569, 88.504]}
+        rotation={[Math.PI, -0.007, 0]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube078.geometry}
+        material={materials.Material}
+        position={[-21.527, 3.95, 97.236]}
+        rotation={[Math.PI, -0.007, 0]}
+        scale={[-0.345, -0.197, -0.219]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube079.geometry}
+        material={materials.Material}
+        position={[19.843, 2.015, 91.849]}
+        rotation={[0, 0.085, 0]}
+        scale={[0.928, 0.749, 0.841]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube080.geometry}
+        material={materials.Material}
+        position={[8.498, 1.398, 91.11]}
+        rotation={[0, 0.09, -Math.PI]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube081.geometry}
+        material={materials.Material}
+        position={[14.073, 3.881, 95.548]}
+        rotation={[Math.PI, -0.007, 0]}
+        scale={[-0.345, -0.197, -0.219]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube082.geometry}
+        material={materials.Material}
+        position={[-2.279, 2.833, 98.178]}
+        rotation={[Math.PI, -0.09, Math.PI]}
+        scale={[0.418, 0.319, 0.336]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube083.geometry}
+        material={materials.Material}
+        position={[-1.71, 2.536, 96.6]}
+        rotation={[0, 0.09, -Math.PI]}
+        scale={[-0.238, -0.19, -0.182]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube084.geometry}
+        material={materials.Material}
+        position={[7.316, 3.638, 100.446]}
+        rotation={[Math.PI, -0.09, Math.PI]}
+        scale={[0.337, 0.197, 0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube085.geometry}
+        material={materials.Material}
+        position={[9.896, 4.15, 102.219]}
+        rotation={[Math.PI, -0.09, Math.PI]}
+        scale={[0.337, 0.197, 0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube086.geometry}
+        material={materials.Material}
+        position={[1.394, 2.115, 96.158]}
+        rotation={[0, 0.09, -Math.PI]}
+        scale={[-0.149, -0.134, -0.149]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube087.geometry}
+        material={materials.Material}
+        position={[4.76, 4.623, 107.785]}
+        rotation={[0, 0.09, -Math.PI]}
+        scale={[-0.249, -0.101, -0.149]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube088.geometry}
+        material={materials.Material}
+        position={[-30.322, 3.38, 99.429]}
+        rotation={[0, 0.09, -Math.PI]}
+        scale={[-0.418, -0.319, -0.336]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube089.geometry}
+        material={materials.Material}
+        position={[-26.254, 4.8, 107.258]}
+        rotation={[Math.PI, -0.09, Math.PI]}
+        scale={[0.55, 0.146, 0.162]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube090.geometry}
+        material={materials.Material}
+        position={[-27.396, 4.97, 108.187]}
+        rotation={[0, 0.09, -Math.PI]}
+        scale={[-0.296, -0.079, -0.087]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube091.geometry}
+        material={materials.Material}
+        position={[-45.122, 0.915, 2.949]}
+        rotation={[0, 0.988, 0]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube092.geometry}
+        material={materials.Material}
+        position={[-45.463, 2.015, -3.495]}
+        rotation={[0, 0.988, 0]}
+        scale={[1, 0.903, 1]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube093.geometry}
+        material={materials.Material}
+        position={[-44.547, 1.041, 2.523]}
+        rotation={[Math.PI, -0.988, 0]}
+        scale={[-0.405, -0.366, -0.405]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube094.geometry}
+        material={materials.Material}
+        position={[-43.412, 1.467, -1.815]}
+        rotation={[Math.PI, -0.988, 0]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube095.geometry}
+        material={materials.Material}
+        position={[-42.398, 0.569, 3.804]}
+        rotation={[0, 0.905, -Math.PI]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube096.geometry}
+        material={materials.Material}
+        position={[-50.358, 3.95, -0.217]}
+        rotation={[0, 0.905, -Math.PI]}
+        scale={[-0.345, -0.197, -0.219]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube097.geometry}
+        material={materials.Material}
+        position={[-71.911, 2.015, 35.503]}
+        rotation={[Math.PI, -0.984, Math.PI]}
+        scale={[0.928, 0.749, 0.841]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube098.geometry}
+        material={materials.Material}
+        position={[-64.267, 1.398, 27.087]}
+        rotation={[Math.PI, -0.988, 0]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube099.geometry}
+        material={materials.Material}
+        position={[-71.212, 3.881, 28.685]}
+        rotation={[0, 0.905, -Math.PI]}
+        scale={[-0.345, -0.197, -0.219]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube100.geometry}
+        material={materials.Material}
+        position={[-63.083, 2.833, 14.254]}
+        rotation={[0, 0.988, 0]}
+        scale={[0.418, 0.319, 0.336]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube101.geometry}
+        material={materials.Material}
+        position={[-62.204, 2.536, 15.682]}
+        rotation={[Math.PI, -0.988, 0]}
+        scale={[-0.238, -0.19, -0.182]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube102.geometry}
+        material={materials.Material}
+        position={[-70.835, 3.638, 20.348]}
+        rotation={[0, 0.988, 0]}
+        scale={[0.337, 0.197, 0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube103.geometry}
+        material={materials.Material}
+        position={[-73.829, 4.15, 21.262]}
+        rotation={[0, 0.988, 0]}
+        scale={[0.337, 0.197, 0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube104.geometry}
+        material={materials.Material}
+        position={[-63.791, 2.115, 18.385]}
+        rotation={[Math.PI, -0.988, 0]}
+        scale={[-0.149, -0.134, -0.149]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube105.geometry}
+        material={materials.Material}
+        position={[-74.984, 4.623, 13.776]}
+        rotation={[Math.PI, -0.988, 0]}
+        scale={[-0.249, -0.101, -0.149]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube106.geometry}
+        material={materials.Material}
+        position={[-46.595, 3.38, -8.464]}
+        rotation={[Math.PI, -0.988, 0]}
+        scale={[-0.418, -0.319, -0.336]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube107.geometry}
+        material={materials.Material}
+        position={[-55.253, 4.8, -10.158]}
+        rotation={[0, 0.988, 0]}
+        scale={[0.55, 0.146, 0.162]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube108.geometry}
+        material={materials.Material}
+        position={[-55.269, 4.97, -11.63]}
+        rotation={[Math.PI, -0.988, 0]}
+        scale={[-0.296, -0.079, -0.087]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube109.geometry}
+        material={materials.Material}
+        position={[-70.05, 0.915, 51.598]}
+        rotation={[-Math.PI, 0.925, -Math.PI]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube110.geometry}
+        material={materials.Material}
+        position={[-76.234, 2.015, 49.754]}
+        rotation={[-Math.PI, 0.925, -Math.PI]}
+        scale={[1, 0.903, 1]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube111.geometry}
+        material={materials.Material}
+        position={[-70.258, 1.041, 50.913]}
+        rotation={[0, -0.925, -Math.PI]}
+        scale={[-0.405, -0.366, -0.405]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube112.geometry}
+        material={materials.Material}
+        position={[-73.963, 1.467, 48.388]}
+        rotation={[0, -0.925, -Math.PI]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube113.geometry}
+        material={materials.Material}
+        position={[-68.33, 0.569, 49.32]}
+        rotation={[-Math.PI, 1.008, 0]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube114.geometry}
+        material={materials.Material}
+        position={[-74.791, 3.95, 55.466]}
+        rotation={[-Math.PI, 1.008, 0]}
+        scale={[-0.345, -0.197, -0.219]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube115.geometry}
+        material={materials.Material}
+        position={[-48.388, 2.015, 87.767]}
+        rotation={[0, -0.93, 0]}
+        scale={[0.928, 0.749, 0.841]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube116.geometry}
+        material={materials.Material}
+        position={[-53.746, 1.398, 77.739]}
+        rotation={[0, -0.925, -Math.PI]}
+        scale={[-0.218, -0.197, -0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube117.geometry}
+        material={materials.Material}
+        position={[-54.574, 3.881, 84.818]}
+        rotation={[-Math.PI, 1.008, 0]}
+        scale={[-0.345, -0.197, -0.219]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube118.geometry}
+        material={materials.Material}
+        position={[-65.436, 2.833, 72.313]}
+        rotation={[-Math.PI, 0.925, -Math.PI]}
+        scale={[0.418, 0.319, 0.336]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube119.geometry}
+        material={materials.Material}
+        position={[-63.795, 2.536, 71.965]}
+        rotation={[0, -0.925, -Math.PI]}
+        scale={[-0.238, -0.19, -0.182]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube120.geometry}
+        material={materials.Material}
+        position={[-62.3, 3.638, 81.661]}
+        rotation={[-Math.PI, 0.925, -Math.PI]}
+        scale={[0.337, 0.197, 0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube121.geometry}
+        material={materials.Material}
+        position={[-62.445, 4.15, 84.789]}
+        rotation={[-Math.PI, 0.925, -Math.PI]}
+        scale={[0.337, 0.197, 0.218]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube122.geometry}
+        material={materials.Material}
+        position={[-61.783, 2.115, 74.368]}
+        rotation={[0, -0.925, -Math.PI]}
+        scale={[-0.149, -0.134, -0.149]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube123.geometry}
+        material={materials.Material}
+        position={[-69.884, 4.623, 83.362]}
+        rotation={[0, -0.925, -Math.PI]}
+        scale={[-0.249, -0.101, -0.149]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube124.geometry}
+        material={materials.Material}
+        position={[-81.294, 3.38, 49.152]}
+        rotation={[0, -0.925, -Math.PI]}
+        scale={[-0.418, -0.319, -0.336]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube125.geometry}
+        material={materials.Material}
+        position={[-85.798, 4.8, 56.738]}
+        rotation={[-Math.PI, 0.925, -Math.PI]}
+        scale={[0.55, 0.146, 0.162]}
+      >
+        <meshPhysicalMaterial
+          ref={setMaterial}
+          color="white"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+      <mesh
+        geometry={nodes.Cube126.geometry}
+        material={materials.Material}
+        position={[-87.19, 4.97, 56.258]}
+        rotation={[0, -0.925, -Math.PI]}
         scale={[-0.296, -0.079, -0.087]}
       >
         <meshPhysicalMaterial

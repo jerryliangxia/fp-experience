@@ -64,7 +64,7 @@ function RagingSea() {
   useFrame((_, delta) => values.animate && (shaderRef.current.uTime += delta));
   return (
     <Plane
-      args={[400, 400, 1024, 1024]}
+      args={[800, 800, 1024, 1024]}
       receiveShadow
       rotation-x={-Math.PI / 2}
     >
@@ -117,8 +117,8 @@ export default function Ocean() {
       <RagingSea />
       {/* <color attach="background" args={["#141852"]} /> */}
       <Stars
-        radius={100}
-        depth={50}
+        radius={200}
+        depth={1}
         count={10000}
         factor={4}
         saturation={10}

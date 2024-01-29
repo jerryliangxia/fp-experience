@@ -100,23 +100,23 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[16.807, 9.127, 2.828]}
-        rotation={[0, 0.132, 0]}
+        position={[421.645, 6.765, 208.28]}
+        rotation={[0, 1.048, 0]}
         scale={[3.041, 1.283, 2.527]}
       >
         <mesh
-          geometry={nodes.Torus007_1.geometry}
+          geometry={nodes.Torus007.geometry}
           material={materials["Light Freen Petal"]}
         />
-        <mesh geometry={nodes.Torus007_2.geometry} material={materials.Brown} />
+        <mesh geometry={nodes.Torus007_1.geometry} material={materials.Brown} />
         <mesh
-          geometry={nodes.Torus007_3.geometry}
+          geometry={nodes.Torus007_2.geometry}
           material={materials["Green Petal"]}
         />
       </group>
       <group
-        position={[29.886, 9.576, 4.397]}
-        rotation={[0, -0.203, 0]}
+        position={[430.856, 7.215, 198.861]}
+        rotation={[0, 0.713, 0]}
         scale={[3.041, 1.283, 2.527]}
       >
         <mesh
@@ -130,8 +130,8 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[3.198, 6.823, 11.54]}
-        rotation={[0, -0.292, 0]}
+        position={[420.268, 4.462, 224.38]}
+        rotation={[0, 0.624, 0]}
         scale={[2.584, 1.09, 2.148]}
       >
         <mesh
@@ -145,8 +145,8 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[14.676, 11.146, 10.212]}
-        rotation={[0, 0.132, 0]}
+        position={[426.205, 8.784, 214.468]}
+        rotation={[0, 1.048, 0]}
         scale={[3.041, 1.283, 2.527]}
       >
         <mesh
@@ -160,8 +160,8 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[24.262, 12.216, 9.29]}
-        rotation={[-Math.PI, 0.264, -Math.PI]}
+        position={[431.311, 9.855, 206.303]}
+        rotation={[Math.PI, -0.652, Math.PI]}
         scale={[3.041, 1.283, 2.527]}
       >
         <mesh
@@ -175,8 +175,8 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[9.962, 7.661, 8.373]}
-        rotation={[0, -0.292, 0]}
+        position={[421.875, 5.3, 217.086]}
+        rotation={[0, 0.624, 0]}
         scale={[2.239, 0.945, 1.861]}
       >
         <mesh
@@ -190,8 +190,8 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[-18.663, 17.135, 10.023]}
-        rotation={[-Math.PI, 0.091, -Math.PI]}
+        position={[405.751, 14.773, 240.795]}
+        rotation={[Math.PI, -0.825, Math.PI]}
         scale={-0.863}
       >
         <mesh
@@ -205,8 +205,8 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[-12.405, 17.135, 16.366]}
-        rotation={[0, -0.007, 0]}
+        position={[414.593, 14.773, 239.695]}
+        rotation={[0, 0.909, 0]}
         scale={-0.863}
       >
         <mesh
@@ -220,8 +220,8 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[-5.758, 17.135, 10.473]}
-        rotation={[0, -0.007, 0]}
+        position={[413.967, 14.773, 230.833]}
+        rotation={[0, 0.909, 0]}
         scale={-0.863}
       >
         <mesh
@@ -235,8 +235,8 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[149.786, 4.316, -110.78]}
-        rotation={[0.29, 0.052, 1]}
+        position={[486.721, 4.316, -187.355]}
+        rotation={[0.303, -0.287, 1.103]}
         scale={[1.768, 19.136, 1.768]}
       >
         <mesh
@@ -251,13 +251,13 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cylinder002.geometry}
         material={materials["Grey 2"]}
-        position={[147.499, 0.523, -100.948]}
-        rotation={[-2.656, 0.074, 2.14]}
+        position={[481.17, 0.523, -178.924]}
+        rotation={[-2.615, 0.385, 1.964]}
         scale={[1.768, 19.136, 1.768]}
       />
       <group
-        position={[154.566, 4.426, -108.514]}
-        rotation={[-2.656, 0.074, 2.14]}
+        position={[490.42, 4.426, -183.574]}
+        rotation={[-2.615, 0.385, 1.964]}
         scale={[1.768, 28.683, 1.768]}
       >
         <mesh
@@ -270,8 +270,8 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[171.396, 4.374, -103.273]}
-        rotation={[0.29, 0.052, 1]}
+        position={[504.394, 4.374, -172.829]}
+        rotation={[0.303, -0.287, 1.103]}
         scale={[1.768, 19.136, 1.768]}
       >
         <mesh
@@ -283,16 +283,9 @@ export default function Model(props) {
           material={materials.Grey}
         />
       </group>
-      <mesh
-        geometry={nodes.Cube.geometry}
-        material={materials.Brown}
-        position={[43.857, 3.053, 34.095]}
-        rotation={[-Math.PI, 0, 0]}
-        scale={[-10.362, -2.603, -4.811]}
-      />
       <group
-        position={[19.54, 1.505, -10.615]}
-        rotation={[-1.895, 1.478, 2.037]}
+        position={[-29.364, 1.262, -21.211]}
+        rotation={[-1.915, 1.483, 2.059]}
         scale={[1.069, 0.954, 1.236]}
       >
         <mesh
@@ -326,30 +319,17 @@ export default function Model(props) {
         scale={[115.831, 133.843, 125.931]}
       />
       <mesh
-        geometry={nodes.Torus007.geometry}
-        material={materials.Brown}
-        position={[-0.219, 5.838, -0.219]}
-        rotation={[0, -0.292, 0]}
-        scale={[2.584, 1.09, 2.148]}
-      />
-      <mesh
         geometry={nodes.Plane.geometry}
         material={materials.Ocean}
         position={[0, -0.44, 0]}
         scale={114.693}
       />
       <mesh
-        geometry={nodes.Cube001.geometry}
-        material={materials.Grass}
-        position={[66.457, -9.361, -370.093]}
-        scale={[30.144, 20.466, 20.466]}
-      />
-      <mesh
         geometry={nodes.Suzanne.geometry}
         material={materials.Stone}
-        position={[-454.502, -1.98, 26.204]}
+        position={[-454.502, -12.021, 26.204]}
         rotation={[-1.681, 1.092, 1.772]}
-        scale={24.51}
+        scale={47.5}
       />
       <mesh
         geometry={nodes.Plane002.geometry}
@@ -358,23 +338,16 @@ export default function Model(props) {
         scale={[54.328, 21.027, 21.027]}
       />
       <mesh
-        geometry={nodes.Plane003.geometry}
-        material={materials.Grass}
-        position={[42.772, 5.317, 32.943]}
-        rotation={[-Math.PI, 0, 0]}
-        scale={[-18.737, -23.037, -11.155]}
-      />
-      <mesh
         geometry={nodes.Cube002.geometry}
         material={materials.Grass}
-        position={[417.653, -9.361, -403.126]}
+        position={[442.308, -9.361, -403.126]}
         scale={[30.144, 20.466, 20.466]}
       />
       <mesh
         geometry={nodes.Cube003.geometry}
         material={materials.Grass}
-        position={[-5.238, 0.794, 20.618]}
-        rotation={[-Math.PI, 0.019, -Math.PI]}
+        position={[422.331, -1.568, 236.6]}
+        rotation={[Math.PI, -0.897, Math.PI]}
         scale={[11.484, 7.797, 7.797]}
       />
     </group>
