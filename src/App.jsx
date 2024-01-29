@@ -62,10 +62,11 @@ export default function App() {
             shadow-camera-top={30}
             shadow-camera-bottom={-30}
           />
+          {/* <ambientLight intensity={1} /> */}
           <Environment
             files="/img/rustig_koppie_puresky_1k.hdr"
             background
-            intensity={0.1}
+            intensity={0.05}
           />
           <Game />
           {!isDesktop ? <PointerLockControls /> : <PointerLockControlsr />}

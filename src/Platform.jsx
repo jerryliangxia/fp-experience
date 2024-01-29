@@ -25,7 +25,7 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[-43.009, 2.36, -18.184]}
+        position={[-43.009, 2.213, -18.184]}
         rotation={[0, -0.035, 0]}
         scale={[1.381, 2.388, 1.381]}
       >
@@ -43,7 +43,7 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[-39.475, 0.631, -15.903]}
+        position={[-39.475, 0.108, -15.903]}
         rotation={[-0.037, -1.165, 0.041]}
         scale={0.447}
       >
@@ -70,7 +70,7 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[-35.855, 0.67, -14.883]}
+        position={[-35.855, 0.185, -14.883]}
         rotation={[-3.111, -1.075, -3.04]}
         scale={0.447}
       >
@@ -283,6 +283,13 @@ export default function Model(props) {
           material={materials.Grey}
         />
       </group>
+      <mesh
+        geometry={nodes.Cube.geometry}
+        material={materials.Brown}
+        position={[43.857, 3.053, 34.095]}
+        rotation={[-Math.PI, 0, 0]}
+        scale={[-10.362, -2.603, -4.811]}
+      />
       <group
         position={[19.54, 1.505, -10.615]}
         rotation={[-1.895, 1.478, 2.037]}
@@ -318,21 +325,13 @@ export default function Model(props) {
         rotation={[0.416, -0.474, -0.098]}
         scale={[115.831, 133.843, 125.931]}
       />
-      <group
-        position={[-0.219, 5.285, -0.219]}
+      <mesh
+        geometry={nodes.Torus007.geometry}
+        material={materials.Brown}
+        position={[-0.219, 5.838, -0.219]}
         rotation={[0, -0.292, 0]}
         scale={[2.584, 1.09, 2.148]}
-      >
-        <mesh
-          geometry={nodes.Torus013.geometry}
-          material={materials["Light Freen Petal"]}
-        />
-        <mesh geometry={nodes.Torus013_1.geometry} material={materials.Brown} />
-        <mesh
-          geometry={nodes.Torus013_2.geometry}
-          material={materials["Green Petal"]}
-        />
-      </group>
+      />
       <mesh
         geometry={nodes.Plane.geometry}
         material={materials.Ocean}
@@ -346,10 +345,24 @@ export default function Model(props) {
         scale={[30.144, 20.466, 20.466]}
       />
       <mesh
+        geometry={nodes.Suzanne.geometry}
+        material={materials.Stone}
+        position={[-454.502, -1.98, 26.204]}
+        rotation={[-1.681, 1.092, 1.772]}
+        scale={24.51}
+      />
+      <mesh
         geometry={nodes.Plane002.geometry}
         material={materials.Sand}
         position={[0, -1.107, -18.203]}
         scale={[54.328, 21.027, 21.027]}
+      />
+      <mesh
+        geometry={nodes.Plane003.geometry}
+        material={materials.Grass}
+        position={[42.772, 5.317, 32.943]}
+        rotation={[-Math.PI, 0, 0]}
+        scale={[-18.737, -23.037, -11.155]}
       />
       <mesh
         geometry={nodes.Cube002.geometry}

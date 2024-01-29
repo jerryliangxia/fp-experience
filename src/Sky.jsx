@@ -8,7 +8,7 @@ import { extend, useFrame } from "@react-three/fiber";
 const Sky = () => {
   const SkyMaterial = shaderMaterial(
     {
-      uTexture: new THREE.TextureLoader().load("img/nightsky.jpg"),
+      uTexture: new THREE.TextureLoader().load("img/daysky.jpg"),
     },
     skyVertexShader,
     skyFragmentShader
@@ -26,7 +26,7 @@ const Sky = () => {
 
   return (
     <mesh ref={meshRef}>
-      <sphereGeometry args={[150, 256, 256]} />
+      <sphereGeometry args={[1000, 256, 256]} />
       <skyMaterial ref={skyMaterial} side={THREE.BackSide} />
     </mesh>
   );
