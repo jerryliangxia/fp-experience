@@ -83,7 +83,7 @@ function RagingSea() {
         uSmallWavesSpeed={values.smallWavesSpeed}
         uSmallIterations={values.smallIterations}
       />
-      <PositionalAudio autoplay url="/sounds/ocean.mp3" loop distance={5} />{" "}
+      <PositionalAudio autoplay url="/sounds/ocean.mp3" loop distance={5} />
     </Plane>
   );
 }

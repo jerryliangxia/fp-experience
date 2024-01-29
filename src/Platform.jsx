@@ -6,33 +6,363 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF("models/dreamscene.glb");
+  const { nodes, materials } = useGLTF("/dreamscene.glb");
   return (
     <group {...props} dispose={null}>
-      {/* <mesh
+      <group
+        position={[-35.093, 3.091, -19.462]}
+        rotation={[0, -1.157, 0]}
+        scale={[1.381, 3.181, 1.381]}
+      >
+        <mesh geometry={nodes.Cylinder_1.geometry} material={materials.Brown} />
+        <mesh
+          geometry={nodes.Cylinder_2.geometry}
+          material={materials["Green Petal"]}
+        />
+        <mesh
+          geometry={nodes.Cylinder_3.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+      </group>
+      <group
+        position={[-43.009, 2.36, -18.184]}
+        rotation={[0, -0.035, 0]}
+        scale={[1.381, 2.388, 1.381]}
+      >
+        <mesh
+          geometry={nodes.Cylinder007.geometry}
+          material={materials.Brown}
+        />
+        <mesh
+          geometry={nodes.Cylinder007_1.geometry}
+          material={materials["Green Petal"]}
+        />
+        <mesh
+          geometry={nodes.Cylinder007_2.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+      </group>
+      <group
+        position={[-39.475, 0.631, -15.903]}
+        rotation={[-0.037, -1.165, 0.041]}
+        scale={0.447}
+      >
+        <mesh geometry={nodes.Icosphere.geometry} material={materials.Yellow} />
+        <mesh
+          geometry={nodes.Icosphere_1.geometry}
+          material={materials["Green Petal"]}
+        />
+        <mesh
+          geometry={nodes.Icosphere_2.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+        <mesh
+          geometry={nodes.Icosphere_3.geometry}
+          material={materials.Purple}
+        />
+        <mesh
+          geometry={nodes.Icosphere_4.geometry}
+          material={materials["Purple 2"]}
+        />
+        <mesh
+          geometry={nodes.Icosphere_5.geometry}
+          material={materials.Grass}
+        />
+      </group>
+      <group
+        position={[-35.855, 0.67, -14.883]}
+        rotation={[-3.111, -1.075, -3.04]}
+        scale={0.447}
+      >
+        <mesh
+          geometry={nodes.Icosphere005.geometry}
+          material={materials.Orange}
+        />
+        <mesh
+          geometry={nodes.Icosphere005_1.geometry}
+          material={materials["Green Petal"]}
+        />
+        <mesh
+          geometry={nodes.Icosphere005_2.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+        <mesh
+          geometry={nodes.Icosphere005_3.geometry}
+          material={materials.Blue}
+        />
+        <mesh
+          geometry={nodes.Icosphere005_4.geometry}
+          material={materials["Blue 2"]}
+        />
+        <mesh
+          geometry={nodes.Icosphere005_5.geometry}
+          material={materials.Grass}
+        />
+      </group>
+      <group
+        position={[16.807, 9.127, 2.828]}
+        rotation={[0, 0.132, 0]}
+        scale={[3.041, 1.283, 2.527]}
+      >
+        <mesh
+          geometry={nodes.Torus007_1.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+        <mesh geometry={nodes.Torus007_2.geometry} material={materials.Brown} />
+        <mesh
+          geometry={nodes.Torus007_3.geometry}
+          material={materials["Green Petal"]}
+        />
+      </group>
+      <group
+        position={[29.886, 9.576, 4.397]}
+        rotation={[0, -0.203, 0]}
+        scale={[3.041, 1.283, 2.527]}
+      >
+        <mesh
+          geometry={nodes.Torus008.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+        <mesh geometry={nodes.Torus008_1.geometry} material={materials.Brown} />
+        <mesh
+          geometry={nodes.Torus008_2.geometry}
+          material={materials["Green Petal"]}
+        />
+      </group>
+      <group
+        position={[3.198, 6.823, 11.54]}
+        rotation={[0, -0.292, 0]}
+        scale={[2.584, 1.09, 2.148]}
+      >
+        <mesh
+          geometry={nodes.Torus009.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+        <mesh geometry={nodes.Torus009_1.geometry} material={materials.Brown} />
+        <mesh
+          geometry={nodes.Torus009_2.geometry}
+          material={materials["Green Petal"]}
+        />
+      </group>
+      <group
+        position={[14.676, 11.146, 10.212]}
+        rotation={[0, 0.132, 0]}
+        scale={[3.041, 1.283, 2.527]}
+      >
+        <mesh
+          geometry={nodes.Torus010.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+        <mesh geometry={nodes.Torus010_1.geometry} material={materials.Brown} />
+        <mesh
+          geometry={nodes.Torus010_2.geometry}
+          material={materials["Green Petal"]}
+        />
+      </group>
+      <group
+        position={[24.262, 12.216, 9.29]}
+        rotation={[-Math.PI, 0.264, -Math.PI]}
+        scale={[3.041, 1.283, 2.527]}
+      >
+        <mesh
+          geometry={nodes.Torus011.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+        <mesh geometry={nodes.Torus011_1.geometry} material={materials.Brown} />
+        <mesh
+          geometry={nodes.Torus011_2.geometry}
+          material={materials["Green Petal"]}
+        />
+      </group>
+      <group
+        position={[9.962, 7.661, 8.373]}
+        rotation={[0, -0.292, 0]}
+        scale={[2.239, 0.945, 1.861]}
+      >
+        <mesh
+          geometry={nodes.Torus012.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+        <mesh geometry={nodes.Torus012_1.geometry} material={materials.Brown} />
+        <mesh
+          geometry={nodes.Torus012_2.geometry}
+          material={materials["Green Petal"]}
+        />
+      </group>
+      <group
+        position={[-18.663, 17.135, 10.023]}
+        rotation={[-Math.PI, 0.091, -Math.PI]}
+        scale={-0.863}
+      >
+        <mesh
+          geometry={nodes.Grid008_1.geometry}
+          material={materials["Green Petal"]}
+        />
+        <mesh geometry={nodes.Grid008_2.geometry} material={materials.Brown} />
+        <mesh
+          geometry={nodes.Grid008_3.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+      </group>
+      <group
+        position={[-12.405, 17.135, 16.366]}
+        rotation={[0, -0.007, 0]}
+        scale={-0.863}
+      >
+        <mesh
+          geometry={nodes.Grid009.geometry}
+          material={materials["Green Petal"]}
+        />
+        <mesh geometry={nodes.Grid009_1.geometry} material={materials.Brown} />
+        <mesh
+          geometry={nodes.Grid009_2.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+      </group>
+      <group
+        position={[-5.758, 17.135, 10.473]}
+        rotation={[0, -0.007, 0]}
+        scale={-0.863}
+      >
+        <mesh
+          geometry={nodes.Grid010.geometry}
+          material={materials["Green Petal"]}
+        />
+        <mesh geometry={nodes.Grid010_1.geometry} material={materials.Brown} />
+        <mesh
+          geometry={nodes.Grid010_2.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+      </group>
+      <group
+        position={[149.786, 4.316, -110.78]}
+        rotation={[0.29, 0.052, 1]}
+        scale={[1.768, 19.136, 1.768]}
+      >
+        <mesh
+          geometry={nodes.Cylinder023.geometry}
+          material={materials["Grey 2"]}
+        />
+        <mesh
+          geometry={nodes.Cylinder023_1.geometry}
+          material={materials.Grey}
+        />
+      </group>
+      <mesh
+        geometry={nodes.Cylinder002.geometry}
+        material={materials["Grey 2"]}
+        position={[147.499, 0.523, -100.948]}
+        rotation={[-2.656, 0.074, 2.14]}
+        scale={[1.768, 19.136, 1.768]}
+      />
+      <group
+        position={[154.566, 4.426, -108.514]}
+        rotation={[-2.656, 0.074, 2.14]}
+        scale={[1.768, 28.683, 1.768]}
+      >
+        <mesh
+          geometry={nodes.Cylinder031.geometry}
+          material={materials["Grey 2"]}
+        />
+        <mesh
+          geometry={nodes.Cylinder031_1.geometry}
+          material={materials.Grey}
+        />
+      </group>
+      <group
+        position={[171.396, 4.374, -103.273]}
+        rotation={[0.29, 0.052, 1]}
+        scale={[1.768, 19.136, 1.768]}
+      >
+        <mesh
+          geometry={nodes.Cylinder032.geometry}
+          material={materials["Grey 2"]}
+        />
+        <mesh
+          geometry={nodes.Cylinder032_1.geometry}
+          material={materials.Grey}
+        />
+      </group>
+      <group
+        position={[19.54, 1.505, -10.615]}
+        rotation={[-1.895, 1.478, 2.037]}
+        scale={[1.069, 0.954, 1.236]}
+      >
+        <mesh
+          geometry={nodes.Plane097.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+        <mesh
+          geometry={nodes.Plane097_1.geometry}
+          material={materials["Green Petal"]}
+        />
+      </group>
+      <mesh
+        geometry={nodes.Plane005.geometry}
+        material={materials["Blue.001"]}
+        position={[85.708, 10.446, -389.67]}
+        rotation={[0.404, 0.492, 0.136]}
+        scale={[76.586, 100.143, 59.549]}
+      />
+      <mesh
+        geometry={nodes.Plane006.geometry}
+        material={materials["Blue.001"]}
+        position={[-13.925, 30.599, -461.174]}
+        rotation={[0.404, 0.492, 0.136]}
+        scale={[41.01, 51.299, 41.424]}
+      />
+      <mesh
+        geometry={nodes.Plane007.geometry}
+        material={materials["Blue.001"]}
+        position={[-496.931, 19.822, -593.922]}
+        rotation={[0.416, -0.474, -0.098]}
+        scale={[115.831, 133.843, 125.931]}
+      />
+      <group
+        position={[-0.219, 5.285, -0.219]}
+        rotation={[0, -0.292, 0]}
+        scale={[2.584, 1.09, 2.148]}
+      >
+        <mesh
+          geometry={nodes.Torus013.geometry}
+          material={materials["Light Freen Petal"]}
+        />
+        <mesh geometry={nodes.Torus013_1.geometry} material={materials.Brown} />
+        <mesh
+          geometry={nodes.Torus013_2.geometry}
+          material={materials["Green Petal"]}
+        />
+      </group>
+      <mesh
         geometry={nodes.Plane.geometry}
         material={materials.Ocean}
-        position={[0, -0.44, -23.938]}
+        position={[0, -0.44, 0]}
         scale={114.693}
-      /> */}
+      />
       <mesh
         geometry={nodes.Cube001.geometry}
         material={materials.Grass}
-        position={[0, -0.44, -121.709]}
-        scale={[18.295, 12.421, 12.421]}
+        position={[66.457, -9.361, -370.093]}
+        scale={[30.144, 20.466, 20.466]}
       />
       <mesh
-        geometry={nodes.Plane001.geometry}
+        geometry={nodes.Plane002.geometry}
+        material={materials.Sand}
+        position={[0, -1.107, -18.203]}
+        scale={[54.328, 21.027, 21.027]}
+      />
+      <mesh
+        geometry={nodes.Cube002.geometry}
         material={materials.Grass}
-        position={[0, -0.44, -0.803]}
-        scale={21.027}
+        position={[417.653, -9.361, -403.126]}
+        scale={[30.144, 20.466, 20.466]}
       />
       <mesh
-        geometry={nodes.Suzanne.geometry}
-        material={materials.Stone}
-        position={[-0.386, 7.531, -128.377]}
-        rotation={[-0.544, 0.484, 0.352]}
-        scale={24.51}
+        geometry={nodes.Cube003.geometry}
+        material={materials.Grass}
+        position={[-5.238, 0.794, 20.618]}
+        rotation={[-Math.PI, 0.019, -Math.PI]}
+        scale={[11.484, 7.797, 7.797]}
       />
     </group>
   );

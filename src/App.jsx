@@ -24,7 +24,6 @@ function PointerLockControls() {
 }
 
 export default function App() {
-  console.log(isDesktop);
   const [controlsMobile, setControlsMobile] = useState({
     upPressed: false,
     downPressed: false,
@@ -63,7 +62,11 @@ export default function App() {
             shadow-camera-top={30}
             shadow-camera-bottom={-30}
           />
-          <Environment files="/img/rustig_koppie_puresky_1k.hdr" background />
+          <Environment
+            files="/img/rustig_koppie_puresky_1k.hdr"
+            background
+            intensity={0.1}
+          />
           <Game />
           {!isDesktop ? <PointerLockControls /> : <PointerLockControlsr />}
           <Stats />

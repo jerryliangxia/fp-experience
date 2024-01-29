@@ -5,9 +5,10 @@ import useOctreeHelper from "./useOctreeHelper";
 import Model from "./Platform";
 import Sky from "./Sky";
 import Ocean from "./Ocean";
+import Clouds from "./Clouds";
 
 export default function Physics() {
-  const { nodes, scene } = useGLTF("/models/dreamscene.glb");
+  const { nodes, scene } = useGLTF("/dreamscene.glb");
   const octree = useOctree(scene);
   useOctreeHelper(octree);
 
@@ -15,6 +16,7 @@ export default function Physics() {
     <>
       {/* <Sky /> */}
       <Ocean />
+      <Clouds position-z={-300} position-y={-5} scale={10} />
       <Model />
       <Player octree={octree} />
     </>

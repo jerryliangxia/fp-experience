@@ -22,7 +22,6 @@ var PI_2 = Math.PI / 2;
 var PI_2y = 2 * Math.PI;
 var vec = new Vector3();
 var PointerLockControls = function (camera, domElement) {
-  console.log(bw, bh);
   if (domElement === undefined) {
     console.warn(
       'THREE.PointerLockControls: The second parameter "domElement" is now mandatory.'
