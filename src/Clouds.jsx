@@ -23,7 +23,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube002.geometry}
         material={materials.Material}
-        position={[16.034, 0.915, 0]}
+        position={[10.218, 0.915, 0]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -48,7 +48,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube003.geometry}
         material={materials.Material}
-        position={[16.706, 1.041, 0.246]}
+        position={[4.822, 1.041, -9.869]}
         rotation={[-Math.PI, 0, 0]}
         scale={[-0.405, -0.366, -0.405]}
       >
@@ -76,7 +76,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube005.geometry}
         material={materials.Material}
-        position={[16.819, 0.569, 2.745]}
+        position={[4.934, 0.569, -7.37]}
         rotation={[0, -0.083, -Math.PI]}
         scale={[-0.218, -0.197, -0.218]}
       >
@@ -268,22 +268,9 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube019.geometry}
         material={materials.Material}
-        position={[85.302, 0.915, 21.909]}
-        rotation={[0, -0.348, 0]}
-      >
-        <meshPhysicalMaterial
-          ref={setMaterial}
-          color="white"
-          transparent
-          opacity={0.5}
-        />
-      </mesh>
-      <mesh
-        geometry={nodes.Cube020.geometry}
-        material={materials.Material}
-        position={[91.491, 2.015, 20.08]}
-        rotation={[0, -0.348, 0]}
-        scale={[1, 0.903, 1]}
+        position={[79.825, 0.915, 17.3]}
+        rotation={[0, -0.517, 0]}
+        scale={[1, 0.766, 1]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -295,8 +282,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube021.geometry}
         material={materials.Material}
-        position={[85.851, 1.041, 22.369]}
-        rotation={[-Math.PI, 0.348, 0]}
+        position={[85.065, 1.561, 18.93]}
+        rotation={[-Math.PI, 0.632, 0]}
         scale={[-0.405, -0.366, -0.405]}
       >
         <meshPhysicalMaterial
@@ -309,8 +296,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube022.geometry}
         material={materials.Material}
-        position={[90.333, 1.467, 22.465]}
-        rotation={[-Math.PI, 0.348, 0]}
+        position={[89.941, 1.467, 23.734]}
+        rotation={[-Math.PI, 0.632, 0]}
         scale={[-0.218, -0.197, -0.218]}
       >
         <meshPhysicalMaterial
@@ -323,8 +310,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube023.geometry}
         material={materials.Material}
-        position={[85.104, 0.569, 24.757]}
-        rotation={[0, -0.431, -Math.PI]}
+        position={[84.279, 0.569, 24.471]}
+        rotation={[0, -0.715, -Math.PI]}
         scale={[-0.218, -0.197, -0.218]}
       >
         <meshPhysicalMaterial
@@ -337,8 +324,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube024.geometry}
         material={materials.Material}
-        position={[87.165, 3.95, 16.081]}
-        rotation={[0, -0.431, -Math.PI]}
+        position={[90.705, 3.95, 27.97]}
+        rotation={[0, -0.76, -Math.PI]}
         scale={[-0.345, -0.197, -0.219]}
       >
         <meshPhysicalMaterial
@@ -351,7 +338,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube025.geometry}
         material={materials.Material}
-        position={[47.414, 2.015, 3.418]}
+        position={[36.638, 2.015, -3.21]}
         rotation={[-Math.PI, 0.353, -Math.PI]}
         scale={[0.928, 0.749, 0.841]}
       >
@@ -367,7 +354,7 @@ export default function Model(props) {
         material={materials.Material}
         position={[57.376, 1.398, 8.898]}
         rotation={[-Math.PI, 0.348, 0]}
-        scale={[-0.218, -0.197, -0.218]}
+        scale={[-0.335, -0.302, -0.335]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -381,7 +368,7 @@ export default function Model(props) {
         material={materials.Material}
         position={[54.208, 3.881, 2.514]}
         rotation={[0, -0.431, -Math.PI]}
-        scale={[-0.345, -0.197, -0.219]}
+        scale={[-0.563, -0.322, -0.358]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -393,9 +380,9 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube028.geometry}
         material={materials.Material}
-        position={[70.133, 2.833, 7.067]}
+        position={[71.842, 2.833, 5.711]}
         rotation={[0, -0.348, 0]}
-        scale={[0.418, 0.319, 0.336]}
+        scale={[0.94, 0.717, 0.756]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -407,7 +394,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube029.geometry}
         material={materials.Material}
-        position={[68.948, 2.536, 8.254]}
+        position={[68.948, 1.997, 8.254]}
         rotation={[-Math.PI, 0.348, 0]}
         scale={[-0.238, -0.19, -0.182]}
       >
@@ -423,21 +410,7 @@ export default function Model(props) {
         material={materials.Material}
         position={[62.405, 3.638, 0.944]}
         rotation={[0, -0.348, 0]}
-        scale={[0.337, 0.197, 0.218]}
-      >
-        <meshPhysicalMaterial
-          ref={setMaterial}
-          color="white"
-          transparent
-          opacity={0.5}
-        />
-      </mesh>
-      <mesh
-        geometry={nodes.Cube031.geometry}
-        material={materials.Material}
-        position={[60.82, 4.15, -1.756]}
-        rotation={[0, -0.348, 0]}
-        scale={[0.337, 0.197, 0.218]}
+        scale={[0.267, 0.156, 0.173]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -449,7 +422,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube032.geometry}
         material={materials.Material}
-        position={[65.95, 2.115, 7.338]}
+        position={[65.95, 1.645, 7.338]}
         rotation={[-Math.PI, 0.348, 0]}
         scale={[-0.149, -0.134, -0.149]}
       >
@@ -463,7 +436,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube033.geometry}
         material={materials.Material}
-        position={[67.832, 4.623, -4.619]}
+        position={[58.347, 4.22, -2.016]}
         rotation={[-Math.PI, 0.348, 0]}
         scale={[-0.249, -0.101, -0.149]}
       >
@@ -478,7 +451,7 @@ export default function Model(props) {
         geometry={nodes.Cube034.geometry}
         material={materials.Material}
         position={[96.06, 3.38, 17.824]}
-        rotation={[-Math.PI, 0.348, 0]}
+        rotation={[-Math.PI, 0.804, 0]}
         scale={[-0.418, -0.319, -0.336]}
       >
         <meshPhysicalMaterial
@@ -491,8 +464,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube035.geometry}
         material={materials.Material}
-        position={[95.696, 4.8, 9.009]}
-        rotation={[0, -0.348, 0]}
+        position={[67.222, 4.8, 26.229]}
+        rotation={[0, -0.549, 0]}
         scale={[0.55, 0.146, 0.162]}
       >
         <meshPhysicalMaterial
@@ -505,22 +478,9 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube036.geometry}
         material={materials.Material}
-        position={[97.124, 4.97, 8.652]}
-        rotation={[-Math.PI, 0.348, 0]}
+        position={[68.692, 4.97, 26.164]}
+        rotation={[-Math.PI, 0.549, 0]}
         scale={[-0.296, -0.079, -0.087]}
-      >
-        <meshPhysicalMaterial
-          ref={setMaterial}
-          color="white"
-          transparent
-          opacity={0.5}
-        />
-      </mesh>
-      <mesh
-        geometry={nodes.Cube037.geometry}
-        material={materials.Material}
-        position={[92.312, 0.915, 71.292]}
-        rotation={[0, -1.521, 0]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -532,8 +492,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube038.geometry}
         material={materials.Material}
-        position={[96.398, 2.015, 76.288]}
-        rotation={[0, -1.521, 0]}
+        position={[84.279, 2.015, 63.562]}
+        rotation={[Math.PI, -1.077, Math.PI]}
         scale={[1, 0.903, 1]}
       >
         <meshPhysicalMaterial
@@ -546,8 +506,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube039.geometry}
         material={materials.Material}
-        position={[92.101, 1.041, 71.976]}
-        rotation={[-Math.PI, 1.521, 0]}
+        position={[85.675, 3.2, 68.421]}
+        rotation={[0, 0.957, -Math.PI]}
         scale={[-0.405, -0.366, -0.405]}
       >
         <meshPhysicalMaterial
@@ -560,8 +520,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube040.geometry}
         material={materials.Material}
-        position={[93.751, 1.467, 76.145]}
-        rotation={[-Math.PI, 1.521, 0]}
+        position={[84.406, 1.467, 72.721]}
+        rotation={[0, 0.957, -Math.PI]}
         scale={[-0.218, -0.197, -0.218]}
       >
         <meshPhysicalMaterial
@@ -574,8 +534,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube041.geometry}
         material={materials.Material}
-        position={[89.61, 0.569, 72.213]}
-        rotation={[Math.PI, -1.538, 0]}
+        position={[83.567, 0.569, 67.073]}
+        rotation={[Math.PI, -0.874, 0]}
         scale={[-0.218, -0.197, -0.218]}
       >
         <meshPhysicalMaterial
@@ -588,7 +548,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube042.geometry}
         material={materials.Material}
-        position={[98.407, 3.95, 70.75]}
+        position={[91.539, 3.95, 48.935]}
         rotation={[Math.PI, -1.538, 0]}
         scale={[-0.345, -0.197, -0.219]}
       >
@@ -602,7 +562,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube043.geometry}
         material={materials.Material}
-        position={[94.665, 2.015, 29.198]}
+        position={[88.942, 2.015, 32.704]}
         rotation={[-Math.PI, 1.525, -Math.PI]}
         scale={[0.928, 0.749, 0.841]}
       >
@@ -728,7 +688,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube052.geometry}
         material={materials.Material}
-        position={[100.249, 3.38, 79.624]}
+        position={[87.823, 3.51, 51.224]}
         rotation={[-Math.PI, 1.521, 0]}
         scale={[-0.418, -0.319, -0.336]}
       >
@@ -742,8 +702,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube053.geometry}
         material={materials.Material}
-        position={[108.233, 4.8, 75.87]}
-        rotation={[0, -1.521, 0]}
+        position={[91.282, 4.8, 70.91]}
+        rotation={[Math.PI, -1.286, Math.PI]}
         scale={[0.55, 0.146, 0.162]}
       >
         <meshPhysicalMaterial
@@ -756,22 +716,9 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube054.geometry}
         material={materials.Material}
-        position={[109.116, 4.97, 77.048]}
-        rotation={[-Math.PI, 1.521, 0]}
+        position={[91.729, 4.97, 72.313]}
+        rotation={[0, 1.286, -Math.PI]}
         scale={[-0.296, -0.079, -0.087]}
-      >
-        <meshPhysicalMaterial
-          ref={setMaterial}
-          color="white"
-          transparent
-          opacity={0.5}
-        />
-      </mesh>
-      <mesh
-        geometry={nodes.Cube055.geometry}
-        material={materials.Material}
-        position={[41.078, 0.915, 87.209]}
-        rotation={[Math.PI, -0.436, Math.PI]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -783,9 +730,9 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube056.geometry}
         material={materials.Material}
-        position={[37.991, 2.015, 92.876]}
-        rotation={[Math.PI, -0.436, Math.PI]}
-        scale={[1, 0.903, 1]}
+        position={[49.02, 1.681, 93.373]}
+        rotation={[-Math.PI, 0.362, -Math.PI]}
+        scale={[1.339, 0.903, 1.083]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -797,8 +744,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube057.geometry}
         material={materials.Material}
-        position={[40.365, 1.041, 87.271]}
-        rotation={[0, 0.436, -Math.PI]}
+        position={[40.507, 2.976, 92.159]}
+        rotation={[0, 0.209, -Math.PI]}
         scale={[-0.405, -0.366, -0.405]}
       >
         <meshPhysicalMaterial
@@ -811,8 +758,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube058.geometry}
         material={materials.Material}
-        position={[37.125, 1.467, 90.371]}
-        rotation={[0, 0.436, -Math.PI]}
+        position={[36.652, 1.999, 94.447]}
+        rotation={[0, 0.209, -Math.PI]}
         scale={[-0.218, -0.197, -0.218]}
       >
         <meshPhysicalMaterial
@@ -825,8 +772,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube059.geometry}
         material={materials.Material}
-        position={[39.206, 0.569, 85.054]}
-        rotation={[Math.PI, -0.353, 0]}
+        position={[39.879, 0.569, 89.737]}
+        rotation={[Math.PI, -0.126, 0]}
         scale={[-0.218, -0.197, -0.218]}
       >
         <meshPhysicalMaterial
@@ -951,7 +898,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube068.geometry}
         material={materials.Material}
-        position={[65.068, 2.115, 83.847]}
+        position={[65.068, 3.985, 83.847]}
         rotation={[0, 0.436, -Math.PI]}
         scale={[-0.149, -0.134, -0.149]}
       >
@@ -993,8 +940,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube071.geometry}
         material={materials.Material}
-        position={[42.838, 4.8, 103.682]}
-        rotation={[Math.PI, -0.436, Math.PI]}
+        position={[27.638, 4.8, 93.228]}
+        rotation={[Math.PI, -0.168, Math.PI]}
         scale={[0.55, 0.146, 0.162]}
       >
         <meshPhysicalMaterial
@@ -1007,8 +954,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube072.geometry}
         material={materials.Material}
-        position={[42.08, 4.97, 104.943]}
-        rotation={[0, 0.436, -Math.PI]}
+        position={[26.572, 4.97, 94.243]}
+        rotation={[0, 0.168, -Math.PI]}
         scale={[-0.296, -0.079, -0.087]}
       >
         <meshPhysicalMaterial
@@ -1021,22 +968,9 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube073.geometry}
         material={materials.Material}
-        position={[-22.311, 0.915, 91.168]}
+        position={[-19.494, 1.322, 90.638]}
         rotation={[Math.PI, -0.09, Math.PI]}
-      >
-        <meshPhysicalMaterial
-          ref={setMaterial}
-          color="white"
-          transparent
-          opacity={0.5}
-        />
-      </mesh>
-      <mesh
-        geometry={nodes.Cube074.geometry}
-        material={materials.Material}
-        position={[-27.14, 2.015, 95.448]}
-        rotation={[Math.PI, -0.09, Math.PI]}
-        scale={[1, 0.903, 1]}
+        scale={[1.628, 1, 1.007]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -1048,7 +982,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube075.geometry}
         material={materials.Material}
-        position={[-23.003, 1.041, 90.983]}
+        position={[-21.043, 2.561, 91.14]}
         rotation={[0, 0.09, -Math.PI]}
         scale={[-0.405, -0.366, -0.405]}
       >
@@ -1074,24 +1008,10 @@ export default function Model(props) {
         />
       </mesh>
       <mesh
-        geometry={nodes.Cube077.geometry}
-        material={materials.Material}
-        position={[-23.339, 0.569, 88.504]}
-        rotation={[Math.PI, -0.007, 0]}
-        scale={[-0.218, -0.197, -0.218]}
-      >
-        <meshPhysicalMaterial
-          ref={setMaterial}
-          color="white"
-          transparent
-          opacity={0.5}
-        />
-      </mesh>
-      <mesh
         geometry={nodes.Cube078.geometry}
         material={materials.Material}
-        position={[-21.527, 3.95, 97.236]}
-        rotation={[Math.PI, -0.007, 0]}
+        position={[-28.985, 3.95, 85.468]}
+        rotation={[-Math.PI, 0.392, 0]}
         scale={[-0.345, -0.197, -0.219]}
       >
         <meshPhysicalMaterial
@@ -1146,7 +1066,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube082.geometry}
         material={materials.Material}
-        position={[-2.279, 2.833, 98.178]}
+        position={[-6.146, 2.833, 93.515]}
         rotation={[Math.PI, -0.09, Math.PI]}
         scale={[0.418, 0.319, 0.336]}
       >
@@ -1160,7 +1080,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube083.geometry}
         material={materials.Material}
-        position={[-1.71, 2.536, 96.6]}
+        position={[-5.577, 2.536, 91.937]}
         rotation={[0, 0.09, -Math.PI]}
         scale={[-0.238, -0.19, -0.182]}
       >
@@ -1174,7 +1094,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube084.geometry}
         material={materials.Material}
-        position={[7.316, 3.638, 100.446]}
+        position={[4.587, 3.638, 94.077]}
         rotation={[Math.PI, -0.09, Math.PI]}
         scale={[0.337, 0.197, 0.218]}
       >
@@ -1188,7 +1108,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube085.geometry}
         material={materials.Material}
-        position={[9.896, 4.15, 102.219]}
+        position={[7.167, 2.209, 95.85]}
         rotation={[Math.PI, -0.09, Math.PI]}
         scale={[0.337, 0.197, 0.218]}
       >
@@ -1202,7 +1122,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube086.geometry}
         material={materials.Material}
-        position={[1.394, 2.115, 96.158]}
+        position={[-2.473, 2.115, 91.495]}
         rotation={[0, 0.09, -Math.PI]}
         scale={[-0.149, -0.134, -0.149]}
       >
@@ -1216,7 +1136,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube087.geometry}
         material={materials.Material}
-        position={[4.76, 4.623, 107.785]}
+        position={[2.258, 4.623, 92.432]}
         rotation={[0, 0.09, -Math.PI]}
         scale={[-0.249, -0.101, -0.149]}
       >
@@ -1230,8 +1150,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube088.geometry}
         material={materials.Material}
-        position={[-30.322, 3.38, 99.429]}
-        rotation={[0, 0.09, -Math.PI]}
+        position={[-37.942, 3.38, 84.076]}
+        rotation={[0, -0.309, -Math.PI]}
         scale={[-0.418, -0.319, -0.336]}
       >
         <meshPhysicalMaterial
@@ -1244,8 +1164,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube089.geometry}
         material={materials.Material}
-        position={[-26.254, 4.8, 107.258]}
-        rotation={[Math.PI, -0.09, Math.PI]}
+        position={[-33.933, 4.8, 87.411]}
+        rotation={[-Math.PI, 0.309, -Math.PI]}
         scale={[0.55, 0.146, 0.162]}
       >
         <meshPhysicalMaterial
@@ -1258,22 +1178,9 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube090.geometry}
         material={materials.Material}
-        position={[-27.396, 4.97, 108.187]}
-        rotation={[0, 0.09, -Math.PI]}
+        position={[-35.346, 4.97, 87.824]}
+        rotation={[0, -0.309, -Math.PI]}
         scale={[-0.296, -0.079, -0.087]}
-      >
-        <meshPhysicalMaterial
-          ref={setMaterial}
-          color="white"
-          transparent
-          opacity={0.5}
-        />
-      </mesh>
-      <mesh
-        geometry={nodes.Cube091.geometry}
-        material={materials.Material}
-        position={[-45.122, 0.915, 2.949]}
-        rotation={[0, 0.988, 0]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -1285,7 +1192,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube092.geometry}
         material={materials.Material}
-        position={[-45.463, 2.015, -3.495]}
+        position={[-55.127, 0.798, 2.896]}
         rotation={[0, 0.988, 0]}
         scale={[1, 0.903, 1]}
       >
@@ -1353,20 +1260,6 @@ export default function Model(props) {
         />
       </mesh>
       <mesh
-        geometry={nodes.Cube097.geometry}
-        material={materials.Material}
-        position={[-71.911, 2.015, 35.503]}
-        rotation={[Math.PI, -0.984, Math.PI]}
-        scale={[0.928, 0.749, 0.841]}
-      >
-        <meshPhysicalMaterial
-          ref={setMaterial}
-          color="white"
-          transparent
-          opacity={0.5}
-        />
-      </mesh>
-      <mesh
         geometry={nodes.Cube098.geometry}
         material={materials.Material}
         position={[-64.267, 1.398, 27.087]}
@@ -1383,7 +1276,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube099.geometry}
         material={materials.Material}
-        position={[-71.212, 3.881, 28.685]}
+        position={[-71.212, 2.054, 28.685]}
         rotation={[0, 0.905, -Math.PI]}
         scale={[-0.345, -0.197, -0.219]}
       >
@@ -1425,7 +1318,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube102.geometry}
         material={materials.Material}
-        position={[-70.835, 3.638, 20.348]}
+        position={[-70.835, 1.133, 20.348]}
         rotation={[0, 0.988, 0]}
         scale={[0.337, 0.197, 0.218]}
       >
@@ -1495,8 +1388,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube107.geometry}
         material={materials.Material}
-        position={[-55.253, 4.8, -10.158]}
-        rotation={[0, 0.988, 0]}
+        position={[-32.039, 4.8, -5.852]}
+        rotation={[0, 0.139, 0]}
         scale={[0.55, 0.146, 0.162]}
       >
         <meshPhysicalMaterial
@@ -1509,22 +1402,9 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube108.geometry}
         material={materials.Material}
-        position={[-55.269, 4.97, -11.63]}
-        rotation={[Math.PI, -0.988, 0]}
+        position={[-30.944, 4.97, -6.836]}
+        rotation={[Math.PI, -0.139, 0]}
         scale={[-0.296, -0.079, -0.087]}
-      >
-        <meshPhysicalMaterial
-          ref={setMaterial}
-          color="white"
-          transparent
-          opacity={0.5}
-        />
-      </mesh>
-      <mesh
-        geometry={nodes.Cube109.geometry}
-        material={materials.Material}
-        position={[-70.05, 0.915, 51.598]}
-        rotation={[-Math.PI, 0.925, -Math.PI]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -1536,7 +1416,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube110.geometry}
         material={materials.Material}
-        position={[-76.234, 2.015, 49.754]}
+        position={[-69.183, 2.015, 55.555]}
         rotation={[-Math.PI, 0.925, -Math.PI]}
         scale={[1, 0.903, 1]}
       >
@@ -1550,9 +1430,9 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube111.geometry}
         material={materials.Material}
-        position={[-70.258, 1.041, 50.913]}
-        rotation={[0, -0.925, -Math.PI]}
-        scale={[-0.405, -0.366, -0.405]}
+        position={[-77.742, 2.999, 41.297]}
+        rotation={[Math.PI, -1.537, 0]}
+        scale={[-0.896, -0.809, -0.896]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -1578,7 +1458,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube113.geometry}
         material={materials.Material}
-        position={[-68.33, 0.569, 49.32]}
+        position={[-68.33, 4.399, 49.32]}
         rotation={[-Math.PI, 1.008, 0]}
         scale={[-0.218, -0.197, -0.218]}
       >
@@ -1606,8 +1486,8 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube115.geometry}
         material={materials.Material}
-        position={[-48.388, 2.015, 87.767]}
-        rotation={[0, -0.93, 0]}
+        position={[-44.179, 2.015, 84.924]}
+        rotation={[0, -0.646, 0]}
         scale={[0.928, 0.749, 0.841]}
       >
         <meshPhysicalMaterial
@@ -1660,25 +1540,11 @@ export default function Model(props) {
         />
       </mesh>
       <mesh
-        geometry={nodes.Cube119.geometry}
-        material={materials.Material}
-        position={[-63.795, 2.536, 71.965]}
-        rotation={[0, -0.925, -Math.PI]}
-        scale={[-0.238, -0.19, -0.182]}
-      >
-        <meshPhysicalMaterial
-          ref={setMaterial}
-          color="white"
-          transparent
-          opacity={0.5}
-        />
-      </mesh>
-      <mesh
         geometry={nodes.Cube120.geometry}
         material={materials.Material}
-        position={[-62.3, 3.638, 81.661]}
+        position={[-76.065, 3.745, 70.49]}
         rotation={[-Math.PI, 0.925, -Math.PI]}
-        scale={[0.337, 0.197, 0.218]}
+        scale={[0.908, 0.531, 0.588]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
@@ -1690,7 +1556,7 @@ export default function Model(props) {
       <mesh
         geometry={nodes.Cube121.geometry}
         material={materials.Material}
-        position={[-62.445, 4.15, 84.789]}
+        position={[-62.445, 2.137, 84.789]}
         rotation={[-Math.PI, 0.925, -Math.PI]}
         scale={[0.337, 0.197, 0.218]}
       >
@@ -1706,7 +1572,7 @@ export default function Model(props) {
         material={materials.Material}
         position={[-61.783, 2.115, 74.368]}
         rotation={[0, -0.925, -Math.PI]}
-        scale={[-0.149, -0.134, -0.149]}
+        scale={[-0.346, -0.134, -0.279]}
       >
         <meshPhysicalMaterial
           ref={setMaterial}
