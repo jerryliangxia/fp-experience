@@ -9,7 +9,7 @@ import Clouds from "./Clouds";
 import Grass from "./Grass";
 
 export default function Physics() {
-  const { nodes, scene } = useGLTF("/dreamscene.glb");
+  const { nodes, scene } = useGLTF("/octree.glb");
   const octree = useOctree(scene);
   useOctreeHelper(octree);
 

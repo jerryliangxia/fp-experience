@@ -6,7 +6,7 @@ import {
 } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
 import { folder, useControls } from "leva";
-import React, { useRef, Suspense } from "react";
+import React, { useRef, useState, useEffect, Suspense } from "react";
 import * as THREE from "three";
 import oceanVertexShader from "./ocean/vertex.glsl";
 import oceanFragmentShader from "./ocean/fragment.glsl";
@@ -60,12 +60,25 @@ function RagingSea() {
     smallIterations: 1.0,
   };
 
+  // const [playAudio, setPlayAudio] = useState(false);
+
+  // useEffect(() => {
+  //   const handleUserGesture = () => setPlayAudio(true);
+  //   window.addEventListener("click", handleUserGesture);
+  //   window.addEventListener("touchstart", handleUserGesture);
+
+  //   return () => {
+  //     window.removeEventListener("click", handleUserGesture);
+  //     window.removeEventListener("touchstart", handleUserGesture);
+  //   };
+  // }, []);
+
   const shaderRef = useRef();
   useFrame((_, delta) => values.animate && (shaderRef.current.uTime += delta));
   return (
     <Plane
       args={[800, 800, 1024, 1024]}
-      receiveShadow
+      // receiveShadow
       rotation-x={-Math.PI / 2}
     >
       <ragingSeaMaterial
@@ -83,7 +96,9 @@ function RagingSea() {
         uSmallWavesSpeed={values.smallWavesSpeed}
         uSmallIterations={values.smallIterations}
       />
-      <PositionalAudio autoplay url="/sounds/ocean.mp3" loop distance={5} />
+      {/* {playAudio && ( */}
+      <PositionalAudio url="/sounds/ocean.mp3" loop distance={100} />
+      {/* )} */}
     </Plane>
   );
 }
@@ -108,12 +123,11 @@ const RagingSeaMaterial = new shaderMaterial(
 );
 
 RagingSeaMaterial.key = Math.random();
-
 extend({ RagingSeaMaterial });
 
 export default function Ocean() {
   return (
-    <Suspense fallback={null}>
+    <>
       <RagingSea />
       {/* <color attach="background" args={["#141852"]} /> */}
       <Stars
@@ -124,6 +138,6 @@ export default function Ocean() {
         saturation={10}
         fade
       />
-    </Suspense>
+    </>
   );
 }
