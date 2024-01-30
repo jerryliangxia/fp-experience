@@ -165,7 +165,7 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[11.584, 0.897, 7.933]}
+        position={[12.928, 0.897, 1.526]}
         rotation={[-0.294, 1.281, 0.424]}
         scale={[0.69, 0.616, 0.798]}
       >
@@ -228,6 +228,17 @@ export default function Model(props) {
         scale={57.766}
         visible={false}
       />
+      <group
+        position={[1.303, 0.436, -16.505]}
+        rotation={[-2.873, 1.254, 3.028]}
+        scale={[0.69, 0.616, 0.798]}
+      >
+        <mesh geometry={nodes.Plane007_1.geometry} material={materials.Blue} />
+        <mesh
+          geometry={nodes.Plane007_2.geometry}
+          material={materials["Blue.001"]}
+        />
+      </group>
       <mesh
         geometry={nodes.Cube002.geometry}
         material={materials.Grass}
