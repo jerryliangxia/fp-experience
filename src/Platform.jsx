@@ -8,15 +8,13 @@ import { useGLTF } from "@react-three/drei";
 export default function Model(props) {
   const { nodes, materials } = useGLTF("/dreamscene.glb");
   const [material, setMaterial] = useState();
-
   return (
     <group {...props} dispose={null}>
       <group
-        position={[-35.093, 3.091, -19.462]}
-        rotation={[0, -1.157, 0]}
-        scale={[1.381, 3.181, 1.381]}
+        position={[-7.151, 2.461, 5.939]}
+        rotation={[0, -0.863, 0]}
+        scale={[0.941, 2.167, 0.941]}
       >
-        o{" "}
         <mesh geometry={nodes.Cylinder_1.geometry} material={materials.Brown} />
         <mesh
           geometry={nodes.Cylinder_2.geometry}
@@ -28,9 +26,9 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[-43.009, 2.213, -18.184]}
-        rotation={[0, -0.035, 0]}
-        scale={[1.381, 2.388, 1.381]}
+        position={[-11.184, 1.811, 7.569]}
+        rotation={[0, 0.258, 0]}
+        scale={[0.941, 1.627, 0.941]}
       >
         <mesh
           geometry={nodes.Cylinder007.geometry}
@@ -46,9 +44,9 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[-39.475, 0.31, -15.903]}
-        rotation={[-0.037, -1.165, 0.041]}
-        scale={0.447}
+        position={[-8.932, 0.35, 9.17]}
+        rotation={[-0.023, -0.871, 0.058]}
+        scale={0.304}
       >
         <mesh geometry={nodes.Icosphere.geometry} material={materials.Yellow} />
         <mesh
@@ -73,9 +71,9 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[-35.855, 0.355, -14.883]}
-        rotation={[-3.111, -1.075, -3.04]}
-        scale={0.447}
+        position={[-7.39, 0.381, 8.278]}
+        rotation={[-3.069, -1.368, -2.996]}
+        scale={0.304}
       >
         <mesh
           geometry={nodes.Icosphere005.geometry}
@@ -103,36 +101,6 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[421.645, 6.765, 208.28]}
-        rotation={[0, 1.048, 0]}
-        scale={[3.041, 1.283, 2.527]}
-      >
-        <mesh
-          geometry={nodes.Torus007.geometry}
-          material={materials["Light Green Petal"]}
-        />
-        <mesh geometry={nodes.Torus007_1.geometry} material={materials.Brown} />
-        <mesh
-          geometry={nodes.Torus007_2.geometry}
-          material={materials["Green Petal"]}
-        />
-      </group>
-      <group
-        position={[430.856, 7.215, 198.861]}
-        rotation={[0, 0.713, 0]}
-        scale={[3.041, 1.283, 2.527]}
-      >
-        <mesh
-          geometry={nodes.Torus008.geometry}
-          material={materials["Light Green Petal"]}
-        />
-        <mesh geometry={nodes.Torus008_1.geometry} material={materials.Brown} />
-        <mesh
-          geometry={nodes.Torus008_2.geometry}
-          material={materials["Green Petal"]}
-        />
-      </group>
-      <group
         position={[420.268, 4.462, 224.38]}
         rotation={[0, 0.624, 0]}
         scale={[2.584, 1.09, 2.148]}
@@ -145,96 +113,6 @@ export default function Model(props) {
         <mesh
           geometry={nodes.Torus009_2.geometry}
           material={materials["Green Petal"]}
-        />
-      </group>
-      <group
-        position={[426.205, 8.784, 214.468]}
-        rotation={[0, 1.048, 0]}
-        scale={[3.041, 1.283, 2.527]}
-      >
-        <mesh
-          geometry={nodes.Torus010.geometry}
-          material={materials["Light Green Petal"]}
-        />
-        <mesh geometry={nodes.Torus010_1.geometry} material={materials.Brown} />
-        <mesh
-          geometry={nodes.Torus010_2.geometry}
-          material={materials["Green Petal"]}
-        />
-      </group>
-      <group
-        position={[431.311, 9.855, 206.303]}
-        rotation={[Math.PI, -0.652, Math.PI]}
-        scale={[3.041, 1.283, 2.527]}
-      >
-        <mesh
-          geometry={nodes.Torus011.geometry}
-          material={materials["Light Green Petal"]}
-        />
-        <mesh geometry={nodes.Torus011_1.geometry} material={materials.Brown} />
-        <mesh
-          geometry={nodes.Torus011_2.geometry}
-          material={materials["Green Petal"]}
-        />
-      </group>
-      <group
-        position={[421.875, 5.3, 217.086]}
-        rotation={[0, 0.624, 0]}
-        scale={[2.239, 0.945, 1.861]}
-      >
-        <mesh
-          geometry={nodes.Torus012.geometry}
-          material={materials["Light Green Petal"]}
-        />
-        <mesh geometry={nodes.Torus012_1.geometry} material={materials.Brown} />
-        <mesh
-          geometry={nodes.Torus012_2.geometry}
-          material={materials["Green Petal"]}
-        />
-      </group>
-      <group
-        position={[405.751, 14.773, 240.795]}
-        rotation={[Math.PI, -0.825, Math.PI]}
-        scale={-0.863}
-      >
-        <mesh
-          geometry={nodes.Grid008_1.geometry}
-          material={materials["Green Petal"]}
-        />
-        <mesh geometry={nodes.Grid008_2.geometry} material={materials.Brown} />
-        <mesh
-          geometry={nodes.Grid008_3.geometry}
-          material={materials["Light Green Petal"]}
-        />
-      </group>
-      <group
-        position={[414.593, 14.773, 239.695]}
-        rotation={[0, 0.909, 0]}
-        scale={-0.863}
-      >
-        <mesh
-          geometry={nodes.Grid009.geometry}
-          material={materials["Green Petal"]}
-        />
-        <mesh geometry={nodes.Grid009_1.geometry} material={materials.Brown} />
-        <mesh
-          geometry={nodes.Grid009_2.geometry}
-          material={materials["Light Green Petal"]}
-        />
-      </group>
-      <group
-        position={[413.967, 14.773, 230.833]}
-        rotation={[0, 0.909, 0]}
-        scale={-0.863}
-      >
-        <mesh
-          geometry={nodes.Grid010.geometry}
-          material={materials["Green Petal"]}
-        />
-        <mesh geometry={nodes.Grid010_1.geometry} material={materials.Brown} />
-        <mesh
-          geometry={nodes.Grid010_2.geometry}
-          material={materials["Light Green Petal"]}
         />
       </group>
       <group
@@ -287,9 +165,9 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[-29.364, 1.262, -21.211]}
-        rotation={[-1.915, 1.483, 2.059]}
-        scale={[1.069, 0.954, 1.236]}
+        position={[11.584, 0.897, 7.933]}
+        rotation={[-0.294, 1.281, 0.424]}
+        scale={[0.69, 0.616, 0.798]}
       >
         <mesh
           geometry={nodes.Plane097.geometry}
@@ -321,46 +199,34 @@ export default function Model(props) {
         rotation={[0.416, -0.474, -0.098]}
         scale={[115.831, 133.843, 125.931]}
       />
+      <group
+        position={[0, 0.322, 13.417]}
+        rotation={[0, Math.PI / 2, 0]}
+        scale={[30.774, 61.548, 40.562]}
+      >
+        <mesh geometry={nodes.Plane005_1.geometry}>
+          <meshPhysicalMaterial
+            ref={setMaterial}
+            color="#D7D792"
+            metalness={0.4}
+            roughness={0.8}
+          />
+        </mesh>
+        <mesh geometry={nodes.Plane005_2.geometry}>
+          <meshPhysicalMaterial
+            ref={setMaterial}
+            color="#40884A"
+            metalness={0.4}
+            roughness={0.8}
+          />
+        </mesh>
+      </group>
       <mesh
         geometry={nodes.Plane001.geometry}
-        material={materials.Sand}
-        position={[-4.493, 0.19, -4.992]}
-        rotation={[0, Math.PI / 2, 0]}
-        scale={[28.903, 57.807, 57.807]}
-      >
-        <meshPhysicalMaterial
-          ref={setMaterial}
-          color="#A7A771"
-          metalness={0.4}
-          roughness={0.8}
-        />
-      </mesh>
-      <mesh
-        geometry={nodes.Plane002.geometry}
-        material={materials.Grass}
-        position={[-30.169, 0.339, -16.428]}
-        rotation={[0, Math.PI / 2, 0]}
-        scale={[9.439, 18.878, 18.878]}
-      >
-        <meshPhysicalMaterial
-          ref={setMaterial}
-          color="#40884A"
-          metalness={0.4}
-          roughness={0.8}
-        />
-      </mesh>
-      <mesh
-        geometry={nodes.Plane.geometry}
         material={materials.Ocean}
-        position={[0, -0.44, 0]}
-        scale={114.693}
-      />
-      <mesh
-        geometry={nodes.Suzanne.geometry}
-        material={materials.Stone}
-        position={[-454.502, -12.021, 26.204]}
-        rotation={[-1.681, 1.092, 1.772]}
-        scale={47.5}
+        position={[0, -0.006, 0]}
+        scale={57.766}
+        visible={false}
       />
       <mesh
         geometry={nodes.Cube002.geometry}
