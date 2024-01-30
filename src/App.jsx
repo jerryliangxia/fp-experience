@@ -70,7 +70,7 @@ export default function App() {
           />
           <Game />
           {!isDesktop ? <PointerLockControls /> : <PointerLockControlsr />}
-          <Stats />
+          {/* <Stats /> */}
         </Canvas>
         <Overlay />
       </GameContext.Provider>
