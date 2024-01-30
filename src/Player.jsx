@@ -17,7 +17,7 @@ export default function Player({ octree }) {
   const playerVelocity = useMemo(() => new Vector3(), []);
   const playerDirection = useMemo(() => new Vector3(), []);
   const capsule = useMemo(
-    () => new Capsule(new Vector3(0, 10, 0), new Vector3(0, 11, 0), 0.5),
+    () => new Capsule(new Vector3(0, 0, 0), new Vector3(0, 1, 0), 0.5),
     []
   );
 

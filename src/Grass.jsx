@@ -1,6 +1,5 @@
 import React, { useRef, useMemo, useEffect } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 const vertexShader = `
@@ -71,7 +70,6 @@ void main() {
 export default function Grass(props) {
   const meshRef = useRef();
   const { clock } = useThree();
-  const { nodes } = useGLTF("/grass.glb");
 
   const uniforms = useMemo(
     () => ({

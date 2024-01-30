@@ -101,21 +101,6 @@ export default function Model(props) {
         />
       </group>
       <group
-        position={[420.268, 4.462, 224.38]}
-        rotation={[0, 0.624, 0]}
-        scale={[2.584, 1.09, 2.148]}
-      >
-        <mesh
-          geometry={nodes.Torus009.geometry}
-          material={materials["Light Green Petal"]}
-        />
-        <mesh geometry={nodes.Torus009_1.geometry} material={materials.Brown} />
-        <mesh
-          geometry={nodes.Torus009_2.geometry}
-          material={materials["Green Petal"]}
-        />
-      </group>
-      <group
         position={[486.721, 4.316, -187.355]}
         rotation={[0.303, -0.287, 1.103]}
         scale={[1.768, 19.136, 1.768]}
