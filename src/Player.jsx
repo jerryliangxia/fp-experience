@@ -1,9 +1,11 @@
-import { useRef, useContext, useEffect, useMemo } from "react";
+import { useRef, useState, useContext, useEffect, useMemo } from "react";
 import { Capsule } from "three/examples/jsm/math/Capsule.js";
 import { Vector3 } from "three";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import useKeyboard from "./useKeyboard";
 import { GameContext } from "./GameContext";
+import useSound from "use-sound";
+import soundFile from "/step.mp3";
 
 const GRAVITY = 30;
 const STEPS_PER_FRAME = 5;
@@ -12,6 +14,8 @@ export default function Player({ octree }) {
   const { controlsMobile } = useContext(GameContext);
   const { upPressed, downPressed, leftPressed, rightPressed, spacePressed } =
     controlsMobile;
+
+  const [playSound, sound] = useSound(soundFile, { volume: 0.2 });
 
   const playerOnFloor = useRef(false);
   const playerVelocity = useMemo(() => new Vector3(), []);
@@ -116,6 +120,9 @@ export default function Player({ octree }) {
     }
   }
 
+  const [isSoundPlayed, setIsSoundPlayed] = useState(false);
+  const [lastPlayed, setLastPlayed] = useState(Date.now());
+
   useFrame(({ camera }, delta) => {
     controlsWASD(
       camera,
@@ -124,6 +131,25 @@ export default function Player({ octree }) {
       playerOnFloor.current,
       playerDirection
     );
+    const velocityMagnitude = playerVelocity.length();
+    if (playerOnFloor.current) {
+      if (
+        velocityMagnitude > 1 &&
+        !isSoundPlayed &&
+        Date.now() - lastPlayed > 500
+      ) {
+        setIsSoundPlayed(true);
+        if (!sound.isPlaying) {
+          playSound();
+          setLastPlayed(Date.now());
+          setTimeout(() => {
+            setIsSoundPlayed(false);
+          }, 500);
+        }
+      } else if (velocityMagnitude <= 1) {
+        setIsSoundPlayed(false);
+      }
+    }
     const deltaSteps = Math.min(0.05, delta) / STEPS_PER_FRAME;
     for (let i = 0; i < STEPS_PER_FRAME; i++) {
       playerOnFloor.current = updatePlayer(

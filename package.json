@@ -22,6 +22,7 @@
     "react": "18.2",
     "react-device-detect": "^2.2.3",
     "react-dom": "18.2",
-    "three": "^0.157.0"
+    "three": "^0.157.0",
+    "use-sound": "^4.0.1"
   }
 }
