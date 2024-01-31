@@ -8,11 +8,12 @@ import { Canvas } from "@react-three/fiber";
 import Game from "./Game";
 import { useThree } from "@react-three/fiber";
 import Overlay from "./Overlay";
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { PointerLockControls as PointerLockControlsImpl } from "./PointerLockControls";
 import { GameContext } from "./GameContext";
 import { isDesktop } from "react-device-detect";
 import { motion } from "framer-motion";
+import { Button, Text, Flex, Switch } from "@radix-ui/themes";
 
 function PointerLockControls() {
   const { camera, gl } = useThree();
@@ -46,6 +47,55 @@ export default function App() {
     visible: { opacity: 1 },
     hidden: { opacity: 0 },
   };
+
+  const [isVisible, setIsVisible] = useState(true);
+  const [isFullScreen, setFullScreen] = useState(false);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      const isFullscreen =
+        document.fullscreenElement ||
+        document.mozFullScreenElement ||
+        document.webkitFullscreenElement ||
+        document.msFullscreenElement;
+      setIsVisible(!isFullscreen);
+    };
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    document.addEventListener("mozfullscreenchange", handleFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
+    document.addEventListener("msfullscreenchange", handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+      document.removeEventListener(
+        "mozfullscreenchange",
+        handleFullscreenChange
+      );
+      document.removeEventListener(
+        "webkitfullscreenchange",
+        handleFullscreenChange
+      );
+      document.removeEventListener(
+        "msfullscreenchange",
+        handleFullscreenChange
+      );
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape" && !isFullScreen) {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isFullScreen]);
 
   return (
     <>
@@ -90,22 +140,14 @@ export default function App() {
                 gl.domElement.style.zIndex = "0";
               }}
               // shadows
-              style={{ position: "fixed" }}
+              style={{
+                position: "fixed",
+                // pointerEvents: isVisible ? "none" : "auto",
+                pointerEvents: "auto",
+                // cursor: isVisible ? "auto" : "none",
+              }}
             >
-              <directionalLight
-                intensity={1}
-                castShadow={true}
-                shadow-bias={-0.00015}
-                shadow-radius={4}
-                shadow-blur={10}
-                shadow-mapSize={[2048, 2048]}
-                position={[85.0, 80.0, 70.0]}
-                shadow-camera-left={-30}
-                shadow-camera-right={30}
-                shadow-camera-top={30}
-                shadow-camera-bottom={-30}
-              />
-              {/* <ambientLight intensity={1} /> */}
+              <directionalLight intensity={1} position={[85.0, 80.0, 70.0]} />
               <Environment
                 files="/img/rustig_koppie_puresky_1k.hdr"
                 background
@@ -117,6 +159,67 @@ export default function App() {
               {/* <Stats /> */}
             </Canvas>
             <Overlay />
+            {!loadingOpaque && isVisible && isDesktop && (
+              <>
+                <div
+                  style={{
+                    position: "absolute",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    zIndex: 4,
+                  }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Flex gap="2" direction="column">
+                    <Button
+                      style={{ zIndex: 5 }}
+                      onClick={() => {
+                        const canvas = document.querySelector("canvas");
+                        const event = new MouseEvent("click", {
+                          view: window,
+                          bubbles: true,
+                          cancelable: true,
+                        });
+                        canvas.dispatchEvent(event);
+                        setIsVisible(false);
+                        if (isFullScreen) {
+                          if (document.documentElement.requestFullscreen) {
+                            document.documentElement.requestFullscreen();
+                          } else if (
+                            document.documentElement.mozRequestFullScreen
+                          ) {
+                            document.documentElement.mozRequestFullScreen();
+                          } else if (
+                            document.documentElement.webkitRequestFullscreen
+                          ) {
+                            document.documentElement.webkitRequestFullscreen();
+                          } else if (
+                            document.documentElement.msRequestFullscreen
+                          ) {
+                            document.documentElement.msRequestFullscreen();
+                          }
+                        } else {
+                        }
+                      }}
+                    >
+                      Play
+                    </Button>
+                    <Flex direction="row" gap="2" align="center">
+                      <Switch
+                        checked={isFullScreen}
+                        onClick={() => setFullScreen(!isFullScreen)}
+                      />
+                      <Text size="1">Fullscreen</Text>
+                    </Flex>
+                  </Flex>
+                </div>
+              </>
+            )}
           </Suspense>
         </div>
       </GameContext.Provider>
