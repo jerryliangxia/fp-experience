@@ -2,13 +2,13 @@ import { PointerLockControls as PointerLockControlsDesktop } from "@react-three/
 import { Canvas } from "@react-three/fiber";
 import Game from "./Game";
 import { useThree } from "@react-three/fiber";
-import Overlay from "./components/Overlay";
+import Overlay from "./ui-components/Overlay";
 import React, { useState } from "react";
 import { PointerLockControls as PointerLockControlsImpl } from "./PointerLockControls";
 import { GameContext } from "./GameContext";
 import { isDesktop } from "react-device-detect";
-import FullScreenControl from "./components/FullScreenControl";
-import { OverlayMotion, DreiLoader } from "./components/Loading";
+import FullScreenControl from "./ui-components/FullScreenControl";
+import { OverlayMotion, DreiLoader } from "./ui-components/Loading";
 
 function PointerLockControlsMobile() {
   const { camera, gl } = useThree();

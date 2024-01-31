@@ -5,7 +5,7 @@ import { useFrame } from "@react-three/fiber";
 import useKeyboard from "./useKeyboard";
 import { GameContext } from "./GameContext";
 import useSound from "use-sound";
-import soundFile from "/step.mp3";
+import soundFile from "/sounds/step.mp3";
 
 const GRAVITY = 30;
 const STEPS_PER_FRAME = 5;

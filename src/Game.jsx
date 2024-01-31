@@ -2,10 +2,10 @@ import { useGLTF, Environment } from "@react-three/drei";
 import useOctree from "./useOctree";
 import Player from "./Player";
 import useOctreeHelper from "./useOctreeHelper";
-import Model from "./Platform";
-import Ocean from "./Ocean";
-import Clouds from "./Clouds";
-import Grass from "./Grass";
+import Model from "./world-components/Platform";
+import Ocean from "./world-components/Ocean";
+import Clouds from "./world-components/Clouds";
+import Grass from "./world-components/Grass";
 
 export default function Physics() {
   const { nodes, scene } = useGLTF("/octree.glb");
