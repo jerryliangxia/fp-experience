@@ -1,6 +1,6 @@
-import { GameContext } from "./GameContext";
+import { GameContext } from "../GameContext";
 import { useContext, useRef, useState } from "react";
-import { bw, bh } from "./Constants";
+import { bw, bh } from "../Constants";
 
 export default function Overlay() {
   const { handleControlChange } = useContext(GameContext);
