@@ -1,14 +1,14 @@
 import {
-  Stats,
+  // Stats,
   Environment,
   PointerLockControls as PointerLockControlsr,
   Loader,
 } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import Game from "./Game";
-import { useThree, useFrame } from "@react-three/fiber";
+import { useThree } from "@react-three/fiber";
 import Overlay from "./Overlay";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { PointerLockControls as PointerLockControlsImpl } from "./PointerLockControls";
 import { GameContext } from "./GameContext";
 import { isDesktop } from "react-device-detect";
@@ -55,46 +55,68 @@ export default function App() {
             position: "fixed",
             width: "100%",
             height: "100%",
-            backgroundColor: "#000",
+            backgroundColor: "#171717",
           }}
         >
-          <motion.div
-            initial="visible"
-            animate={loadingOpaque ? "hidden" : "visible"}
-            variants={overlayVariants}
-            transition={{ duration: 1.5 }}
-            style={{ width: "100%", height: "100%", position: "absolute" }}
-          />
-          <Canvas
-            onCreated={({ gl }) => {
-              gl.domElement.style.zIndex = "0";
-            }}
-            // shadows
-            style={{ position: "fixed" }}
+          <Suspense
+            fallback={
+              <div
+                style={{
+                  position: "fixed",
+                  width: "100%",
+                  height: "100%",
+                  backgroundColor: "#171717",
+                  opacity: loadingOpaque ? 1 : 0,
+                  transition: "opacity 1s",
+                }}
+              />
+            }
           >
-            <directionalLight
-              intensity={1}
-              castShadow={true}
-              shadow-bias={-0.00015}
-              shadow-radius={4}
-              shadow-blur={10}
-              shadow-mapSize={[2048, 2048]}
-              position={[85.0, 80.0, 70.0]}
-              shadow-camera-left={-30}
-              shadow-camera-right={30}
-              shadow-camera-top={30}
-              shadow-camera-bottom={-30}
+            <motion.div
+              initial="visible"
+              animate={loadingOpaque ? "visible" : "hidden"}
+              variants={overlayVariants}
+              transition={{ duration: 1.5 }}
+              style={{
+                width: "100%",
+                height: "100%",
+                position: "absolute",
+                backgroundColor: "#171717",
+                zIndex: 2,
+              }}
             />
-            {/* <ambientLight intensity={1} /> */}
-            <Environment
-              files="/img/rustig_koppie_puresky_1k.hdr"
-              background
-              intensity={0.05}
-            />
-            <Game />
-            {!isDesktop ? <PointerLockControls /> : <PointerLockControlsr />}
-            {/* <Stats /> */}
-          </Canvas>
+            <Canvas
+              onCreated={({ gl }) => {
+                gl.domElement.style.zIndex = "0";
+              }}
+              // shadows
+              style={{ position: "fixed" }}
+            >
+              <directionalLight
+                intensity={1}
+                castShadow={true}
+                shadow-bias={-0.00015}
+                shadow-radius={4}
+                shadow-blur={10}
+                shadow-mapSize={[2048, 2048]}
+                position={[85.0, 80.0, 70.0]}
+                shadow-camera-left={-30}
+                shadow-camera-right={30}
+                shadow-camera-top={30}
+                shadow-camera-bottom={-30}
+              />
+              {/* <ambientLight intensity={1} /> */}
+              <Environment
+                files="/img/rustig_koppie_puresky_1k.hdr"
+                background
+                intensity={0.05}
+              />
+
+              <Game />
+              {!isDesktop ? <PointerLockControls /> : <PointerLockControlsr />}
+              {/* <Stats /> */}
+            </Canvas>
+          </Suspense>
           <Overlay />
         </div>
       </GameContext.Provider>
