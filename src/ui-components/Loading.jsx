@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Loader } from "@react-three/drei";
 
-export function OverlayMotion({ loadingOpaque }) {
+export function LoadingTransition({ loadingOpaque }) {
   const overlayVariants = {
     visible: { opacity: 1 },
     hidden: { opacity: 0 },

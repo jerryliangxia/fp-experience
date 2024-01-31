@@ -8,7 +8,7 @@ import { PointerLockControls as PointerLockControlsImpl } from "./PointerLockCon
 import { GameContext } from "./GameContext";
 import { isDesktop } from "react-device-detect";
 import FullScreenControl from "./ui-components/FullScreenControl";
-import { OverlayMotion, DreiLoader } from "./ui-components/Loading";
+import { LoadingTransition, DreiLoader } from "./ui-components/Loading";
 
 function PointerLockControlsMobile() {
   const { camera, gl } = useThree();
@@ -49,7 +49,7 @@ export default function App() {
             backgroundColor: "#171717",
           }}
         >
-          <OverlayMotion loadingOpaque={loadingOpaque} />
+          <LoadingTransition loadingOpaque={loadingOpaque} />
           <Canvas
             onCreated={({ gl }) => {
               gl.domElement.style.zIndex = "0";
