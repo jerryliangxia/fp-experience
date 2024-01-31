@@ -76,7 +76,7 @@ export default function App() {
               initial="visible"
               animate={loadingOpaque ? "visible" : "hidden"}
               variants={overlayVariants}
-              transition={{ duration: 1.5 }}
+              transition={{ duration: 1.0 }}
               style={{
                 width: "100%",
                 height: "100%",
@@ -116,8 +116,8 @@ export default function App() {
               {!isDesktop ? <PointerLockControls /> : <PointerLockControlsr />}
               {/* <Stats /> */}
             </Canvas>
+            <Overlay />
           </Suspense>
-          <Overlay />
         </div>
       </GameContext.Provider>
       <Loader

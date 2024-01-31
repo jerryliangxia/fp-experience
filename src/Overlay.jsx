@@ -63,7 +63,7 @@ export default function Overlay() {
         position: "fixed",
         left: "1vw",
         bottom: "1vh",
-        zIndex: 1,
+        zIndex: 3,
         opacity: isTouched ? 0.5 : 0,
         transition: "opacity 0.25s ease-in-out",
         width: bw,
