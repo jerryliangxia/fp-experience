@@ -5,7 +5,8 @@ import vertexShader from "./sway/vertex.glsl";
 import fragmentShader from "./sway/fragment.glsl";
 
 export default function Grass(props) {
-  const meshRef = useRef();
+  const meshRefDense = useRef();
+  const meshRefSparse = useRef();
   const { clock } = useThree();
 
   const uniforms = useMemo(
@@ -34,11 +35,10 @@ export default function Grass(props) {
     return geo;
   }, []);
 
-  useEffect(() => {
-    const instanceNumber = props.dense ? 5000 : 1000;
+  const initInstances = (meshRef, instanceNumber, ovalRadiusMultiplier) => {
     const dummy = new THREE.Object3D();
-    const ovalRadiusX = 16 * (props.dense ? 1 : 1.1); // The x radius of the oval
-    const ovalRadiusZ = 12 * (props.dense ? 1 : 1.1); // The z radius of the oval
+    const ovalRadiusX = 16 * ovalRadiusMultiplier;
+    const ovalRadiusZ = 12 * ovalRadiusMultiplier;
 
     for (let i = 0; i < instanceNumber; i++) {
       const angle = Math.random() * Math.PI * 2; // Random angle
@@ -55,6 +55,11 @@ export default function Grass(props) {
     }
 
     meshRef.current.instanceMatrix.needsUpdate = true;
+  };
+
+  useEffect(() => {
+    initInstances(meshRefDense, 5000, 1); // Dense grass
+    initInstances(meshRefSparse, 1000, 1.1);
   }, [props.dense, props.baseColor]);
 
   useFrame(() => {
@@ -62,10 +67,17 @@ export default function Grass(props) {
   });
 
   return (
-    <instancedMesh
-      position={props.position}
-      ref={meshRef}
-      args={[geometry, leavesMaterial, props.dense ? 5000 : 1000]}
-    />
+    <>
+      <instancedMesh
+        position={props.position}
+        ref={meshRefDense}
+        args={[geometry, leavesMaterial, 5000]}
+      />
+      <instancedMesh
+        position={props.position}
+        ref={meshRefSparse}
+        args={[geometry, leavesMaterial, 1000]}
+      />
+    </>
   );
 }

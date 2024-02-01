@@ -27,16 +27,7 @@ export default function Physics() {
     <>
       <directionalLight intensity={1} position={[85.0, 80.0, 70.0]} />
       <Environment files="/img/rustig_koppie_puresky_1k.hdr" background />
-      <Grass
-        position={[0, 0, 13.5]}
-        dense={true}
-        baseColor={hexToVec3("#69FF80")}
-      />
-      <Grass
-        position={[0, 0, 13.5]}
-        dense={false}
-        baseColor={hexToVec3("#69FF80")}
-      />
+      <Grass position={[0, 0, 13.5]} baseColor={hexToVec3("#69FF80")} />
       <Icoplant
         position={[-8.932, 0.35, 9.17]}
         baseColor={hexToVec3("#9670FF")}
