@@ -250,16 +250,6 @@ export default function Model(props) {
           geometry={nodes.Cylinder.geometry}
           material={materials.Brown}
         />
-        <mesh
-          name="Cylinder_1"
-          geometry={nodes.Cylinder_1.geometry}
-          material={materials["Green Petal"]}
-        />
-        <mesh
-          name="Cylinder_2"
-          geometry={nodes.Cylinder_2.geometry}
-          material={materials["Light Green Petal"]}
-        />
       </group>
       <group
         name="TropicalTree001"
@@ -271,16 +261,6 @@ export default function Model(props) {
           name="Cylinder007"
           geometry={nodes.Cylinder007.geometry}
           material={materials.Brown}
-        />
-        <mesh
-          name="Cylinder007_1"
-          geometry={nodes.Cylinder007_1.geometry}
-          material={materials["Green Petal"]}
-        />
-        <mesh
-          name="Cylinder007_2"
-          geometry={nodes.Cylinder007_2.geometry}
-          material={materials["Light Green Petal"]}
         />
       </group>
       <group
