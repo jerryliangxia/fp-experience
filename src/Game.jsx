@@ -5,8 +5,7 @@ import useOctreeHelper from "./useOctreeHelper";
 import Model from "./world-components/Platform";
 import Ocean from "./world-components/Ocean";
 import Clouds from "./world-components/Clouds";
-import Grass from "./world-components/Grass";
-import Bushes from "./world-components/Bushes";
+import Grass from "./world-components/GroundFoliage";
 import TreeLeaves from "./world-components/TreeLeaves";
 import Icoplant from "./world-components/Icoplant";
 
@@ -27,7 +26,11 @@ export default function Physics() {
     <>
       <directionalLight intensity={1} position={[85.0, 80.0, 70.0]} />
       <Environment files="/img/rustig_koppie_puresky_1k.hdr" background />
-      <Grass position={[0, 0, 13.5]} baseColor={hexToVec3("#69FF80")} />
+      <Grass
+        position={[0, 0, 13.5]}
+        baseColor={hexToVec3("#69FF80")}
+        bushesBaseColor={hexToVec3("#8CD15C")}
+      />
       <Icoplant
         position={[-8.932, 0.35, 9.17]}
         baseColor={hexToVec3("#9670FF")}
@@ -38,7 +41,6 @@ export default function Physics() {
         baseColor={hexToVec3("#52C7FF")}
         rando={2.0}
       />
-      <Bushes position={[0, 0, 13.5]} baseColor={hexToVec3("#8CD15C")} />
       <TreeLeaves
         position={[-11.184, -0.8, 7.569]}
         baseColor={hexToVec3("#8CD15C")}
