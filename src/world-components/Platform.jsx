@@ -152,7 +152,7 @@ export default function Model(props) {
           geometry={nodes.Icosphere_2.geometry}
           material={materials["Light Green Petal"]}
         />
-        <mesh
+        {/* <mesh
           name="Icosphere_3"
           geometry={nodes.Icosphere_3.geometry}
           material={materials.Purple}
@@ -161,7 +161,7 @@ export default function Model(props) {
           name="Icosphere_4"
           geometry={nodes.Icosphere_4.geometry}
           material={materials["Purple 2"]}
-        />
+        /> */}
         <mesh
           name="Icosphere_5"
           geometry={nodes.Icosphere_5.geometry}
@@ -189,7 +189,7 @@ export default function Model(props) {
           geometry={nodes.Icosphere005_2.geometry}
           material={materials["Light Green Petal"]}
         />
-        <mesh
+        {/* <mesh
           name="Icosphere005_3"
           geometry={nodes.Icosphere005_3.geometry}
           material={materials.Blue}
@@ -198,7 +198,7 @@ export default function Model(props) {
           name="Icosphere005_4"
           geometry={nodes.Icosphere005_4.geometry}
           material={materials["Blue 2"]}
-        />
+        /> */}
         <mesh
           name="Icosphere005_5"
           geometry={nodes.Icosphere005_5.geometry}
