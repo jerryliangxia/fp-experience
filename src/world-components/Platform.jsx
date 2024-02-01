@@ -10,186 +10,111 @@ export default function Model(props) {
   const [material, setMaterial] = useState();
   return (
     <group {...props} dispose={null}>
-      <group
-        position={[-7.151, 2.461, 5.939]}
-        rotation={[0, -0.863, 0]}
-        scale={[0.941, 2.167, 0.941]}
-      >
-        <mesh geometry={nodes.Cylinder_1.geometry} material={materials.Brown} />
-        <mesh
-          geometry={nodes.Cylinder_2.geometry}
-          material={materials["Green Petal"]}
-        />
-        <mesh
-          geometry={nodes.Cylinder_3.geometry}
-          material={materials["Light Green Petal"]}
-        />
-      </group>
-      <group
-        position={[-11.184, 1.811, 7.569]}
-        rotation={[0, 0.258, 0]}
-        scale={[0.941, 1.627, 0.941]}
-      >
-        <mesh
-          geometry={nodes.Cylinder007.geometry}
-          material={materials.Brown}
-        />
-        <mesh
-          geometry={nodes.Cylinder007_1.geometry}
-          material={materials["Green Petal"]}
-        />
-        <mesh
-          geometry={nodes.Cylinder007_2.geometry}
-          material={materials["Light Green Petal"]}
-        />
-      </group>
-      <group
-        position={[-8.932, 0.35, 9.17]}
-        rotation={[-0.023, -0.871, 0.058]}
-        scale={0.304}
-      >
-        <mesh geometry={nodes.Icosphere.geometry} material={materials.Yellow} />
-        <mesh
-          geometry={nodes.Icosphere_1.geometry}
-          material={materials["Green Petal"]}
-        />
-        <mesh
-          geometry={nodes.Icosphere_2.geometry}
-          material={materials["Light Green Petal"]}
-        />
-        <mesh
-          geometry={nodes.Icosphere_3.geometry}
-          material={materials.Purple}
-        />
-        <mesh
-          geometry={nodes.Icosphere_4.geometry}
-          material={materials["Purple 2"]}
-        />
-        <mesh
-          geometry={nodes.Icosphere_5.geometry}
-          material={materials.Grass}
-        />
-      </group>
-      <group
-        position={[-7.39, 0.381, 8.278]}
-        rotation={[-3.069, -1.368, -2.996]}
-        scale={0.304}
-      >
-        <mesh
-          geometry={nodes.Icosphere005.geometry}
-          material={materials.Orange}
-        />
-        <mesh
-          geometry={nodes.Icosphere005_1.geometry}
-          material={materials["Green Petal"]}
-        />
-        <mesh
-          geometry={nodes.Icosphere005_2.geometry}
-          material={materials["Light Green Petal"]}
-        />
-        <mesh
-          geometry={nodes.Icosphere005_3.geometry}
-          material={materials.Blue}
-        />
-        <mesh
-          geometry={nodes.Icosphere005_4.geometry}
-          material={materials["Blue 2"]}
-        />
-        <mesh
-          geometry={nodes.Icosphere005_5.geometry}
-          material={materials.Grass}
-        />
-      </group>
-      <group
-        position={[486.721, 4.316, -187.355]}
-        rotation={[0.303, -0.287, 1.103]}
-        scale={[1.768, 19.136, 1.768]}
-      >
-        <mesh
-          geometry={nodes.Cylinder023.geometry}
-          material={materials["Grey 2"]}
-        />
-        <mesh
-          geometry={nodes.Cylinder023_1.geometry}
-          material={materials.Grey}
-        />
-      </group>
       <mesh
-        geometry={nodes.Cylinder002.geometry}
+        name="LargeMountain"
+        geometry={nodes.LargeMountain.geometry}
+        material={materials.Grass}
+        position={[442.308, -9.361, -403.126]}
+        scale={[30.144, 20.466, 20.466]}
+      />
+      <mesh
+        name="BackgroundMountain"
+        geometry={nodes.BackgroundMountain.geometry}
+        material={materials.Grass}
+        position={[422.331, -1.568, 236.6]}
+        rotation={[Math.PI, -0.897, Math.PI]}
+        scale={[11.484, 7.797, 7.797]}
+      />
+      <mesh
+        name="Spike"
+        geometry={nodes.Spike.geometry}
         material={materials["Grey 2"]}
         position={[481.17, 0.523, -178.924]}
         rotation={[-2.615, 0.385, 1.964]}
         scale={[1.768, 19.136, 1.768]}
       />
       <group
+        name="Spike001"
+        position={[486.721, 4.316, -187.355]}
+        rotation={[0.303, -0.287, 1.103]}
+        scale={[1.768, 19.136, 1.768]}
+      >
+        <mesh
+          name="Cylinder023"
+          geometry={nodes.Cylinder023.geometry}
+          material={materials["Grey 2"]}
+        />
+        <mesh
+          name="Cylinder023_1"
+          geometry={nodes.Cylinder023_1.geometry}
+          material={materials.Grey}
+        />
+      </group>
+      <group
+        name="Spike002"
         position={[490.42, 4.426, -183.574]}
         rotation={[-2.615, 0.385, 1.964]}
         scale={[1.768, 28.683, 1.768]}
       >
         <mesh
+          name="Cylinder031"
           geometry={nodes.Cylinder031.geometry}
           material={materials["Grey 2"]}
         />
         <mesh
+          name="Cylinder031_1"
           geometry={nodes.Cylinder031_1.geometry}
           material={materials.Grey}
         />
       </group>
       <group
+        name="Spike003"
         position={[504.394, 4.374, -172.829]}
         rotation={[0.303, -0.287, 1.103]}
         scale={[1.768, 19.136, 1.768]}
       >
         <mesh
+          name="Cylinder032"
           geometry={nodes.Cylinder032.geometry}
           material={materials["Grey 2"]}
         />
         <mesh
+          name="Cylinder032_1"
           geometry={nodes.Cylinder032_1.geometry}
           material={materials.Grey}
         />
       </group>
-      <group
-        position={[12.928, 0.897, 1.526]}
-        rotation={[-0.294, 1.281, 0.424]}
-        scale={[0.69, 0.616, 0.798]}
-      >
-        <mesh
-          geometry={nodes.Plane097.geometry}
-          material={materials["Light Green Petal"]}
-        />
-        <mesh
-          geometry={nodes.Plane097_1.geometry}
-          material={materials["Green Petal"]}
-        />
-      </group>
       <mesh
-        geometry={nodes.Plane005.geometry}
+        name="LargeSpiral"
+        geometry={nodes.LargeSpiral.geometry}
         material={materials["Blue.001"]}
-        position={[85.708, 10.446, -389.67]}
-        rotation={[0.404, 0.492, 0.136]}
-        scale={[76.586, 100.143, 59.549]}
+        position={[-496.931, 19.822, -593.922]}
+        rotation={[0.416, -0.474, -0.098]}
+        scale={[115.831, 133.843, 125.931]}
       />
       <mesh
-        geometry={nodes.Plane006.geometry}
+        name="LargeSpiral001"
+        geometry={nodes.LargeSpiral001.geometry}
         material={materials["Blue.001"]}
         position={[-13.925, 30.599, -461.174]}
         rotation={[0.404, 0.492, 0.136]}
         scale={[41.01, 51.299, 41.424]}
       />
       <mesh
-        geometry={nodes.Plane007.geometry}
+        name="LargeSpiral002"
+        geometry={nodes.LargeSpiral002.geometry}
         material={materials["Blue.001"]}
-        position={[-496.931, 19.822, -593.922]}
-        rotation={[0.416, -0.474, -0.098]}
-        scale={[115.831, 133.843, 125.931]}
+        position={[85.708, 10.446, -389.67]}
+        rotation={[0.404, 0.492, 0.136]}
+        scale={[76.586, 100.143, 59.549]}
       />
       <group
+        name="Beach"
         position={[0, 0.322, 13.417]}
         rotation={[0, Math.PI / 2, 0]}
         scale={[30.774, 61.548, 40.562]}
       >
-        <mesh geometry={nodes.Plane005_1.geometry}>
+        <mesh name="Plane005" geometry={nodes.Plane005.geometry}>
           <meshPhysicalMaterial
             ref={setMaterial}
             color="#D7D792"
@@ -197,7 +122,7 @@ export default function Model(props) {
             roughness={0.8}
           />
         </mesh>
-        <mesh geometry={nodes.Plane005_2.geometry}>
+        <mesh name="Plane005_1" geometry={nodes.Plane005_1.geometry}>
           <meshPhysicalMaterial
             ref={setMaterial}
             color="#40884A"
@@ -206,37 +131,459 @@ export default function Model(props) {
           />
         </mesh>
       </group>
-      <mesh
-        geometry={nodes.Plane001.geometry}
-        material={materials.Ocean}
-        position={[0, -0.006, 0]}
-        scale={57.766}
-        visible={false}
-      />
       <group
+        name="Icoplant"
+        position={[-8.932, 0.35, 9.17]}
+        rotation={[-0.023, -0.871, 0.058]}
+        scale={0.304}
+      >
+        <mesh
+          name="Icosphere"
+          geometry={nodes.Icosphere.geometry}
+          material={materials.Yellow}
+        />
+        <mesh
+          name="Icosphere_1"
+          geometry={nodes.Icosphere_1.geometry}
+          material={materials["Green Petal"]}
+        />
+        <mesh
+          name="Icosphere_2"
+          geometry={nodes.Icosphere_2.geometry}
+          material={materials["Light Green Petal"]}
+        />
+        <mesh
+          name="Icosphere_3"
+          geometry={nodes.Icosphere_3.geometry}
+          material={materials.Purple}
+        />
+        <mesh
+          name="Icosphere_4"
+          geometry={nodes.Icosphere_4.geometry}
+          material={materials["Purple 2"]}
+        />
+        <mesh
+          name="Icosphere_5"
+          geometry={nodes.Icosphere_5.geometry}
+          material={materials.Grass}
+        />
+      </group>
+      <group
+        name="Icoplant001"
+        position={[-7.39, 0.381, 8.278]}
+        rotation={[-3.069, -1.368, -2.996]}
+        scale={0.304}
+      >
+        <mesh
+          name="Icosphere005"
+          geometry={nodes.Icosphere005.geometry}
+          material={materials.Orange}
+        />
+        <mesh
+          name="Icosphere005_1"
+          geometry={nodes.Icosphere005_1.geometry}
+          material={materials["Green Petal"]}
+        />
+        <mesh
+          name="Icosphere005_2"
+          geometry={nodes.Icosphere005_2.geometry}
+          material={materials["Light Green Petal"]}
+        />
+        <mesh
+          name="Icosphere005_3"
+          geometry={nodes.Icosphere005_3.geometry}
+          material={materials.Blue}
+        />
+        <mesh
+          name="Icosphere005_4"
+          geometry={nodes.Icosphere005_4.geometry}
+          material={materials["Blue 2"]}
+        />
+        <mesh
+          name="Icosphere005_5"
+          geometry={nodes.Icosphere005_5.geometry}
+          material={materials.Grass}
+        />
+      </group>
+      <group
+        name="SpiralPlant"
         position={[1.303, 0.436, -16.505]}
         rotation={[-2.873, 1.254, 3.028]}
         scale={[0.69, 0.616, 0.798]}
       >
-        <mesh geometry={nodes.Plane007_1.geometry} material={materials.Blue} />
         <mesh
-          geometry={nodes.Plane007_2.geometry}
+          name="Plane007"
+          geometry={nodes.Plane007.geometry}
+          material={materials.Blue}
+        />
+        <mesh
+          name="Plane007_1"
+          geometry={nodes.Plane007_1.geometry}
           material={materials["Blue.001"]}
         />
       </group>
+      <group
+        name="SpiralPlant001"
+        position={[12.928, 0.897, 1.526]}
+        rotation={[-0.294, 1.281, 0.424]}
+        scale={[0.69, 0.616, 0.798]}
+      >
+        <mesh
+          name="Plane097"
+          geometry={nodes.Plane097.geometry}
+          material={materials["Light Green Petal"]}
+        />
+        <mesh
+          name="Plane097_1"
+          geometry={nodes.Plane097_1.geometry}
+          material={materials["Green Petal"]}
+        />
+      </group>
+      <group
+        name="TropicalTree"
+        position={[-7.151, 2.461, 5.939]}
+        rotation={[0, -0.863, 0]}
+        scale={[0.941, 2.167, 0.941]}
+      >
+        <mesh
+          name="Cylinder"
+          geometry={nodes.Cylinder.geometry}
+          material={materials.Brown}
+        />
+        <mesh
+          name="Cylinder_1"
+          geometry={nodes.Cylinder_1.geometry}
+          material={materials["Green Petal"]}
+        />
+        <mesh
+          name="Cylinder_2"
+          geometry={nodes.Cylinder_2.geometry}
+          material={materials["Light Green Petal"]}
+        />
+      </group>
+      <group
+        name="TropicalTree001"
+        position={[-11.184, 1.811, 7.569]}
+        rotation={[0, 0.258, 0]}
+        scale={[0.941, 1.627, 0.941]}
+      >
+        <mesh
+          name="Cylinder007"
+          geometry={nodes.Cylinder007.geometry}
+          material={materials.Brown}
+        />
+        <mesh
+          name="Cylinder007_1"
+          geometry={nodes.Cylinder007_1.geometry}
+          material={materials["Green Petal"]}
+        />
+        <mesh
+          name="Cylinder007_2"
+          geometry={nodes.Cylinder007_2.geometry}
+          material={materials["Light Green Petal"]}
+        />
+      </group>
+      <group
+        name="SpiralPlant002"
+        position={[36.14, 0.22, 32.936]}
+        rotation={[-3.057, 0.229, -3.019]}
+        scale={[0.686, 0.411, 0.796]}
+      >
+        <mesh
+          name="Plane009"
+          geometry={nodes.Plane009.geometry}
+          material={materials.Ocean}
+        />
+        <mesh
+          name="Plane009_1"
+          geometry={nodes.Plane009_1.geometry}
+          material={materials.BlueShell}
+        />
+      </group>
+      <group
+        name="SpiralPlant003"
+        position={[55.951, 0.3, 19.471]}
+        rotation={[-0.085, 0.221, 0.161]}
+        scale={[0.686, 0.384, 0.796]}
+      >
+        <mesh
+          name="Plane010"
+          geometry={nodes.Plane010.geometry}
+          material={materials.Red}
+        />
+        <mesh
+          name="Plane010_1"
+          geometry={nodes.Plane010_1.geometry}
+          material={materials.Orange}
+        />
+      </group>
       <mesh
-        geometry={nodes.Cube002.geometry}
-        material={materials.Grass}
-        position={[442.308, -9.361, -403.126]}
-        scale={[30.144, 20.466, 20.466]}
+        name="SimpleShell"
+        geometry={nodes.SimpleShell.geometry}
+        material={materials["Blue.001"]}
+        position={[13.295, -0.002, -13.205]}
+        rotation={[-0.041, -0.076, -0.003]}
+        scale={0.372}
       />
       <mesh
-        geometry={nodes.Cube003.geometry}
-        material={materials.Grass}
-        position={[422.331, -1.568, 236.6]}
-        rotation={[Math.PI, -0.897, Math.PI]}
-        scale={[11.484, 7.797, 7.797]}
+        name="SimpleShell001"
+        geometry={nodes.SimpleShell001.geometry}
+        material={materials.Ocean}
+        position={[29.081, 0.011, -9.59]}
+        rotation={[-0.026, -0.074, -0.008]}
+        scale={0.372}
       />
+      <mesh
+        name="SimpleShell002"
+        geometry={nodes.SimpleShell002.geometry}
+        material={materials.Yellow}
+        position={[34.661, 0.06, 23.119]}
+        rotation={[-3.113, -0.751, -3.128]}
+        scale={0.146}
+      />
+      <mesh
+        name="SimpleShell003"
+        geometry={nodes.SimpleShell003.geometry}
+        material={materials["Light Green Petal"]}
+        position={[11.187, 0.057, 29.661]}
+        rotation={[-3.068, 0.508, -3.138]}
+        scale={0.136}
+      />
+      <mesh
+        name="SimpleShell004"
+        geometry={nodes.SimpleShell004.geometry}
+        material={materials.BlueShell}
+        position={[-30.181, 0.086, 17.732]}
+        rotation={[-0.086, 1.26, 0.092]}
+        scale={0.147}
+      />
+      <mesh
+        name="Branch001"
+        geometry={nodes.Branch001.geometry}
+        material={materials["Blue 2"]}
+        position={[38.691, 0.091, -1.487]}
+        rotation={[0.719, 1.544, 0.894]}
+        scale={0.072}
+      />
+      <mesh
+        name="Branch"
+        geometry={nodes.Branch.geometry}
+        material={materials["Blue 2"]}
+        position={[-4.986, 0.07, -9.245]}
+        rotation={[-1.878, 1.534, 0.24]}
+        scale={-0.112}
+      />
+      <mesh
+        name="Branch002"
+        geometry={nodes.Branch002.geometry}
+        material={materials["Blue 2"]}
+        position={[-21.87, 0.333, 4.653]}
+        rotation={[-0.014, -0.047, -1.484]}
+        scale={0.088}
+      />
+      <mesh
+        name="Branch003"
+        geometry={nodes.Branch003.geometry}
+        material={materials["Blue 2"]}
+        position={[19.663, 0.132, 28.821]}
+        rotation={[-3.127, 0.264, 1.654]}
+        scale={0.071}
+      />
+      <group
+        name="AlienShell"
+        position={[-16.754, 0.252, 26.285]}
+        rotation={[0.132, -0.269, 1.565]}
+        scale={[0.114, 0.348, 0.114]}
+      >
+        <mesh
+          name="Cylinder005"
+          geometry={nodes.Cylinder005.geometry}
+          material={materials.Orange}
+        />
+        <mesh
+          name="Cylinder005_1"
+          geometry={nodes.Cylinder005_1.geometry}
+          material={materials.BlueShell}
+        />
+        <mesh
+          name="Cylinder005_2"
+          geometry={nodes.Cylinder005_2.geometry}
+          material={materials.Yellow}
+        />
+        <mesh
+          name="Cylinder005_3"
+          geometry={nodes.Cylinder005_3.geometry}
+          material={materials.BrownShell}
+        />
+        <mesh
+          name="Cylinder005_4"
+          geometry={nodes.Cylinder005_4.geometry}
+          material={materials.Grey}
+        />
+      </group>
+      <group
+        name="AlienShell001"
+        position={[29.094, 0.153, 27.395]}
+        rotation={[-2.943, -0.686, -1.449]}
+        scale={[0.117, 0.358, 0.117]}
+      >
+        <mesh
+          name="Cylinder006"
+          geometry={nodes.Cylinder006.geometry}
+          material={materials["Light Green Petal"]}
+        />
+        <mesh
+          name="Cylinder006_1"
+          geometry={nodes.Cylinder006_1.geometry}
+          material={materials.BlueShell}
+        />
+        <mesh
+          name="Cylinder006_2"
+          geometry={nodes.Cylinder006_2.geometry}
+          material={materials.Yellow}
+        />
+        <mesh
+          name="Cylinder006_3"
+          geometry={nodes.Cylinder006_3.geometry}
+          material={materials.BlueShell}
+        />
+        <mesh
+          name="Cylinder006_4"
+          geometry={nodes.Cylinder006_4.geometry}
+          material={materials.Grey}
+        />
+      </group>
+      <group
+        name="AlienShell002"
+        position={[-30.197, 0.201, 11.049]}
+        rotation={[-2.858, -1.067, -1.222]}
+        scale={[0.091, 0.278, 0.091]}
+      >
+        <mesh
+          name="Cylinder008"
+          geometry={nodes.Cylinder008.geometry}
+          material={materials.Purple}
+        />
+        <mesh
+          name="Cylinder008_1"
+          geometry={nodes.Cylinder008_1.geometry}
+          material={materials.BlueShell}
+        />
+        <mesh
+          name="Cylinder008_2"
+          geometry={nodes.Cylinder008_2.geometry}
+          material={materials.Yellow}
+        />
+        <mesh
+          name="Cylinder008_3"
+          geometry={nodes.Cylinder008_3.geometry}
+          material={materials.Orange}
+        />
+        <mesh
+          name="Cylinder008_4"
+          geometry={nodes.Cylinder008_4.geometry}
+          material={materials.Grey}
+        />
+      </group>
+      <group
+        name="AlienShell003"
+        position={[27.269, 0.124, -11.074]}
+        rotation={[-3.003, 0.317, -1.634]}
+        scale={[0.157, 0.482, 0.157]}
+      >
+        <mesh
+          name="Cylinder010"
+          geometry={nodes.Cylinder010.geometry}
+          material={materials.Red}
+        />
+        <mesh
+          name="Cylinder010_1"
+          geometry={nodes.Cylinder010_1.geometry}
+          material={materials.BlueShell}
+        />
+        <mesh
+          name="Cylinder010_2"
+          geometry={nodes.Cylinder010_2.geometry}
+          material={materials.Yellow}
+        />
+        <mesh
+          name="Cylinder010_3"
+          geometry={nodes.Cylinder010_3.geometry}
+          material={materials.Ivory}
+        />
+        <mesh
+          name="Cylinder010_4"
+          geometry={nodes.Cylinder010_4.geometry}
+          material={materials.Grey}
+        />
+      </group>
+      <group
+        name="CircleShell"
+        position={[-20.019, 0.057, 1.785]}
+        rotation={[-0.039, 0.028, 0.031]}
+        scale={0.253}
+      >
+        <mesh
+          name="Circle"
+          geometry={nodes.Circle.geometry}
+          material={materials["Blue 2"]}
+        />
+        <mesh
+          name="Circle_1"
+          geometry={nodes.Circle_1.geometry}
+          material={materials["Blue 3"]}
+        />
+      </group>
+      <group
+        name="CircleShell001"
+        position={[43.317, 0, 13.087]}
+        rotation={[0, 0, -0.017]}
+        scale={0.201}
+      >
+        <mesh
+          name="Circle001"
+          geometry={nodes.Circle001.geometry}
+          material={materials.Brown}
+        />
+        <mesh
+          name="Circle001_1"
+          geometry={nodes.Circle001_1.geometry}
+          material={materials.BrownShell}
+        />
+      </group>
+      <group
+        name="CircleShell002"
+        position={[21.015, 0.027, -10.954]}
+        scale={0.083}
+      >
+        <mesh
+          name="Circle002"
+          geometry={nodes.Circle002.geometry}
+          material={materials.Grass}
+        />
+        <mesh
+          name="Circle002_1"
+          geometry={nodes.Circle002_1.geometry}
+          material={materials["Green Petal"]}
+        />
+      </group>
+      <group
+        name="CircleShell003"
+        position={[-3.14, 0.005, -9.673]}
+        rotation={[-0.021, 0.001, 0.021]}
+        scale={0.245}
+      >
+        <mesh
+          name="Circle003"
+          geometry={nodes.Circle003.geometry}
+          material={materials.Yellow}
+        />
+        <mesh
+          name="Circle003_1"
+          geometry={nodes.Circle003_1.geometry}
+          material={materials.Ivory}
+        />
+      </group>
     </group>
   );
 }
