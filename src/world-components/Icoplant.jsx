@@ -2,6 +2,8 @@ import React, { useRef, useMemo, useEffect } from "react";
 import { useFrame, useThree, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+// import swayVertexShader from "./sway/vertex.glsl";
+// import swayFragmentShader from "./sway/fragment.glsl";
 
 const vertexShader = `
 varying vec2 vUv;
@@ -59,17 +61,6 @@ float smoothNoise( vec2 ip ){ // https://www.youtube.com/watch?v=zXsWftRdsvU
   }
 `; // Your vertex shader code
 
-const hexToVec3 = (hex) => {
-  // Remove the hash at the start if it's there
-  hex = hex.replace(/^#/, "");
-  // Parse the r, g, b values
-  let r = parseInt(hex.substring(0, 2), 16);
-  let g = parseInt(hex.substring(2, 4), 16);
-  let b = parseInt(hex.substring(4, 6), 16);
-  // Convert to range 0-1
-  return [+(r / 255).toFixed(2), +(g / 255).toFixed(2), +(b / 255).toFixed(2)];
-};
-
 export default function Icoplant(props) {
   const meshRef = useRef();
   const { clock } = useThree();
@@ -77,22 +68,20 @@ export default function Icoplant(props) {
   const uniforms = useMemo(
     () => ({
       time: { value: 0 },
+      baseColor: { value: props.baseColor },
     }),
-    []
+    [props.baseColor]
   );
 
-  const baseColor = hexToVec3(props.baseColor);
-
   const fragmentShader = `
-  varying vec2 vUv;
-  uniform vec3 baseColor;
+    varying vec2 vUv;
+    uniform vec3 baseColor;
 
-  void main() {
-      vec3 baseColor = vec3(${baseColor[0]},${baseColor[1]},${baseColor[2]});
-      float clarity = ( vUv.y * 2.0 ) + 0.125;
-      gl_FragColor = vec4( baseColor * clarity, 1 );
-  }
-  `;
+    void main() {
+        float clarity = ( vUv.y * 2.0 ) + 0.125;
+        gl_FragColor = vec4( baseColor * clarity, 1 );
+    }
+    `;
 
   const leavesMaterial = useMemo(
     () =>

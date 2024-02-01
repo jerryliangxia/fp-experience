@@ -10,6 +10,17 @@ import Bushes from "./world-components/Bushes";
 import TreeLeaves from "./world-components/TreeLeaves";
 import Icoplant from "./world-components/Icoplant";
 
+const hexToVec3 = (hex) => {
+  // Remove the hash at the start if it's there
+  hex = hex.replace(/^#/, "");
+  // Parse the r, g, b values
+  let r = parseInt(hex.substring(0, 2), 16);
+  let g = parseInt(hex.substring(2, 4), 16);
+  let b = parseInt(hex.substring(4, 6), 16);
+  // Convert to range 0-1
+  return [+(r / 255).toFixed(2), +(g / 255).toFixed(2), +(b / 255).toFixed(2)];
+};
+
 export default function Physics() {
   const { nodes, scene } = useGLTF("/octree.glb");
   const octree = useOctree(scene);
@@ -23,12 +34,12 @@ export default function Physics() {
       <Grass position={[0, 0, 13.5]} dense={false} />
       <Icoplant
         position={[-8.932, 0.35, 9.17]}
-        baseColor={"#9670FF"}
+        baseColor={hexToVec3("#9670FF")}
         rando={1.0}
       />
       <Icoplant
         position={[-7.39, 0.381, 8.278]}
-        baseColor={"#52C7FF"}
+        baseColor={hexToVec3("#52C7FF")}
         rando={2.0}
       />
       <Bushes position={[0, 0, 13.5]} />
