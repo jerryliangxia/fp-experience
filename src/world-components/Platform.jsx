@@ -245,11 +245,14 @@ export default function Model(props) {
         rotation={[0, -0.863, 0]}
         scale={[0.941, 2.167, 0.941]}
       >
-        <mesh
-          name="Cylinder"
-          geometry={nodes.Cylinder.geometry}
-          material={materials.Brown}
-        />
+        <mesh name="Cylinder" geometry={nodes.Cylinder.geometry}>
+          <meshPhysicalMaterial
+            ref={setMaterial}
+            color="#773C36"
+            metalness={0.4}
+            roughness={0.8}
+          />
+        </mesh>
       </group>
       <group
         name="TropicalTree001"
@@ -257,11 +260,14 @@ export default function Model(props) {
         rotation={[0, 0.258, 0]}
         scale={[0.941, 1.627, 0.941]}
       >
-        <mesh
-          name="Cylinder007"
-          geometry={nodes.Cylinder007.geometry}
-          material={materials.Brown}
-        />
+        <mesh name="Cylinder007" geometry={nodes.Cylinder007.geometry}>
+          <meshPhysicalMaterial
+            ref={setMaterial}
+            color="#773C36"
+            metalness={0.4}
+            roughness={0.8}
+          />
+        </mesh>
       </group>
       <group
         name="SpiralPlant002"

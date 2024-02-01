@@ -96,10 +96,10 @@ export default function Grass(props) {
   }, []);
 
   useEffect(() => {
-    const instanceNumber = 5000;
+    const instanceNumber = props.dense ? 5000 : 1000;
     const dummy = new THREE.Object3D();
-    const ovalRadiusX = 16; // The x radius of the oval
-    const ovalRadiusZ = 12; // The z radius of the oval
+    const ovalRadiusX = 16 * (props.dense ? 1 : 1.1); // The x radius of the oval
+    const ovalRadiusZ = 12 * (props.dense ? 1 : 1.1); // The z radius of the oval
 
     for (let i = 0; i < instanceNumber; i++) {
       const angle = Math.random() * Math.PI * 2; // Random angle
@@ -126,7 +126,7 @@ export default function Grass(props) {
     <instancedMesh
       position={props.position}
       ref={meshRef}
-      args={[geometry, leavesMaterial, 5000]}
+      args={[geometry, leavesMaterial, props.dense ? 5000 : 1000]}
     />
   );
 }

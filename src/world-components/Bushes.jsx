@@ -98,10 +98,10 @@ export default function Tree(props) {
   }, []);
 
   useEffect(() => {
-    const instanceNumber = 10;
+    const instanceNumber = 100;
     const dummy = new THREE.Object3D();
-    const ovalRadiusX = 16; // The x radius of the oval
-    const ovalRadiusZ = 12; // The z radius of the oval
+    const ovalRadiusX = 16 * 1.15; // The x radius of the oval
+    const ovalRadiusZ = 12 * 1.1; // The z radius of the oval
 
     for (let i = 0; i < instanceNumber; i++) {
       const angle = Math.random() * Math.PI * 2; // Random angle
@@ -128,7 +128,7 @@ export default function Tree(props) {
     <instancedMesh
       position={props.position}
       ref={meshRef}
-      args={[geometry, leavesMaterial, 10]}
+      args={[geometry, leavesMaterial, 100]}
     />
   );
 }
