@@ -11,13 +11,10 @@ import TreeLeaves from "./world-components/TreeLeaves";
 import Icoplant from "./world-components/Icoplant";
 
 const hexToVec3 = (hex) => {
-  // Remove the hash at the start if it's there
   hex = hex.replace(/^#/, "");
-  // Parse the r, g, b values
   let r = parseInt(hex.substring(0, 2), 16);
   let g = parseInt(hex.substring(2, 4), 16);
   let b = parseInt(hex.substring(4, 6), 16);
-  // Convert to range 0-1
   return [+(r / 255).toFixed(2), +(g / 255).toFixed(2), +(b / 255).toFixed(2)];
 };
 
@@ -30,8 +27,16 @@ export default function Physics() {
     <>
       <directionalLight intensity={1} position={[85.0, 80.0, 70.0]} />
       <Environment files="/img/rustig_koppie_puresky_1k.hdr" background />
-      <Grass position={[0, 0, 13.5]} dense={true} />
-      <Grass position={[0, 0, 13.5]} dense={false} />
+      <Grass
+        position={[0, 0, 13.5]}
+        dense={true}
+        baseColor={hexToVec3("#69FF80")}
+      />
+      <Grass
+        position={[0, 0, 13.5]}
+        dense={false}
+        baseColor={hexToVec3("#69FF80")}
+      />
       <Icoplant
         position={[-8.932, 0.35, 9.17]}
         baseColor={hexToVec3("#9670FF")}
@@ -42,9 +47,15 @@ export default function Physics() {
         baseColor={hexToVec3("#52C7FF")}
         rando={2.0}
       />
-      <Bushes position={[0, 0, 13.5]} />
-      <TreeLeaves position={[-11.184, -0.8, 7.569]} />
-      <TreeLeaves position={[-7.151, 0.6, 5.939]} />
+      <Bushes position={[0, 0, 13.5]} baseColor={hexToVec3("#8CD15C")} />
+      <TreeLeaves
+        position={[-11.184, -0.8, 7.569]}
+        baseColor={hexToVec3("#8CD15C")}
+      />
+      <TreeLeaves
+        position={[-7.151, 0.6, 5.939]}
+        baseColor={hexToVec3("#8CD15C")}
+      />
       <Ocean />
       <Clouds position-z={-300} position-y={-5} scale={10} />
       <Model />
