@@ -6,3 +6,10 @@ body,
   background: #000000;
   touch-action: none;
 }
+
+@font-face {
+  font-family: "OrbitronLight";
+  src: url("/fonts/orbitron.light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

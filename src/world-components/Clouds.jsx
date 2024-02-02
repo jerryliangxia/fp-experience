@@ -7,7 +7,7 @@ import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF("/clouds.glb");
+  const { nodes, materials } = useGLTF("/clouds2.glb");
   const [material, setMaterial] = useState();
   const groupRef = useRef();
 
@@ -1641,4 +1641,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/clouds.glb");
+useGLTF.preload("/clouds2.glb");

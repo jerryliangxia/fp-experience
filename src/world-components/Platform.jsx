@@ -6,7 +6,7 @@ import React, { useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF("/dreamscene.glb");
+  const { nodes, materials } = useGLTF("/dreamscene2.glb");
   const [material, setMaterial] = useState();
   return (
     <group {...props} dispose={null}>

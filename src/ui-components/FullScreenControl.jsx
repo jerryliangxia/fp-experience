@@ -55,9 +55,8 @@ export default function FullScreenControl() {
   function PSButton() {
     const [isHovered, setIsHovered] = useState(false);
 
-    // Define base and hover colors
     const baseColor = "#35C7D2";
-    const hoverColor = "#2ea8b6"; // Slightly darker color for hover state
+    const hoverColor = "#39D6E1";
     return (
       <button
         className="Button"
@@ -96,7 +95,9 @@ export default function FullScreenControl() {
           }
         }}
       >
-        <Text size="2">Play</Text>
+        <Text size="2" style={{ color: "white", fontFamily: "OrbitronLight" }}>
+          Play
+        </Text>
         <div
           style={{
             position: "absolute",
@@ -157,10 +158,13 @@ export default function FullScreenControl() {
             }}
           >
             <Flex gap="3" direction="column" align="center">
-              <Heading size="10" style={{ color: "white" }}>
+              <Heading
+                size="10"
+                style={{ color: "white", fontFamily: "OrbitronLight" }}
+              >
                 TRAPPIST-1 System
               </Heading>
-              <Text style={{ color: "white" }}>
+              <Text style={{ color: "white", fontFamily: "OrbitronLight" }}>
                 A Frutiger Aero-inspired experience.
               </Text>
               <PSButton />
@@ -192,7 +196,10 @@ export default function FullScreenControl() {
                     }}
                   />
                 </SwitchPrimitive.Root>
-                <Text style={{ color: "white" }} size="1">
+                <Text
+                  style={{ color: "white", fontFamily: "OrbitronLight" }}
+                  size="1"
+                >
                   Fullscreen
                 </Text>
               </Flex>
