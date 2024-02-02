@@ -31,7 +31,7 @@ export default function Leaves(props) {
 
   const geometry = useMemo(() => {
     const gltf = useLoader(GLTFLoader, "/leaves.glb");
-    return gltf.nodes.Cylinder_1.geometry;
+    return gltf.nodes.TropicalTree.geometry;
   }, []);
 
   useFrame(() => {

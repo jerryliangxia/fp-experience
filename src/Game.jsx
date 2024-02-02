@@ -42,7 +42,7 @@ export default function Physics() {
         rando={2.0}
       />
       <TreeLeaves
-        position={[-11.184, -0.8, 7.569]}
+        position={[-11.184, -0.7, 7.569]}
         baseColor={hexToVec3("#8CD15C")}
       />
       <TreeLeaves
