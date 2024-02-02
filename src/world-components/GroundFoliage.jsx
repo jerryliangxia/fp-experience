@@ -63,13 +63,13 @@ export default function GroundFoliage(props) {
   );
 
   const geometry = useMemo(() => {
-    const geo = new THREE.PlaneGeometry(0.1, 1, 1, 4);
-    geo.translate(0, 0.5, 0);
+    const gltf2 = useLoader(GLTFLoader, "/grass2.glb");
+    const geo = gltf2.nodes.Grass.geometry;
     return geo;
   }, []);
 
   const bushesGeometry = useMemo(() => {
-    const gltf = useLoader(GLTFLoader, "/bush.glb");
+    const gltf = useLoader(GLTFLoader, "/bush2.glb");
     return gltf.nodes.TropicalTree.geometry;
   }, []);
 
@@ -87,6 +87,7 @@ export default function GroundFoliage(props) {
       dummy.position.set(x, 0, z);
       dummy.scale.setScalar(0.5 + Math.random() * 0.5);
       dummy.rotation.y = Math.random() * Math.PI;
+      dummy.position.y = Math.random() * 0.3;
 
       dummy.updateMatrix();
       meshRef.current.setMatrixAt(i, dummy.matrix);
@@ -109,17 +110,33 @@ export default function GroundFoliage(props) {
   return (
     <>
       <instancedMesh
-        position={props.position}
+        position={[
+          props.position[0],
+          props.position[1] + 1.0,
+          props.position[2],
+        ]}
+        rotation-x={Math.PI}
+        rotation-y={Math.PI}
         ref={meshRefDense}
         args={[geometry, leavesMaterial, 5000]}
       />
       <instancedMesh
-        position={props.position}
+        position={[
+          props.position[0],
+          props.position[1] + 1.0,
+          props.position[2],
+        ]}
+        rotation-x={Math.PI}
+        rotation-y={Math.PI}
         ref={meshRefSparse}
         args={[geometry, leavesMaterial, 1000]}
       />
       <instancedMesh
-        position={props.position}
+        position={[
+          props.position[0],
+          props.position[1] + 0.4,
+          props.position[2],
+        ]}
         ref={bushesMeshRef}
         args={[bushesGeometry, bushesMaterial, 100]}
       />

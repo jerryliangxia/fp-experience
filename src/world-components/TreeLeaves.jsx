@@ -30,7 +30,7 @@ export default function Leaves(props) {
   );
 
   const geometry = useMemo(() => {
-    const gltf = useLoader(GLTFLoader, "/leaves.glb");
+    const gltf = useLoader(GLTFLoader, "/leaves2.glb");
     return gltf.nodes.TropicalTree.geometry;
   }, []);
 
