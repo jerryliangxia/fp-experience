@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Flex, Button, Switch, Text, Card } from "@radix-ui/themes";
+import { Flex, Button, Switch, Text, Card, Heading } from "@radix-ui/themes";
 import { motion } from "framer-motion";
+import * as SwitchPrimitive from "@radix-ui/react-switch";
 
 export default function FullScreenControl() {
   const [isVisible, setIsVisible] = useState(true);
@@ -87,7 +88,7 @@ export default function FullScreenControl() {
     return (
       <Flex
         style={{
-          width: "100%",
+          width: "50%",
           paddingLeft: "0 !important",
           paddingRight: "0 !important",
         }}
@@ -97,7 +98,7 @@ export default function FullScreenControl() {
           animate={{ backgroundPosition: "100%" }} // Set back to 100% for a clearer transition
           transition={{ duration: 0.3, type: "tween" }}
           style={{
-            background: `linear-gradient(270deg, transparent 50.13%, #3D63DC 50%)`, // Adjust the gradient stops
+            background: `linear-gradient(270deg, transparent 50.13%, #35C7D2 50%)`, // Adjust the gradient stops
             backgroundSize: "200% 100%",
             backgroundPosition: "100%", // Adjusted for a smoother transition
             color: "white",
@@ -157,16 +158,16 @@ export default function FullScreenControl() {
         <Card
           variant="ghost"
           style={{
-            top: "40vh",
-            left: "80vh",
+            top: 0,
+            left: 0,
             right: 0,
             bottom: 0,
           }}
         >
           <div
             style={{
-              backgroundColor: "white",
-              opacity: "30%",
+              backgroundColor: "#35C7D2",
+              opacity: "40%",
               position: "absolute",
               top: 0,
               left: 0,
@@ -175,15 +176,49 @@ export default function FullScreenControl() {
               zIndex: 1,
               borderRadius: "inherit",
             }}
-          ></div>
-          <div style={{ position: "relative", zIndex: 2 }}>
-            <Flex gap="2" direction="column">
+          />
+          <div
+            style={{
+              position: "relative",
+              zIndex: 2,
+            }}
+          >
+            <Flex gap="2" direction="column" align="center">
+              <Heading size="10" style={{ color: "white" }}>
+                TRAPPIST-1 SYSTEM
+              </Heading>
+              <Text style={{ color: "white" }}>
+                A Frutiger Aero inspired experience.
+              </Text>
               <PSButton />
               <Flex direction="row" gap="2" align="center">
-                <Switch
+                <SwitchPrimitive.Root
+                  className="switch-root"
                   checked={isFullScreen}
-                  onClick={() => setFullScreen(!isFullScreen)}
-                />
+                  onCheckedChange={setFullScreen}
+                  style={{
+                    backgroundColor: isFullScreen ? "#35C7D2" : "transparent",
+                    borderRadius: "9999px",
+                    width: "42px",
+                    height: "25px",
+                    position: "relative",
+                  }}
+                >
+                  <SwitchPrimitive.Thumb
+                    className="switch-thumb"
+                    style={{
+                      display: "block",
+                      width: "21px",
+                      height: "21px",
+                      backgroundColor: "#fff",
+                      borderRadius: "9999px",
+                      transition: "transform 100ms",
+                      transform: isFullScreen
+                        ? "translateX(11px) translateY(-1px)"
+                        : "translateX(-6px) translateY(-1px)",
+                    }}
+                  />
+                </SwitchPrimitive.Root>
                 <Text style={{ color: "white" }} size="1">
                   Fullscreen
                 </Text>

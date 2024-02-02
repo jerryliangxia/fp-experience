@@ -1,16 +1,25 @@
-import React from "react";
-import { useLoader } from "@react-three/fiber";
+import React, { useRef } from "react";
+import { useLoader, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 export default function Planets() {
   const planet = useLoader(THREE.TextureLoader, "/img/planet.png");
   const planet2 = useLoader(THREE.TextureLoader, "/img/planet2.png");
   const planet3 = useLoader(THREE.TextureLoader, "/img/planet3.png");
+  const planeRef = useRef();
+
+  useFrame((state, delta) => {
+    if (planeRef.current) {
+      const rotationSpeed = (2 * Math.PI) / 6; // Defines the speed of rotation
+      planeRef.current.rotation.z += (rotationSpeed * delta) / 220; // Adjusts the rotation in the Z direction
+    }
+  });
 
   return (
     <>
       {/* Big one */}
       <mesh
+        ref={planeRef}
         position={[-400, 40, -700]}
         rotation-y={Math.PI / 5}
         rotation-z={Math.PI / 1.6}
