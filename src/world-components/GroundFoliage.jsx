@@ -1,9 +1,17 @@
-import React, { useRef, useMemo, useEffect } from "react";
+import React, { useRef, useMemo, useEffect, useState } from "react";
 import { useFrame, useThree, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import * as THREE from "three";
 import vertexShader from "./sway/vertex.glsl";
 import fragmentShader from "./sway/fragment.glsl";
+
+const hexToVec3 = (hex) => {
+  hex = hex.replace(/^#/, "");
+  let r = parseInt(hex.substring(0, 2), 16);
+  let g = parseInt(hex.substring(2, 4), 16);
+  let b = parseInt(hex.substring(4, 6), 16);
+  return [+(r / 255).toFixed(2), +(g / 255).toFixed(2), +(b / 255).toFixed(2)];
+};
 
 export default function GroundFoliage(props) {
   const meshRefDense = useRef();
@@ -11,22 +19,25 @@ export default function GroundFoliage(props) {
   const bushesMeshRef = useRef();
   const { clock } = useThree();
 
+  const baseColor = hexToVec3("#69FF80");
+  const bushesBaseColor = hexToVec3("#8CD15C");
+
   const uniforms = useMemo(
     () => ({
       time: { value: 0 },
-      baseColor: { value: props.baseColor },
+      baseColor: { value: baseColor },
       multiplier: { value: 0.875 },
     }),
-    [props.baseColor]
+    []
   );
 
   const uniformsBushes = useMemo(
     () => ({
       time: { value: 0 },
-      baseColor: { value: props.bushesBaseColor },
+      baseColor: { value: bushesBaseColor },
       multiplier: { value: 0.875 },
     }),
-    [props.bushesBaseColor]
+    []
   );
 
   const leavesMaterial = useMemo(
@@ -88,7 +99,7 @@ export default function GroundFoliage(props) {
     initInstances(meshRefDense, 5000, 1); // Dense grass
     initInstances(meshRefSparse, 1000, 1.1);
     initInstances(bushesMeshRef, 100, 1.15);
-  }, [props.baseColor, props.bushesBaseColor]);
+  }, []);
 
   useFrame(() => {
     uniforms.time.value = clock.getElapsedTime();
