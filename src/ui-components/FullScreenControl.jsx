@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Flex, Button, Switch, Text, Card, Heading } from "@radix-ui/themes";
-import { motion } from "framer-motion";
+import { Flex, Text, Card, Heading } from "@radix-ui/themes";
 import * as SwitchPrimitive from "@radix-ui/react-switch";
 
 export default function FullScreenControl() {
@@ -53,10 +52,28 @@ export default function FullScreenControl() {
     };
   }, [isFullScreen]);
 
-  function PlayButton() {
+  function PSButton() {
+    const [isHovered, setIsHovered] = useState(false);
+
+    // Define base and hover colors
+    const baseColor = "#35C7D2";
+    const hoverColor = "#2ea8b6"; // Slightly darker color for hover state
     return (
-      <Button
-        style={{ zIndex: 5 }}
+      <button
+        className="Button"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{
+          width: "35%",
+          height: "90%",
+          backgroundColor: isHovered ? hoverColor : baseColor,
+          borderRadius: "4px",
+          cursor: "pointer",
+          color: "#FFFFFF",
+          padding: "8px 20px",
+          transition: "transform 0.3s ease, background-color 0.3s ease",
+          transform: isHovered ? "scale(1.1)" : "scale(1)",
+        }}
         onClick={() => {
           const canvas = document.querySelector("canvas");
           const event = new MouseEvent("click", {
@@ -79,64 +96,20 @@ export default function FullScreenControl() {
           }
         }}
       >
-        Play
-      </Button>
-    );
-  }
-
-  function PSButton() {
-    return (
-      <Flex
-        style={{
-          width: "50%",
-          paddingLeft: "0 !important",
-          paddingRight: "0 !important",
-        }}
-      >
-        <motion.div
-          whileHover={{ backgroundPosition: "0%" }}
-          animate={{ backgroundPosition: "100%" }} // Set back to 100% for a clearer transition
-          transition={{ duration: 0.3, type: "tween" }}
+        <Text size="2">Play</Text>
+        <div
           style={{
-            background: `linear-gradient(270deg, transparent 50.13%, #35C7D2 50%)`, // Adjust the gradient stops
-            backgroundSize: "200% 100%",
-            backgroundPosition: "100%", // Adjusted for a smoother transition
-            color: "white",
-            padding: "4px 0px",
-            border: "none",
-            cursor: "pointer",
+            position: "absolute",
+            top: 0,
+            left: 0,
             width: "100%",
             height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
             borderRadius: "4px",
+            zIndex: -1,
+            content: '""',
           }}
-          onClick={() => {
-            const canvas = document.querySelector("canvas");
-            const event = new MouseEvent("click", {
-              view: window,
-              bubbles: true,
-              cancelable: true,
-            });
-            canvas.dispatchEvent(event);
-            setIsVisible(false);
-            if (isFullScreen) {
-              if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
-              } else if (document.documentElement.mozRequestFullScreen) {
-                document.documentElement.mozRequestFullScreen();
-              } else if (document.documentElement.webkitRequestFullscreen) {
-                document.documentElement.webkitRequestFullscreen();
-              } else if (document.documentElement.msRequestFullscreen) {
-                document.documentElement.msRequestFullscreen();
-              }
-            }
-          }}
-        >
-          <Text size="2">Play</Text>
-        </motion.div>
-      </Flex>
+        />
+      </button>
     );
   }
 
@@ -183,15 +156,15 @@ export default function FullScreenControl() {
               zIndex: 2,
             }}
           >
-            <Flex gap="2" direction="column" align="center">
+            <Flex gap="3" direction="column" align="center">
               <Heading size="10" style={{ color: "white" }}>
-                TRAPPIST-1 SYSTEM
+                TRAPPIST-1 System
               </Heading>
               <Text style={{ color: "white" }}>
-                A Frutiger Aero inspired experience.
+                A Frutiger Aero-inspired experience.
               </Text>
               <PSButton />
-              <Flex direction="row" gap="2" align="center">
+              <Flex direction="row" gap="1" align="center">
                 <SwitchPrimitive.Root
                   className="switch-root"
                   checked={isFullScreen}
