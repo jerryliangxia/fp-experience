@@ -88,9 +88,10 @@ export default function Model(props) {
         name="LargeSpiral"
         geometry={nodes.LargeSpiral.geometry}
         material={materials["Blue.001"]}
-        position={[-496.931, 19.822, -593.922]}
+        // position={[-496.931, 19.822, -593.922]}
+        position={[-496.931 + 50, 19.822, -593.922 + 100]}
         rotation={[0.416, -0.474, -0.098]}
-        scale={[115.831, 133.843, 125.931]}
+        scale={[115.831 * 0.8, 133.843 * 0.8, 125.931 * 0.8]}
       />
       <mesh
         name="LargeSpiral001"

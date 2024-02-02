@@ -1,4 +1,5 @@
 import { useGLTF, Environment } from "@react-three/drei";
+import { useLoader } from "@react-three/fiber";
 import useOctree from "./useOctree";
 import Player from "./Player";
 import useOctreeHelper from "./useOctreeHelper";
@@ -8,6 +9,7 @@ import Clouds from "./world-components/Clouds";
 import GroundFoliage from "./world-components/GroundFoliage";
 import TreeLeaves from "./world-components/TreeLeaves";
 import Icoplant from "./world-components/Icoplant";
+import * as THREE from "three";
 
 const hexToVec3 = (hex) => {
   hex = hex.replace(/^#/, "");
@@ -17,10 +19,11 @@ const hexToVec3 = (hex) => {
   return [+(r / 255).toFixed(2), +(g / 255).toFixed(2), +(b / 255).toFixed(2)];
 };
 
-export default function Physics() {
+export default function Game() {
   const { nodes, scene } = useGLTF("/octree.glb");
   const octree = useOctree(scene);
   useOctreeHelper(octree);
+  const simpleShadow = useLoader(THREE.TextureLoader, "/img/simpleShadow.png");
 
   return (
     <>
@@ -53,6 +56,16 @@ export default function Physics() {
       <Clouds position-z={-300} position-y={-5} scale={10} />
       <Model />
       <Player octree={octree} />
+      <mesh position={[-300, 100, -700]} rotation-y={Math.PI / 6}>
+        <planeGeometry args={[1000, 1000]} />
+        <meshBasicMaterial
+          color="#978365"
+          transparent
+          opacity={1.0}
+          alphaMap={simpleShadow}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
     </>
   );
 }
