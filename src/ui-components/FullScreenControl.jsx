@@ -142,6 +142,7 @@ export default function FullScreenControl() {
   return (
     isVisible && (
       <div
+        id="fullscreen-control-container"
         style={{
           position: "absolute",
           display: "flex",

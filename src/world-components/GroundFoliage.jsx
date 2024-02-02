@@ -58,7 +58,7 @@ export default function GroundFoliage(props) {
   }, []);
 
   const bushesGeometry = useMemo(() => {
-    const gltf = useLoader(GLTFLoader, "/tree.glb");
+    const gltf = useLoader(GLTFLoader, "/bush.glb");
     return gltf.nodes.TropicalTree.geometry;
   }, []);
 

@@ -27,6 +27,17 @@ export default function Player({ octree }) {
 
   const keyboard = useKeyboard();
 
+  const canMove = () => {
+    const fullscreenControl = document.querySelector(
+      "#fullscreen-control-container"
+    );
+    // Check if the element exists and is visible
+    return !(
+      fullscreenControl &&
+      getComputedStyle(fullscreenControl).display !== "none"
+    );
+  };
+
   function getForwardVector(camera, playerDirection) {
     camera.getWorldDirection(playerDirection);
     playerDirection.y = 0;
@@ -49,6 +60,7 @@ export default function Player({ octree }) {
     playerOnFloor,
     playerDirection
   ) {
+    if (!canMove()) return;
     const speedDelta = delta * (playerOnFloor ? 25 : 8);
     keyboard["KeyA"] &&
       playerVelocity.add(
