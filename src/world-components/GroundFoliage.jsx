@@ -63,14 +63,16 @@ export default function GroundFoliage(props) {
   );
 
   const geometry = useMemo(() => {
-    const gltf2 = useLoader(GLTFLoader, "/grass2.glb");
+    const gltf2 = useLoader(GLTFLoader, "/grass3.glb");
     const geo = gltf2.nodes.Grass.geometry;
     return geo;
   }, []);
 
   const bushesGeometry = useMemo(() => {
-    const gltf = useLoader(GLTFLoader, "/bush2.glb");
-    return gltf.nodes.TropicalTree.geometry;
+    const gltf = useLoader(GLTFLoader, "/bush3.glb");
+    const geo = gltf.nodes.TropicalTree.geometry;
+    geo.rotateY(-Math.PI / 4);
+    return geo;
   }, []);
 
   const initInstances = (meshRef, instanceNumber, ovalRadiusMultiplier) => {
@@ -134,7 +136,7 @@ export default function GroundFoliage(props) {
       <instancedMesh
         position={[
           props.position[0],
-          props.position[1] + 0.4,
+          props.position[1] + 0.2,
           props.position[2],
         ]}
         ref={bushesMeshRef}
