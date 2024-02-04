@@ -1,7 +1,7 @@
 import { useRef, useState, useContext, useEffect, useMemo } from "react";
 import { Capsule } from "three/examples/jsm/math/Capsule.js";
 import { Vector3 } from "three";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import useKeyboard from "./useKeyboard";
 import { GameContext } from "./GameContext";
 import useSound from "use-sound";
@@ -10,7 +10,7 @@ import soundFile from "/sounds/step.mp3";
 const GRAVITY = 30;
 const STEPS_PER_FRAME = 5;
 
-export default function Player({ octree }) {
+export default function Player({ octree, colliders, ballCount }) {
   const { controlsMobile } = useContext(GameContext);
   const { upPressed, downPressed, leftPressed, rightPressed, spacePressed } =
     controlsMobile;
@@ -24,6 +24,23 @@ export default function Player({ octree }) {
     () => new Capsule(new Vector3(0, 0, 0), new Vector3(0, 1, 0), 0.5),
     []
   );
+  const { camera } = useThree();
+  let clicked = 0;
+
+  const onPointerDown = () => {
+    if (!canMove()) return;
+    throwBall(camera, capsule, playerDirection, playerVelocity, clicked++);
+  };
+  useEffect(() => {
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
+  });
+
+  useEffect(() => {
+    colliders[ballCount] = { capsule: capsule, velocity: playerVelocity };
+  }, [colliders, ballCount, capsule, playerVelocity]);
 
   const keyboard = useKeyboard();
 
@@ -104,6 +121,19 @@ export default function Player({ octree }) {
     playerOnFloor = playerCollisions(capsule, octree, playerVelocity);
     camera.position.copy(capsule.end);
     return playerOnFloor;
+  }
+
+  function throwBall(camera, capsule, playerDirection, playerVelocity, count) {
+    const { sphere, velocity } = colliders[count % ballCount];
+
+    camera.getWorldDirection(playerDirection);
+
+    sphere.center
+      .copy(capsule.end)
+      .addScaledVector(playerDirection, capsule.radius * 1.5);
+
+    velocity.copy(playerDirection).multiplyScalar(50);
+    velocity.addScaledVector(playerVelocity, 2);
   }
 
   function playerCollisions(capsule, octree, playerVelocity) {

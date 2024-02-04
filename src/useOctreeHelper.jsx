@@ -8,7 +8,7 @@ export default function useOctreeHelper(octree) {
   useEffect(() => {
     const helper = new OctreeHelper(octree, "hotpink");
     helper.name = "octreeHelper";
-    helper.visible = false;
+    helper.visible = true;
     scene.add(helper);
     return () => {
       scene.remove(helper);
