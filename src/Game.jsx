@@ -6,7 +6,8 @@ import useOctree from "./useOctree";
 import Player from "./Player";
 import useOctreeHelper from "./useOctreeHelper";
 import Model from "./world-components/Platform";
-import Ocean from "./world-components/Ocean";
+import RagingSea from "./world-components/RagingSea";
+import Water from "./world-components/Water";
 import Clouds from "./world-components/Clouds";
 import GroundFoliage from "./world-components/GroundFoliage";
 import TreeLeaves from "./world-components/TreeLeaves";
@@ -14,6 +15,7 @@ import Icoplant from "./world-components/Icoplant";
 import Planets from "./world-components/Planets";
 import * as Constants from "./Constants";
 import Platformer from "./world-components/Platformer";
+import Ocean from "./world-components/Ocean";
 
 const hexToVec3 = (hex) => {
   hex = hex.replace(/^#/, "");
@@ -118,7 +120,9 @@ export default function Game() {
         position={[-7.151, 0.6, 5.939]}
         baseColor={hexToVec3("#8CD15C")}
       />
+      {/* <Water /> */}
       <Ocean />
+      {/* <RagingSea /> */}
       <Clouds position-z={-300} position-y={-5} scale={10} />
       <Model />
       <Platformer />

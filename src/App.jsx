@@ -59,6 +59,7 @@ export default function App() {
               pointerEvents: "auto",
             }}
           >
+            <fog attach="fog" args={["white", 10, 1500]} />
             <Game />
             {isDesktop ? (
               <PointerLockControlsDesktop />
