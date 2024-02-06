@@ -78,7 +78,7 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
     playerDirection
   ) {
     if (!canMove()) return;
-    const speedDelta = delta * (playerOnFloor ? 25 : 8);
+    const speedDelta = delta * (playerOnFloor ? 36 : 12);
     keyboard["KeyA"] &&
       playerVelocity.add(
         getSideVector(camera, playerDirection).multiplyScalar(-speedDelta)
