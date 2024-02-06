@@ -6,7 +6,6 @@ import useOctree from "./useOctree";
 import Player from "./Player";
 import useOctreeHelper from "./useOctreeHelper";
 import Model from "./world-components/Platform";
-import BouncyPlatform from "./world-components/BouncyPlatformer";
 import Ocean from "./world-components/Ocean";
 import Clouds from "./world-components/Clouds";
 import GroundFoliage from "./world-components/GroundFoliage";
@@ -15,7 +14,6 @@ import Icoplant from "./world-components/Icoplant";
 import Planets from "./world-components/Planets";
 import * as Constants from "./Constants";
 import Platformer from "./world-components/Platformer";
-import { Physics, CuboidCollider, RigidBody } from "@react-three/rapier";
 
 const hexToVec3 = (hex) => {
   hex = hex.replace(/^#/, "");
@@ -28,19 +26,21 @@ const hexToVec3 = (hex) => {
 export default function Game() {
   const { scene } = useGLTF("/2.glb");
   const octree = useOctree(scene);
-  useOctreeHelper(octree);
+  // useOctreeHelper(octree);
 
-  const { scene: bouncyScene } = useGLTF("/4.glb");
+  const { scene: bouncyScene } = useGLTF("/3.glb");
   const octreeBouncy = useOctree(bouncyScene);
-  useOctreeHelper(octreeBouncy);
+  // useOctreeHelper(octreeBouncy);
+
+  const { scene: ballHitScene } = useGLTF("4.glb");
+  const octreeBallHit = useOctree(ballHitScene);
+  // useOctreeHelper(octreeBallHit);
 
   const colliders = useRef([]);
-  console.log(colliders);
 
   function checkSphereCollisions(sphere, velocity) {
     for (let i = 0, length = colliders.current.length; i < length; i++) {
       const c = colliders.current[i];
-      // console.log(c)
 
       if (c.sphere) {
         const d2 = sphere.center.distanceToSquared(c.sphere.center);
@@ -121,7 +121,6 @@ export default function Game() {
       <Ocean />
       <Clouds position-z={-300} position-y={-5} scale={10} />
       <Model />
-      <BouncyPlatform />
       <Platformer />
       {Constants.balls.map(({ position }, i) => (
         <SphereCollider
@@ -130,6 +129,7 @@ export default function Game() {
           radius={Constants.radius}
           octree={octree}
           octreeBouncy={octreeBouncy}
+          octreeBallHit={octreeBallHit}
           position={position}
           colliders={colliders.current}
           checkSphereCollisions={checkSphereCollisions}
@@ -144,21 +144,6 @@ export default function Game() {
         colliders={colliders.current}
       />
       <Planets />
-      <Physics debug={true}>
-        <RigidBody
-          colliders="hull"
-          gravityScale={0}
-          onCollisionEnter={() => {
-            console.log("Collision occureed");
-          }}
-        >
-          <mesh position={[0, 5, 0]}>
-            <CuboidCollider args={[1, 1, 1]} />
-            <boxGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color="blue" />
-          </mesh>
-        </RigidBody>
-      </Physics>
     </>
   );
 }

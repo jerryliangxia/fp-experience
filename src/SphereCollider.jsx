@@ -9,6 +9,7 @@ export default function SphereCollider({
   radius,
   octree,
   octreeBouncy,
+  octreeBallHit,
   position,
   colliders,
   checkSphereCollisions,
@@ -30,20 +31,31 @@ export default function SphereCollider({
   function updateSphere(delta, octree, octreeBouncy, sphere, velocity) {
     sphere.center.addScaledVector(velocity, delta);
 
-    const result =
-      octree.sphereIntersect(sphere) || octreeBouncy.sphereIntersect(sphere);
+    const result = octree.sphereIntersect(sphere);
+    const otherResult = octreeBouncy.sphereIntersect(sphere);
+    const ballHitResult = octreeBallHit.sphereIntersect(sphere);
 
     if (result) {
-      const bounceFactor = result === octree ? 1.5 : 5.5;
-      const factor = -result.normal.dot(velocity) * bounceFactor;
-      velocity.addScaledVector(result.normal, factor);
+      const factor = -result.normal.dot(velocity);
+      velocity.addScaledVector(result.normal, factor * 1.5);
       sphere.center.add(result.normal.multiplyScalar(result.depth));
+    } else if (otherResult) {
+      const factor = -otherResult.normal.dot(velocity);
+      velocity.addScaledVector(otherResult.normal, factor * 5.5);
+      sphere.center.add(otherResult.normal.multiplyScalar(otherResult.depth));
+    } else if (ballHitResult) {
+      const factor = -ballHitResult.normal.dot(velocity);
+      velocity.addScaledVector(ballHitResult.normal, factor * 1.5);
+      sphere.center.add(
+        ballHitResult.normal.multiplyScalar(ballHitResult.depth)
+      );
+      console.log("Hello");
     } else {
       velocity.y -= Constants.Gravity * delta;
     }
 
-    const dampingFactor = Math.exp(-1.5 * delta) - 1;
-    velocity.addScaledVector(velocity, dampingFactor);
+    const damping = Math.exp(-1.5 * delta) - 1;
+    velocity.addScaledVector(velocity, damping);
 
     checkSphereCollisions(sphere, velocity);
 
