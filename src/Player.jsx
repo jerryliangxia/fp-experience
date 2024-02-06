@@ -10,7 +10,7 @@ import soundFile from "/sounds/step.mp3";
 const GRAVITY = 30;
 const STEPS_PER_FRAME = 5;
 
-export default function Player({ octree, colliders, ballCount }) {
+export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
   const { controlsMobile } = useContext(GameContext);
   const { upPressed, downPressed, leftPressed, rightPressed, spacePressed } =
     controlsMobile;
@@ -106,6 +106,7 @@ export default function Player({ octree, colliders, ballCount }) {
     camera,
     delta,
     octree,
+    octreeBouncy,
     capsule,
     playerVelocity,
     playerOnFloor
@@ -118,7 +119,12 @@ export default function Player({ octree, colliders, ballCount }) {
     playerVelocity.addScaledVector(playerVelocity, damping);
     const deltaPosition = playerVelocity.clone().multiplyScalar(delta);
     capsule.translate(deltaPosition);
-    playerOnFloor = playerCollisions(capsule, octree, playerVelocity);
+    playerOnFloor = playerCollisions(
+      capsule,
+      octree,
+      octreeBouncy,
+      playerVelocity
+    );
     camera.position.copy(capsule.end);
     return playerOnFloor;
   }
@@ -136,8 +142,9 @@ export default function Player({ octree, colliders, ballCount }) {
     velocity.addScaledVector(playerVelocity, 2);
   }
 
-  function playerCollisions(capsule, octree, playerVelocity) {
+  function playerCollisions(capsule, octree, octreeBouncy, playerVelocity) {
     const result = octree.capsuleIntersect(capsule);
+    const otherResult = octreeBouncy.capsuleIntersect(capsule);
     let playerOnFloor = false;
     if (result) {
       playerOnFloor = result.normal.y > 0;
@@ -148,6 +155,8 @@ export default function Player({ octree, colliders, ballCount }) {
         );
       }
       capsule.translate(result.normal.multiplyScalar(result.depth));
+    } else if (otherResult) {
+      playerVelocity.y = 50;
     }
     return playerOnFloor;
   }
@@ -198,6 +207,7 @@ export default function Player({ octree, colliders, ballCount }) {
         camera,
         deltaSteps,
         octree,
+        octreeBouncy,
         capsule,
         playerVelocity,
         playerOnFloor.current

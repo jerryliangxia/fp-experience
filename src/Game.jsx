@@ -6,6 +6,7 @@ import useOctree from "./useOctree";
 import Player from "./Player";
 import useOctreeHelper from "./useOctreeHelper";
 import Model from "./world-components/Platform";
+import BouncyPlatform from "./world-components/BouncyPlatformer";
 import Ocean from "./world-components/Ocean";
 import Clouds from "./world-components/Clouds";
 import GroundFoliage from "./world-components/GroundFoliage";
@@ -25,9 +26,13 @@ const hexToVec3 = (hex) => {
 };
 
 export default function Game() {
-  const { nodes, scene } = useGLTF("/2.glb");
+  const { scene } = useGLTF("/2.glb");
   const octree = useOctree(scene);
   useOctreeHelper(octree);
+
+  const { scene: bouncyScene } = useGLTF("/4.glb");
+  const octreeBouncy = useOctree(bouncyScene);
+  useOctreeHelper(octreeBouncy);
 
   const colliders = useRef([]);
   console.log(colliders);
@@ -116,6 +121,7 @@ export default function Game() {
       <Ocean />
       <Clouds position-z={-300} position-y={-5} scale={10} />
       <Model />
+      <BouncyPlatform />
       <Platformer />
       {Constants.balls.map(({ position }, i) => (
         <SphereCollider
@@ -123,6 +129,7 @@ export default function Game() {
           id={i}
           radius={Constants.radius}
           octree={octree}
+          octreeBouncy={octreeBouncy}
           position={position}
           colliders={colliders.current}
           checkSphereCollisions={checkSphereCollisions}
@@ -133,6 +140,7 @@ export default function Game() {
       <Player
         ballCount={Constants.ballCount}
         octree={octree}
+        octreeBouncy={octreeBouncy}
         colliders={colliders.current}
       />
       <Planets />
