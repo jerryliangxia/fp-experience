@@ -33,7 +33,7 @@ function createSpiralMaterial(color) {
     aoMap: aoTexture,
     roughnessMap: roughnessTexture,
     metalness: 0.5,
-    iridescence: 0.1,
+    iridescence: 0.5,
     iridescenceIOR: 1.0,
     iridescenceThicknessRange: [100, 500],
   });
@@ -67,15 +67,15 @@ function SpiralPlant() {
       <mesh
         geometry={nodes.Plane003.geometry}
         material={purpleMaterial}
-        position={[-677.536, -70.438, -477.122]}
+        position={[-677.536, -30.438, -477.122]}
         rotation={[0.672, 0.891, -0.107]}
         scale={197.822}
       />
       <mesh
         geometry={nodes.Plane002.geometry}
         material={purpleMaterial}
-        position={[-660.642, 0.46, -460.075]}
-        rotation={[1.509, 1.178, -0.737]}
+        position={[-719.642, -10, -400.075]}
+        rotation={[1.109, 0.8, -0.737]}
         scale={[156.814, 161.325, 155.541]}
       />
       <mesh

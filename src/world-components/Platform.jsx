@@ -43,21 +43,21 @@ function Model() {
 
   return (
     <group dispose={null}>
-      <mesh
+      {/* <mesh
         name="LargeMountain"
         geometry={nodes.LargeMountain.geometry}
         material={islandMaterial}
         position={[442.308, -9.361, -403.126]}
         scale={[30.144, 20.466, 20.466]}
-      />
-      <mesh
+      /> */}
+      {/* <mesh
         name="BackgroundMountain"
         geometry={nodes.BackgroundMountain.geometry}
         material={islandMaterial}
         position={[422.331, -1.568, 236.6]}
         rotation={[Math.PI, -0.897, Math.PI]}
         scale={[11.484, 7.797, 7.797]}
-      />
+      /> */}
       <mesh
         name="Spike"
         geometry={nodes.Spike.geometry}
