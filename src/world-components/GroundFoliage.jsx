@@ -125,7 +125,7 @@ export default function GroundFoliage(props) {
       <instancedMesh
         position={[
           props.position[0],
-          props.position[1] + 1.0,
+          props.position[1] + 0.8,
           props.position[2],
         ]}
         rotation-x={Math.PI}

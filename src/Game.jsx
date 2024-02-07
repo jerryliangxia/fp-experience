@@ -4,18 +4,21 @@ import SphereCollider from "./SphereCollider";
 import Ball from "./Ball";
 import useOctree from "./useOctree";
 import Player from "./Player";
-import useOctreeHelper from "./useOctreeHelper";
+// import useOctreeHelper from "./useOctreeHelper";
 import Model from "./world-components/Platform";
-import RagingSea from "./world-components/RagingSea";
-import Water from "./world-components/Water";
-import Clouds from "./world-components/Clouds";
-import GroundFoliage from "./world-components/GroundFoliage";
+// import RagingSea from "./world-components/RagingSea";
+// import Water from "./world-components/Water";
+// import Clouds from "./world-components/Clouds";
+// import GroundFoliage from "./world-components/GroundFoliage";
 import TreeLeaves from "./world-components/TreeLeaves";
 import Icoplant from "./world-components/Icoplant";
 import Planets from "./world-components/Planets";
 import * as Constants from "./Constants";
 import Platformer from "./world-components/Platformer";
 import Ocean from "./world-components/Ocean";
+import Beach from "./world-components/Beach";
+import Trees from "./world-components/Trees";
+import Grass from "./world-components/Grass";
 
 const hexToVec3 = (hex) => {
   hex = hex.replace(/^#/, "");
@@ -93,22 +96,73 @@ export default function Game() {
     }
   }
 
+  const divideBy = 1.4;
+
   return (
     <>
       <directionalLight intensity={1} position={[85.0, 80.0, 70.0]} />
       <Environment files="/img/rustig_koppie_puresky_1k.hdr" background />
-      <GroundFoliage
+      {/* <GroundFoliage
         position={[0, 0, 13.5]}
         baseColor={hexToVec3("#69FF80")}
         bushesBaseColor={hexToVec3("#8CD15C")}
+      /> */}
+      <Grass
+        position={[-10, -0.2, 7]}
+        rotation-y={Math.PI / 4}
+        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        width={15}
+        instances={1000 / divideBy}
+      />
+      <Grass
+        position={[-7, -0.23, 8]}
+        rotation-y={Math.PI / 3}
+        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        width={15}
+        instances={1100 / divideBy}
+      />
+      <Grass
+        position={[-8.5, -0.15, 7.5]}
+        rotation-y={Math.PI / 3}
+        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        width={20}
+        instances={100 / divideBy}
+      />
+      <Grass
+        position={[-8.5, -0.19, 6.5]}
+        rotation-y={Math.PI / 3}
+        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        width={25}
+        instances={900 / divideBy}
+      />
+      <Grass
+        position={[-8.5, -0.25, 6.5]}
+        rotation-y={Math.PI / 3}
+        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        width={20}
+        instances={800 / divideBy}
+      />
+      <Grass
+        position={[-8.5, -0.3, 4.5]}
+        rotation-y={Math.PI / 3}
+        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        width={26}
+        instances={600 / divideBy}
+      />
+      <Grass
+        position={[-6.5, -0.3, 9.5]}
+        rotation-y={Math.PI / 3}
+        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        width={22}
+        instances={600 / divideBy}
       />
       <Icoplant
-        position={[-8.932, 0.35, 9.17]}
+        position={[-8.932, 0.1, 9.17]}
         baseColor={hexToVec3("#9670FF")}
         rando={1.0}
       />
       <Icoplant
-        position={[-7.39, 0.381, 8.278]}
+        position={[-7.39, 0.1, 8.278]}
         baseColor={hexToVec3("#52C7FF")}
         rando={2.0}
       />
@@ -122,8 +176,10 @@ export default function Game() {
       />
       {/* <Water /> */}
       <Ocean />
+      <Beach />
+      <Trees position-y={-0.1} />
       {/* <RagingSea /> */}
-      <Clouds position-z={-300} position-y={-5} scale={10} />
+      {/* <Clouds position-z={-300} position-y={-5} scale={10} /> */}
       <Model />
       <Platformer />
       {Constants.balls.map(({ position }, i) => (
