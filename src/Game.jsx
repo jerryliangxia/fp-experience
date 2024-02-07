@@ -19,6 +19,7 @@ import Ocean from "./world-components/Ocean";
 import Beach from "./world-components/Beach";
 import Trees from "./world-components/Trees";
 import Grass from "./world-components/Grass";
+import { isDesktop } from "react-device-detect";
 
 const hexToVec3 = (hex) => {
   hex = hex.replace(/^#/, "");
@@ -107,55 +108,59 @@ export default function Game() {
         baseColor={hexToVec3("#69FF80")}
         bushesBaseColor={hexToVec3("#8CD15C")}
       /> */}
-      <Grass
-        position={[-10, -0.2, 7]}
-        rotation-y={Math.PI / 4}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
-        width={15}
-        instances={1000 / divideBy}
-      />
-      <Grass
-        position={[-7, -0.23, 8]}
-        rotation-y={Math.PI / 3}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
-        width={15}
-        instances={1100 / divideBy}
-      />
-      <Grass
-        position={[-8.5, -0.15, 7.5]}
-        rotation-y={Math.PI / 3}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
-        width={20}
-        instances={100 / divideBy}
-      />
-      <Grass
-        position={[-8.5, -0.19, 6.5]}
-        rotation-y={Math.PI / 3}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
-        width={25}
-        instances={900 / divideBy}
-      />
-      <Grass
-        position={[-8.5, -0.25, 6.5]}
-        rotation-y={Math.PI / 3}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
-        width={20}
-        instances={800 / divideBy}
-      />
-      <Grass
-        position={[-8.5, -0.3, 4.5]}
-        rotation-y={Math.PI / 3}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
-        width={26}
-        instances={600 / divideBy}
-      />
-      <Grass
-        position={[-6.5, -0.3, 9.5]}
-        rotation-y={Math.PI / 3}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
-        width={22}
-        instances={600 / divideBy}
-      />
+      {isDesktop && (
+        <>
+          <Grass
+            position={[-10, -0.2, 7]}
+            rotation-y={Math.PI / 4}
+            options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+            width={15}
+            instances={1000 / divideBy}
+          />
+          <Grass
+            position={[-7, -0.23, 8]}
+            rotation-y={Math.PI / 3}
+            options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+            width={15}
+            instances={1100 / divideBy}
+          />
+          <Grass
+            position={[-8.5, -0.15, 7.5]}
+            rotation-y={Math.PI / 3}
+            options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+            width={20}
+            instances={100 / divideBy}
+          />
+          <Grass
+            position={[-8.5, -0.19, 6.5]}
+            rotation-y={Math.PI / 3}
+            options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+            width={25}
+            instances={900 / divideBy}
+          />
+          <Grass
+            position={[-8.5, -0.25, 6.5]}
+            rotation-y={Math.PI / 3}
+            options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+            width={20}
+            instances={800 / divideBy}
+          />
+          <Grass
+            position={[-8.5, -0.3, 4.5]}
+            rotation-y={Math.PI / 3}
+            options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+            width={26}
+            instances={600 / divideBy}
+          />
+          <Grass
+            position={[-6.5, -0.3, 9.5]}
+            rotation-y={Math.PI / 3}
+            options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+            width={22}
+            instances={600 / divideBy}
+          />
+        </>
+      )}
       <Icoplant
         position={[-8.932, 0.1, 9.17]}
         baseColor={hexToVec3("#9670FF")}
