@@ -19,6 +19,7 @@ import Ocean from "./world-components/Ocean";
 import Beach from "./world-components/Beach";
 import Trees from "./world-components/Trees";
 import Grass from "./world-components/Grass";
+import SpiralPlant from "./world-components/SpiralPlant";
 
 const hexToVec3 = (hex) => {
   hex = hex.replace(/^#/, "");
@@ -106,6 +107,7 @@ export default function Game() {
     <>
       <directionalLight intensity={1} position={[85.0, 80.0, 70.0]} />
       <Environment files="/img/rustig_koppie_puresky_1k.hdr" background />
+      <SpiralPlant />
       <GroundFoliage
         position={[-8.932, 0.3, 9.17]}
         rotation-y={Math.PI / 2}

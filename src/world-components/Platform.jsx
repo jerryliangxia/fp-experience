@@ -6,7 +6,7 @@ import * as THREE from "three";
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 
-function Model(props) {
+function Model() {
   const { nodes, materials } = useGLTF("/dreamscene2_5.glb");
   // const [material] = useState();
   const textureLoader = new THREE.TextureLoader();
@@ -42,7 +42,7 @@ function Model(props) {
   islandMaterial.iridescenceThicknessRange = [100, 1000];
 
   return (
-    <group {...props} dispose={null}>
+    <group dispose={null}>
       <mesh
         name="LargeMountain"
         geometry={nodes.LargeMountain.geometry}
@@ -117,7 +117,7 @@ function Model(props) {
           material={materials.Grey}
         />
       </group>
-      <mesh
+      {/* <mesh
         name="LargeSpiral"
         geometry={nodes.LargeSpiral.geometry}
         material={materials["Blue.001"]}
@@ -141,7 +141,7 @@ function Model(props) {
         position={[85.708, 10.446, -389.67]}
         rotation={[0.404, 0.492, 0.136]}
         scale={[76.586, 100.143, 59.549]}
-      />
+      /> */}
       {/* <group
         name="Beach"
         position={[0, 0.322, 13.417]}
@@ -239,7 +239,7 @@ function Model(props) {
           material={materials.Grass}
         /> */}
       </group>
-      <group
+      {/* <group
         name="SpiralPlant"
         position={[1.303, 0.436, -16.505]}
         rotation={[-2.873, 1.254, 3.028]}
@@ -255,7 +255,7 @@ function Model(props) {
           geometry={nodes.Plane007_1.geometry}
           material={materials["Blue.001"]}
         />
-      </group>
+      </group> */}
       <group
         name="SpiralPlant001"
         position={[12.928, 0.7, 1.526]}
