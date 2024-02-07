@@ -6,70 +6,119 @@ import * as THREE from "three";
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 
-function SpiralPlant() {
-  const { nodes, materials } = useGLTF("/spiralplant.glb");
-  // const [material] = useState();
-  const textureLoader = new THREE.TextureLoader();
-  const repeatValue = 3; // Define the constant repeat value
+const textureLoader = new THREE.TextureLoader();
+const repeatValue = 3; // Define the constant repeat value
 
-  const colorTexture = textureLoader.load("/textures/island/basecolor.png");
-  //   colorTexture.colorSpace = THREE.SRGBColorSpace;
-  colorTexture.wrapS = colorTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  colorTexture.repeat.set(repeatValue, repeatValue);
-  const aoTexture = textureLoader.load("/textures/island/ao.png");
-  aoTexture.wrapS = aoTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  aoTexture.repeat.set(repeatValue, repeatValue);
-  const roughnessTexture = textureLoader.load("/textures/island/roughness.png");
-  roughnessTexture.wrapS = roughnessTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  roughnessTexture.repeat.set(repeatValue, repeatValue);
-  const normalTexture = textureLoader.load("/textures/island/normal.png");
-  normalTexture.wrapS = normalTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  normalTexture.repeat.set(repeatValue, repeatValue);
-  const heightTexture = textureLoader.load("/textures/island/height.png");
-  heightTexture.wrapS = heightTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  heightTexture.repeat.set(repeatValue ** 2, repeatValue ** 2);
+const colorTexture = textureLoader.load("/textures/island/basecolor.png");
+//   colorTexture.colorSpace = THREE.SRGBColorSpace;
+colorTexture.wrapS = colorTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+colorTexture.repeat.set(repeatValue, repeatValue);
+const aoTexture = textureLoader.load("/textures/island/ao.png");
+aoTexture.wrapS = aoTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+aoTexture.repeat.set(repeatValue, repeatValue);
+const roughnessTexture = textureLoader.load("/textures/island/roughness.png");
+roughnessTexture.wrapS = roughnessTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+roughnessTexture.repeat.set(repeatValue, repeatValue);
+const normalTexture = textureLoader.load("/textures/island/normal.png");
+normalTexture.wrapS = normalTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+normalTexture.repeat.set(repeatValue, repeatValue);
+const heightTexture = textureLoader.load("/textures/island/height.png");
+heightTexture.wrapS = heightTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+heightTexture.repeat.set(repeatValue ** 2, repeatValue ** 2);
 
-  const spiralMaterial = new THREE.MeshPhysicalMaterial({
-    color: "#5152E7",
+function createSpiralMaterial(color) {
+  return new THREE.MeshPhysicalMaterial({
+    color: color,
+    normalMap: normalTexture,
+    aoMap: aoTexture,
+    roughnessMap: roughnessTexture,
+    metalness: 0.5,
+    iridescence: 0.1,
+    iridescenceIOR: 1.0,
+    iridescenceThicknessRange: [100, 500],
   });
-  //   spiralMaterial.map = colorTexture;
-  spiralMaterial.normalMap = normalTexture;
-  spiralMaterial.aoMap = aoTexture;
-  spiralMaterial.roughnessMap = roughnessTexture;
-  spiralMaterial.metalness = 0.5;
-  spiralMaterial.iridescence = 0.1;
-  spiralMaterial.iridescenceIOR = 1.0;
-  spiralMaterial.iridescenceThicknessRange = [100, 500];
+}
+
+function SpiralPlant() {
+  const { nodes } = useGLTF("/spiralplant.glb");
+  // const [material] = useState();
+
+  const purpleMaterial = createSpiralMaterial("#5152E7");
+  const blueMaterial = createSpiralMaterial("#417BE7");
+  const orangeMaterial = createSpiralMaterial("#C68E32");
+  const greenMaterial = createSpiralMaterial("#5B883C");
 
   return (
     <group dispose={null}>
       <mesh
         geometry={nodes.Plane.geometry}
-        material={spiralMaterial}
+        material={purpleMaterial}
         position={[-94.457, 4.32, -609.294]}
         rotation={[0.355, 0.769, 0.377]}
         scale={[299.058, 304.68, 313.051]}
       />
       <mesh
         geometry={nodes.Plane001.geometry}
-        material={spiralMaterial}
+        material={purpleMaterial}
         position={[135.648, -3.585, -567.382]}
         rotation={[-2.875, -0.88, 2.746]}
         scale={322.334}
       />
       <mesh
         geometry={nodes.Plane003.geometry}
-        material={spiralMaterial}
-        position={[-677.536, -10.438, -477.122]}
-        rotation={[0.372, 0.891, -0.107]}
+        material={purpleMaterial}
+        position={[-677.536, -70.438, -477.122]}
+        rotation={[0.672, 0.891, -0.107]}
         scale={197.822}
       />
       <mesh
         geometry={nodes.Plane002.geometry}
-        material={spiralMaterial}
-        position={[-700.642, 0.46, -409.075]}
+        material={purpleMaterial}
+        position={[-660.642, 0.46, -460.075]}
         rotation={[1.509, 1.178, -0.737]}
         scale={[156.814, 161.325, 155.541]}
+      />
+      <mesh
+        geometry={nodes.Plane004.geometry}
+        material={purpleMaterial}
+        position={[-0.367, -0.485, -16.603]}
+        rotation={[0, 0.362, 0]}
+        scale={[1.8, 1.834, 1.885]}
+      />
+      <mesh
+        geometry={nodes.Plane005.geometry}
+        material={purpleMaterial}
+        position={[2.746, -0.412, -16.41]}
+        rotation={[0, 0.043, 0]}
+        scale={[0.933, 1.138, 1.169]}
+      />
+      <mesh
+        geometry={nodes.Plane006.geometry}
+        material={greenMaterial}
+        position={[12.125, 0, 0.906]}
+        rotation={[0, 0.362, 0]}
+        scale={[1.8, 1.834, 1.885]}
+      />
+      <mesh
+        geometry={nodes.Plane007.geometry}
+        material={greenMaterial}
+        position={[12.389, 0, 2.274]}
+        rotation={[-3.113, 0.236, 3.018]}
+        scale={[0.72, 0.879, 0.903]}
+      />
+      <mesh
+        geometry={nodes.Plane008.geometry}
+        material={orangeMaterial}
+        position={[55.466, -0.485, 19.946]}
+        rotation={[-Math.PI, 1.047, -Math.PI]}
+        scale={[1.8, 1.834, 1.885]}
+      />
+      <mesh
+        geometry={nodes.Plane009.geometry}
+        material={blueMaterial}
+        position={[35.687, -0.519, 33.621]}
+        rotation={[-Math.PI, 1.539, -Math.PI]}
+        scale={[1.8, 1.834, 1.885]}
       />
     </group>
   );

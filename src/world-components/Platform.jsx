@@ -256,7 +256,7 @@ function Model() {
           material={materials["Blue.001"]}
         />
       </group> */}
-      <group
+      {/* <group
         name="SpiralPlant001"
         position={[12.928, 0.7, 1.526]}
         rotation={[-0.294, 1.281, 0.424]}
@@ -272,7 +272,7 @@ function Model() {
           geometry={nodes.Plane097_1.geometry}
           material={materials["Green Petal"]}
         />
-      </group>
+      </group> */}
       {/* <group
         name="TropicalTree"
         position={[-7.151, 2.461, 5.939]}
@@ -303,7 +303,7 @@ function Model() {
           />
         </mesh>
       </group> */}
-      <group
+      {/* <group
         name="SpiralPlant002"
         position={[36.14, 0.22, 32.936]}
         rotation={[-3.057, 0.229, -3.019]}
@@ -336,8 +336,8 @@ function Model() {
           geometry={nodes.Plane010_1.geometry}
           material={materials.Orange}
         />
-      </group>
-      <mesh
+      </group> */}
+      {/* <mesh
         name="SimpleShell"
         geometry={nodes.SimpleShell.geometry}
         material={materials["Blue.001"]}
@@ -603,7 +603,7 @@ function Model() {
           geometry={nodes.Circle003_1.geometry}
           material={materials.Ivory}
         />
-      </group>
+      </group> */}
     </group>
   );
 }
