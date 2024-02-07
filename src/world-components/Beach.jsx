@@ -2,7 +2,7 @@ import * as THREE from "three";
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 
-export default function Beach(props) {
+function Beach() {
   const textureLoader = new THREE.TextureLoader();
 
   // Sand
@@ -27,7 +27,7 @@ export default function Beach(props) {
   const { nodes } = useGLTF("/beach.glb");
 
   return (
-    <group {...props} dispose={null}>
+    <group dispose={null}>
       <mesh
         geometry={nodes.Beach.geometry}
         material={sandMaterial}
@@ -37,3 +37,5 @@ export default function Beach(props) {
     </group>
   );
 }
+
+export default React.memo(Beach);

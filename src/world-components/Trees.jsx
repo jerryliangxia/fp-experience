@@ -2,7 +2,7 @@ import * as THREE from "three";
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 
-export default function Trees(props) {
+function Trees() {
   const textureLoader = new THREE.TextureLoader();
 
   const colorTexture = textureLoader.load("/textures/tree/basecolor.jpg");
@@ -24,7 +24,7 @@ export default function Trees(props) {
 
   const { nodes } = useGLTF("/trees.glb");
   return (
-    <group {...props} dispose={null}>
+    <group dispose={null}>
       <mesh
         geometry={nodes.TropicalTree.geometry}
         material={treeMaterial}
@@ -42,3 +42,5 @@ export default function Trees(props) {
     </group>
   );
 }
+
+export default React.memo(Trees);
