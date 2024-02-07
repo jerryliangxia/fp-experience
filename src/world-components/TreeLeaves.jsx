@@ -8,12 +8,18 @@ import fragmentShader from "./sway/fragment.glsl";
 export default function Leaves(props) {
   const meshRef = useRef();
   const { clock } = useThree();
+  const texture = useLoader(
+    THREE.TextureLoader,
+    "/textures/grass/blade_diffuse.jpg"
+  );
 
   const uniforms = useMemo(
     () => ({
       time: { value: 0 },
       baseColor: { value: props.baseColor },
       multiplier: { value: 1.1 },
+      map: { value: texture },
+      useTexture: { value: true },
     }),
     [props.baseColor]
   );

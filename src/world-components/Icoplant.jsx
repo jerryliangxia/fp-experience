@@ -6,14 +6,16 @@ import vertexShader from "./sway/vertex.glsl";
 import fragmentShader from "./sway/fragment.glsl";
 
 export default function Icoplant(props) {
-  const meshRef = useRef();
   const { clock } = useThree();
 
+  const texture = useLoader(THREE.TextureLoader, "/textures/icoplant.png");
   const uniforms = useMemo(
     () => ({
       time: { value: 0 },
       baseColor: { value: props.baseColor },
-      multiplier: { value: 2.0 },
+      multiplier: { value: 1.6 },
+      map: { value: texture },
+      useTexture: { value: true },
     }),
     [props.baseColor]
   );
@@ -39,12 +41,14 @@ export default function Icoplant(props) {
   });
 
   return (
-    <mesh
-      position={props.position}
-      ref={meshRef}
-      geometry={geometry}
-      material={leavesMaterial}
-      scale={0.3}
-    />
+    <>
+      <mesh
+        castShadow
+        position={props.position}
+        geometry={geometry}
+        material={leavesMaterial}
+        scale={0.3}
+      />
+    </>
   );
 }

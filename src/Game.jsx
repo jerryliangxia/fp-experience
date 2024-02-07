@@ -9,7 +9,7 @@ import Model from "./world-components/Platform";
 // import RagingSea from "./world-components/RagingSea";
 // import Water from "./world-components/Water";
 // import Clouds from "./world-components/Clouds";
-// import GroundFoliage from "./world-components/GroundFoliage";
+import GroundFoliage from "./world-components/GroundFoliage";
 import TreeLeaves from "./world-components/TreeLeaves";
 import Icoplant from "./world-components/Icoplant";
 import Planets from "./world-components/Planets";
@@ -19,7 +19,6 @@ import Ocean from "./world-components/Ocean";
 import Beach from "./world-components/Beach";
 import Trees from "./world-components/Trees";
 import Grass from "./world-components/Grass";
-import { isDesktop } from "react-device-detect";
 
 const hexToVec3 = (hex) => {
   hex = hex.replace(/^#/, "");
@@ -28,6 +27,10 @@ const hexToVec3 = (hex) => {
   let b = parseInt(hex.substring(4, 6), 16);
   return [+(r / 255).toFixed(2), +(g / 255).toFixed(2), +(b / 255).toFixed(2)];
 };
+
+function randomizeBH(baseValue) {
+  return baseValue + (Math.random() * 0.2 - 0.1);
+}
 
 export default function Game() {
   const { scene } = useGLTF("/2.glb");
@@ -103,57 +106,61 @@ export default function Game() {
     <>
       <directionalLight intensity={1} position={[85.0, 80.0, 70.0]} />
       <Environment files="/img/rustig_koppie_puresky_1k.hdr" background />
-      {/* <GroundFoliage
-        position={[0, 0, 13.5]}
-        baseColor={hexToVec3("#69FF80")}
+      <GroundFoliage
+        position={[-8.932, 0.3, 9.17]}
+        rotation-y={Math.PI / 2}
         bushesBaseColor={hexToVec3("#8CD15C")}
-      /> */}
+      />
+      <GroundFoliage
+        position={[-7.4, 0.3, 8.5]}
+        bushesBaseColor={hexToVec3("#8CD15C")}
+      />
       <Grass
-        position={[-10, -0.2, 7]}
+        position={[-10, 0, 7]}
         rotation-y={Math.PI / 4}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={15}
         instances={1000 / divideBy}
       />
       <Grass
-        position={[-7, -0.23, 8]}
+        position={[-7, 0, 8]}
         rotation-y={Math.PI / 3}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={15}
         instances={1100 / divideBy}
       />
       <Grass
-        position={[-8.5, -0.15, 7.5]}
+        position={[-8.5, 0, 7.5]}
         rotation-y={Math.PI / 3}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={20}
         instances={100 / divideBy}
       />
       <Grass
-        position={[-8.5, -0.19, 6.5]}
+        position={[-8.5, 0, 6.5]}
         rotation-y={Math.PI / 3}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={25}
         instances={900 / divideBy}
       />
       <Grass
-        position={[-8.5, -0.25, 6.5]}
+        position={[-8.5, 0, 6.5]}
         rotation-y={Math.PI / 3}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={20}
         instances={800 / divideBy}
       />
       <Grass
-        position={[-8.5, -0.3, 4.5]}
+        position={[-8.5, 0, 4.5]}
         rotation-y={Math.PI / 3}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={26}
         instances={600 / divideBy}
       />
       <Grass
-        position={[-6.5, -0.3, 9.5]}
+        position={[-6.5, 0, 9.5]}
         rotation-y={Math.PI / 3}
-        options={{ bW: 0.06, bH: 0.5, joints: 5 }}
+        options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={22}
         instances={600 / divideBy}
       />
