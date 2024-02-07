@@ -177,11 +177,11 @@ export default function Game() {
         rando={2.0}
       />
       <TreeLeaves
-        position={[-11.184, -0.7, 7.569]}
+        position={[-11.484, -0.7, 7.669]}
         baseColor={hexToVec3("#8CD15C")}
       />
       <TreeLeaves
-        position={[-7.151, 0.6, 5.939]}
+        position={[-7.751, 0.6, 5.939]}
         baseColor={hexToVec3("#8CD15C")}
       />
       {/* <Water /> */}

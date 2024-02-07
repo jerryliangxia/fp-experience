@@ -9,37 +9,37 @@ import { useGLTF } from "@react-three/drei";
 function Model() {
   const { nodes, materials } = useGLTF("/dreamscene2_5.glb");
   // const [material] = useState();
-  const textureLoader = new THREE.TextureLoader();
-  const repeatValue = 5; // Define the constant repeat value
+  // const textureLoader = new THREE.TextureLoader();
+  // const repeatValue = 5; // Define the constant repeat value
 
-  const colorTexture = textureLoader.load("/textures/island/basecolor.png");
-  colorTexture.colorSpace = THREE.SRGBColorSpace;
-  colorTexture.wrapS = colorTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  colorTexture.repeat.set(repeatValue, repeatValue);
-  const aoTexture = textureLoader.load("/textures/island/ao.png");
-  aoTexture.wrapS = aoTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  aoTexture.repeat.set(repeatValue, repeatValue);
-  const roughnessTexture = textureLoader.load("/textures/island/roughness.png");
-  roughnessTexture.wrapS = roughnessTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  roughnessTexture.repeat.set(repeatValue, repeatValue);
-  const normalTexture = textureLoader.load("/textures/island/normal.png");
-  normalTexture.wrapS = normalTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  normalTexture.repeat.set(repeatValue, repeatValue);
-  const heightTexture = textureLoader.load("/textures/island/height.png");
-  heightTexture.wrapS = heightTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  heightTexture.repeat.set(repeatValue ** 2, repeatValue ** 2);
+  // const colorTexture = textureLoader.load("/textures/island/basecolor.png");
+  // colorTexture.colorSpace = THREE.SRGBColorSpace;
+  // colorTexture.wrapS = colorTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+  // colorTexture.repeat.set(repeatValue, repeatValue);
+  // const aoTexture = textureLoader.load("/textures/island/ao.png");
+  // aoTexture.wrapS = aoTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+  // aoTexture.repeat.set(repeatValue, repeatValue);
+  // const roughnessTexture = textureLoader.load("/textures/island/roughness.png");
+  // roughnessTexture.wrapS = roughnessTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+  // roughnessTexture.repeat.set(repeatValue, repeatValue);
+  // const normalTexture = textureLoader.load("/textures/island/normal.png");
+  // normalTexture.wrapS = normalTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+  // normalTexture.repeat.set(repeatValue, repeatValue);
+  // const heightTexture = textureLoader.load("/textures/island/height.png");
+  // heightTexture.wrapS = heightTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+  // heightTexture.repeat.set(repeatValue ** 2, repeatValue ** 2);
 
-  const islandMaterial = new THREE.MeshPhysicalMaterial({
-    color: "#40884A",
-  });
-  islandMaterial.map = colorTexture;
-  islandMaterial.normalMap = normalTexture;
-  islandMaterial.aoMap = aoTexture;
-  islandMaterial.displacementMap = heightTexture;
-  islandMaterial.roughnessMap = roughnessTexture;
-  islandMaterial.iridescence = 0.1;
-  islandMaterial.iridescenceIOR = 1.0;
-  islandMaterial.iridescenceThicknessRange = [100, 1000];
+  // const islandMaterial = new THREE.MeshPhysicalMaterial({
+  //   color: "#40884A",
+  // });
+  // islandMaterial.map = colorTexture;
+  // islandMaterial.normalMap = normalTexture;
+  // islandMaterial.aoMap = aoTexture;
+  // islandMaterial.displacementMap = heightTexture;
+  // islandMaterial.roughnessMap = roughnessTexture;
+  // islandMaterial.iridescence = 0.1;
+  // islandMaterial.iridescenceIOR = 1.0;
+  // islandMaterial.iridescenceThicknessRange = [100, 1000];
 
   return (
     <group dispose={null}>
@@ -165,13 +165,13 @@ function Model() {
           />
         </mesh>
       </group> */}
-      <group
+      {/* <group
         name="Icoplant"
         position={[-8.932, 0.1, 9.17]}
         rotation={[-0.023, -0.871, 0.058]}
         scale={0.304}
       >
-        {/* <mesh
+        <mesh
           name="Icosphere"
           geometry={nodes.Icosphere.geometry}
           material={materials.Yellow}
@@ -200,15 +200,15 @@ function Model() {
           name="Icosphere_5"
           geometry={nodes.Icosphere_5.geometry}
           material={materials.Grass}
-        /> */}
-      </group>
-      <group
+        />
+      </group> */}
+      {/* <group
         name="Icoplant001"
         position={[-7.39, 0.1, 8.278]}
         rotation={[-3.069, -1.368, -2.996]}
         scale={0.304}
       >
-        {/* <mesh
+        <mesh
           name="Icosphere005"
           geometry={nodes.Icosphere005.geometry}
           material={materials.Orange}
@@ -237,8 +237,8 @@ function Model() {
           name="Icosphere005_5"
           geometry={nodes.Icosphere005_5.geometry}
           material={materials.Grass}
-        /> */}
-      </group>
+        />
+      </group> */}
       {/* <group
         name="SpiralPlant"
         position={[1.303, 0.436, -16.505]}
