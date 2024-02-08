@@ -14,15 +14,15 @@ export default function Overlay() {
   const handleJump = () => {
     handleControlChange("spacePressed", true);
     setTimeout(() => handleControlChange("spacePressed", false), 100);
-    setIsJumpButtonTouched(true); // Set jump button as touched
-    setTimeout(() => setIsJumpButtonTouched(false), 500); // Reset after action
+    setIsJumpButtonTouched(true);
+    setTimeout(() => setIsJumpButtonTouched(false), 500);
   };
 
   const handleThrowButtonPress = () => {
     handleControlChange("throwPressed", true);
     setTimeout(() => handleControlChange("throwPressed", false), 100);
-    setIsThrowButtonTouched(true); // Set throw button as touched
-    setTimeout(() => setIsThrowButtonTouched(false), 500); // Reset after action
+    setIsThrowButtonTouched(true);
+    setTimeout(() => setIsThrowButtonTouched(false), 500);
   };
   const handleTouchMove = (event) => {
     if (!dpadRef.current) return;

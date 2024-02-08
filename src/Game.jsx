@@ -20,6 +20,7 @@ import Beach from "./world-components/Beach";
 import Trees from "./world-components/Trees";
 import Grass from "./world-components/Grass";
 import SpiralPlant from "./world-components/SpiralPlant";
+// import Clouds from "./world-components/Clouds";
 
 const hexToVec3 = (hex) => {
   hex = hex.replace(/^#/, "");
@@ -214,6 +215,7 @@ export default function Game() {
         colliders={colliders.current}
       />
       <Planets />
+      {/* <Clouds /> */}
     </>
   );
 }

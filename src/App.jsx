@@ -68,7 +68,7 @@ export default function App() {
               <PointerLockControlsMobile />
             )}
           </Canvas>
-          <Overlay />
+          {!isDesktop && <Overlay />}
           {!loadingOpaque && isDesktop && <FullScreenControl />}
         </div>
       </GameContext.Provider>
