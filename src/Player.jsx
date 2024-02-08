@@ -6,14 +6,21 @@ import useKeyboard from "./useKeyboard";
 import { GameContext } from "./GameContext";
 import useSound from "use-sound";
 import soundFile from "/sounds/step.mp3";
+import { isDesktop } from "react-device-detect";
 
 const GRAVITY = 30;
 const STEPS_PER_FRAME = 5;
 
 export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
   const { controlsMobile } = useContext(GameContext);
-  const { upPressed, downPressed, leftPressed, rightPressed, spacePressed } =
-    controlsMobile;
+  const {
+    upPressed,
+    downPressed,
+    leftPressed,
+    rightPressed,
+    spacePressed,
+    throwPressed,
+  } = controlsMobile;
 
   const [playSound, sound] = useSound(soundFile, { volume: 0.2 });
 
@@ -28,7 +35,7 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
   let clicked = 0;
 
   const onPointerDown = () => {
-    if (!canMove()) return;
+    if (!canMove() || !isDesktop) return;
     throwBall(camera, capsule, playerDirection, playerVelocity, clicked++);
   };
   useEffect(() => {
@@ -37,6 +44,15 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
       document.removeEventListener("pointerdown", onPointerDown);
     };
   });
+
+  useEffect(() => {
+    if (throwPressed) {
+      // Assuming throwBall is a function that handles throwing the ball
+      throwBall(camera, capsule, playerDirection, playerVelocity, clicked++);
+      // Reset throwPressed state if necessary
+      // handleThrowChange(false); // You'll need to pass handleThrowChange from GameContext
+    }
+  }, [throwPressed, camera, capsule, playerDirection, playerVelocity, clicked]);
 
   useEffect(() => {
     colliders[ballCount] = { capsule: capsule, velocity: playerVelocity };
