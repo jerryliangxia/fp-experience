@@ -5,7 +5,7 @@ import Ball from "./Ball";
 import useOctree from "./useOctree";
 import Player from "./Player";
 // import useOctreeHelper from "./useOctreeHelper";
-import Model from "./world-components/Platform";
+// import Model from "./world-components/Platform";
 // import RagingSea from "./world-components/RagingSea";
 // import Water from "./world-components/Water";
 // import Clouds from "./world-components/Clouds";
@@ -191,7 +191,7 @@ export default function Game() {
       <Trees position-y={-0.1} />
       {/* <RagingSea /> */}
       {/* <Clouds position-z={-300} position-y={-5} scale={10} /> */}
-      <Model />
+      {/* <Model /> */}
       <Platformer />
       {Constants.balls.map(({ position }, i) => (
         <SphereCollider
