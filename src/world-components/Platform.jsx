@@ -9,37 +9,38 @@ import { useGLTF } from "@react-three/drei";
 function Model() {
   const { nodes, materials } = useGLTF("/dreamscene2_5.glb");
   // const [material] = useState();
-  // const textureLoader = new THREE.TextureLoader();
-  // const repeatValue = 5; // Define the constant repeat value
+  const textureLoader = new THREE.TextureLoader();
+  const repeatValue = 3; // Define the constant repeat value
 
-  // const colorTexture = textureLoader.load("/textures/island/basecolor.png");
-  // colorTexture.colorSpace = THREE.SRGBColorSpace;
-  // colorTexture.wrapS = colorTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  // colorTexture.repeat.set(repeatValue, repeatValue);
-  // const aoTexture = textureLoader.load("/textures/island/ao.png");
-  // aoTexture.wrapS = aoTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  // aoTexture.repeat.set(repeatValue, repeatValue);
-  // const roughnessTexture = textureLoader.load("/textures/island/roughness.png");
-  // roughnessTexture.wrapS = roughnessTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  // roughnessTexture.repeat.set(repeatValue, repeatValue);
-  // const normalTexture = textureLoader.load("/textures/island/normal.png");
-  // normalTexture.wrapS = normalTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  // normalTexture.repeat.set(repeatValue, repeatValue);
-  // const heightTexture = textureLoader.load("/textures/island/height.png");
-  // heightTexture.wrapS = heightTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
-  // heightTexture.repeat.set(repeatValue ** 2, repeatValue ** 2);
+  const colorTexture = textureLoader.load("/textures/island/basecolor.png");
+  colorTexture.colorSpace = THREE.SRGBColorSpace;
+  colorTexture.wrapS = colorTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+  colorTexture.repeat.set(repeatValue, repeatValue);
+  const aoTexture = textureLoader.load("/textures/island/ao.png");
+  aoTexture.wrapS = aoTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+  aoTexture.repeat.set(repeatValue, repeatValue);
+  const roughnessTexture = textureLoader.load("/textures/island/roughness.png");
+  roughnessTexture.wrapS = roughnessTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+  roughnessTexture.repeat.set(repeatValue, repeatValue);
+  const normalTexture = textureLoader.load("/textures/island/normal.png");
+  normalTexture.wrapS = normalTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+  normalTexture.repeat.set(repeatValue, repeatValue);
+  const heightTexture = textureLoader.load("/textures/island/height.png");
+  heightTexture.wrapS = heightTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+  heightTexture.repeat.set(repeatValue, repeatValue);
 
-  // const islandMaterial = new THREE.MeshPhysicalMaterial({
-  //   color: "#40884A",
-  // });
-  // islandMaterial.map = colorTexture;
-  // islandMaterial.normalMap = normalTexture;
-  // islandMaterial.aoMap = aoTexture;
-  // islandMaterial.displacementMap = heightTexture;
-  // islandMaterial.roughnessMap = roughnessTexture;
-  // islandMaterial.iridescence = 0.1;
-  // islandMaterial.iridescenceIOR = 1.0;
-  // islandMaterial.iridescenceThicknessRange = [100, 1000];
+  const islandMaterial = new THREE.MeshPhysicalMaterial({
+    color: "#000000",
+  });
+  islandMaterial.map = colorTexture;
+  islandMaterial.normalMap = normalTexture;
+  islandMaterial.aoMap = aoTexture;
+  islandMaterial.displacementMap = heightTexture;
+  islandMaterial.metalness = 5;
+  islandMaterial.roughnessMap = roughnessTexture;
+  islandMaterial.iridescence = 0.1;
+  islandMaterial.iridescenceIOR = 1.0;
+  islandMaterial.iridescenceThicknessRange = [100, 1000];
 
   return (
     <group dispose={null}>
@@ -58,64 +59,66 @@ function Model() {
         rotation={[Math.PI, -0.897, Math.PI]}
         scale={[11.484, 7.797, 7.797]}
       /> */}
-      <mesh
-        name="Spike"
-        geometry={nodes.Spike.geometry}
-        material={materials["Grey 2"]}
-        position={[481.17, 0.523, -178.924]}
-        rotation={[-2.615, 0.385, 1.964]}
-        scale={[1.768, 19.136, 1.768]}
-      />
-      <group
-        name="Spike001"
-        position={[486.721, 4.316, -187.355]}
-        rotation={[0.303, -0.287, 1.103]}
-        scale={[1.768, 19.136, 1.768]}
-      >
+      <group position={[-50, 0, 75]}>
         <mesh
-          name="Cylinder023"
-          geometry={nodes.Cylinder023.geometry}
-          material={materials["Grey 2"]}
+          name="Spike"
+          geometry={nodes.Spike.geometry}
+          material={islandMaterial}
+          position={[141.161, -4.742, -146.078]}
+          rotation={[-2.574, 0.523, 1.871]}
+          scale={[3.378, 36.554, 3.378]}
         />
-        <mesh
-          name="Cylinder023_1"
-          geometry={nodes.Cylinder023_1.geometry}
-          material={materials.Grey}
-        />
-      </group>
-      <group
-        name="Spike002"
-        position={[490.42, 4.426, -183.574]}
-        rotation={[-2.615, 0.385, 1.964]}
-        scale={[1.768, 28.683, 1.768]}
-      >
-        <mesh
-          name="Cylinder031"
-          geometry={nodes.Cylinder031.geometry}
-          material={materials["Grey 2"]}
-        />
-        <mesh
-          name="Cylinder031_1"
-          geometry={nodes.Cylinder031_1.geometry}
-          material={materials.Grey}
-        />
-      </group>
-      <group
-        name="Spike003"
-        position={[504.394, 4.374, -172.829]}
-        rotation={[0.303, -0.287, 1.103]}
-        scale={[1.768, 19.136, 1.768]}
-      >
-        <mesh
-          name="Cylinder032"
-          geometry={nodes.Cylinder032.geometry}
-          material={materials["Grey 2"]}
-        />
-        <mesh
-          name="Cylinder032_1"
-          geometry={nodes.Cylinder032_1.geometry}
-          material={materials.Grey}
-        />
+        <group
+          name="Spike001"
+          position={[154.217, 2.502, -160.269]}
+          rotation={[0.322, -0.441, 1.156]}
+          scale={[3.378, 36.554, 3.378]}
+        >
+          <mesh
+            name="Cylinder023"
+            geometry={nodes.Cylinder023.geometry}
+            material={islandMaterial}
+          />
+          <mesh
+            name="Cylinder023_1"
+            geometry={nodes.Cylinder023_1.geometry}
+            material={islandMaterial}
+          />
+        </group>
+        <group
+          name="Spike002"
+          position={[160.029, 2.712, -152.004]}
+          rotation={[-2.574, 0.523, 1.871]}
+          scale={[3.378, 54.79, 3.378]}
+        >
+          <mesh
+            name="Cylinder031"
+            geometry={nodes.Cylinder031.geometry}
+            material={islandMaterial}
+          />
+          <mesh
+            name="Cylinder031_1"
+            geometry={nodes.Cylinder031_1.geometry}
+            material={islandMaterial}
+          />
+        </group>
+        <group
+          name="Spike003"
+          position={[183.073, 2.613, -127.453]}
+          rotation={[0.322, -0.441, 1.156]}
+          scale={[3.378, 36.554, 3.378]}
+        >
+          <mesh
+            name="Cylinder032"
+            geometry={nodes.Cylinder032.geometry}
+            material={islandMaterial}
+          />
+          <mesh
+            name="Cylinder032_1"
+            geometry={nodes.Cylinder032_1.geometry}
+            material={islandMaterial}
+          />
+        </group>
       </group>
       {/* <mesh
         name="LargeSpiral"

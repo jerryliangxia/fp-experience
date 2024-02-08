@@ -106,8 +106,8 @@ export default function Game() {
 
   return (
     <>
-      <directionalLight intensity={1} position={[85.0, 80.0, 70.0]} />
       <Environment files="/img/rustig_koppie_puresky_1k.hdr" background />
+      <directionalLight intensity={1} position={[85.0, 80.0, 70.0]} />
       <SpiralPlant />
       <GroundFoliage
         position={[-8.932, 0.3, 9.17]}
@@ -208,14 +208,25 @@ export default function Game() {
           <Ball radius={Constants.radius} />
         </SphereCollider>
       ))}
+
+      <Planets />
+      {/* <Clouds /> */}
+      {/* <ContactShadows
+        opacity={1}
+        scale={10}
+        blur={1}
+        frames={1}
+        far={1000}
+        resolution={256}
+        color="#000000"
+        position-y={1}
+      /> */}
       <Player
         ballCount={Constants.ballCount}
         octree={octree}
         octreeBouncy={octreeBouncy}
         colliders={colliders.current}
       />
-      <Planets />
-      {/* <Clouds /> */}
     </>
   );
 }
