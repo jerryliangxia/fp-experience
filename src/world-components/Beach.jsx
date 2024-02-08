@@ -11,6 +11,7 @@ function Beach() {
   sandNormalTexture.wrapT = THREE.RepeatWrapping;
   sandNormalTexture.repeat.x = 5;
   sandNormalTexture.repeat.y = 5;
+  sandNormalTexture.magFilter = THREE.NearestFilter;
 
   // Alpha
   const alphaTexture = textureLoader.load("/textures/sand/sandao.png");
