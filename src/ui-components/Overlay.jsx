@@ -8,17 +8,22 @@ export default function Overlay() {
   const throwButtonRef = useRef();
   const jumpButtonRef = useRef();
   const [isTouched, setIsTouched] = useState(false);
+  const [isThrowButtonTouched, setIsThrowButtonTouched] = useState(false);
+  const [isJumpButtonTouched, setIsJumpButtonTouched] = useState(false);
 
   const handleJump = () => {
     handleControlChange("spacePressed", true);
     setTimeout(() => handleControlChange("spacePressed", false), 100);
+    setIsJumpButtonTouched(true); // Set jump button as touched
+    setTimeout(() => setIsJumpButtonTouched(false), 500); // Reset after action
   };
 
   const handleThrowButtonPress = () => {
     handleControlChange("throwPressed", true);
     setTimeout(() => handleControlChange("throwPressed", false), 100);
+    setIsThrowButtonTouched(true); // Set throw button as touched
+    setTimeout(() => setIsThrowButtonTouched(false), 500); // Reset after action
   };
-
   const handleTouchMove = (event) => {
     if (!dpadRef.current) return;
 
@@ -67,6 +72,9 @@ export default function Overlay() {
     handleControlChange("rightPressed", false);
   }
 
+  const buttonOpacity = (isButtonTouched) =>
+    isButtonTouched || isTouched ? 0.5 : 0;
+
   return (
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
       <div
@@ -106,7 +114,7 @@ export default function Overlay() {
           right: "1vw",
           bottom: "calc(1vh + 30% + 10px)",
           zIndex: 3,
-          opacity: 0.5,
+          opacity: buttonOpacity(isThrowButtonTouched),
           transition: "opacity 0.25s ease-in-out",
           width: bw / 2,
           height: bh / 2,
@@ -131,7 +139,7 @@ export default function Overlay() {
           right: "1vw",
           bottom: "1vh",
           zIndex: 3,
-          opacity: isTouched ? 0.5 : 0,
+          opacity: buttonOpacity(isJumpButtonTouched),
           transition: "opacity 0.25s ease-in-out",
           width: bw / 2,
           height: bh / 2,
