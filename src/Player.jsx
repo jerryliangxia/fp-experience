@@ -7,9 +7,17 @@ import { GameContext } from "./GameContext";
 import useSound from "use-sound";
 import soundFile from "/sounds/step.mp3";
 import { isDesktop } from "react-device-detect";
+import boingSound from "/sounds/boing.mp3";
+import { useMultipleSounds } from "./useMultipleSounds";
 
 const GRAVITY = 30;
 const STEPS_PER_FRAME = 5;
+const soundFiles = [
+  "/sounds/concrete/1.mp3",
+  "/sounds/concrete/3.mp3",
+  "/sounds/concrete/2.mp3",
+  "/sounds/concrete/4.mp3",
+];
 
 export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
   const { controlsMobile } = useContext(GameContext);
@@ -22,7 +30,21 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
     throwPressed,
   } = controlsMobile;
 
-  const [playSound, sound] = useSound(soundFile, { volume: 0.2 });
+  const playRandomFootstep = useMultipleSounds(soundFiles);
+  const [playSandSound] = useSound(soundFile, {
+    volume: Math.random() * 0.015 + 0.06,
+  });
+  const [playBoingSound] = useSound(boingSound, { volume: 0.2 });
+
+  function playFootstep() {
+    const playerYPosition = capsule.start.y;
+
+    if (playerYPosition < 1.3) {
+      playSandSound();
+    } else {
+      playRandomFootstep();
+    }
+  }
 
   const playerOnFloor = useRef(false);
   const playerVelocity = useMemo(() => new Vector3(), []);
@@ -158,6 +180,9 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
     velocity.addScaledVector(playerVelocity, 2);
   }
 
+  const [lastBoingTime, setLastBoingTime] = useState(0);
+  const boingCooldown = 1000;
+
   function playerCollisions(capsule, octree, octreeBouncy, playerVelocity) {
     const result = octree.capsuleIntersect(capsule);
     const otherResult = octreeBouncy.capsuleIntersect(capsule);
@@ -173,6 +198,11 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
       capsule.translate(result.normal.multiplyScalar(result.depth));
     } else if (otherResult) {
       playerVelocity.y = 50;
+      const now = Date.now();
+      if (now - lastBoingTime > boingCooldown) {
+        playBoingSound();
+        setLastBoingTime(now);
+      }
     }
     return playerOnFloor;
   }
@@ -206,13 +236,11 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
         Date.now() - lastPlayed > 500
       ) {
         setIsSoundPlayed(true);
-        if (!sound.isPlaying) {
-          playSound();
-          setLastPlayed(Date.now());
-          setTimeout(() => {
-            setIsSoundPlayed(false);
-          }, 500);
-        }
+        playFootstep();
+        setLastPlayed(Date.now());
+        setTimeout(() => {
+          setIsSoundPlayed(false);
+        }, 500);
       } else if (velocityMagnitude <= 1) {
         setIsSoundPlayed(false);
       }

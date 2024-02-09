@@ -32,7 +32,7 @@ function Beach() {
       <mesh
         geometry={nodes.Beach.geometry}
         material={sandMaterial}
-        position={[35.546, 0.1, 27.64]}
+        position={[35.546, 0.3, 27.64]}
         scale={[215.33, 215.33, 143.972]}
       />
     </group>

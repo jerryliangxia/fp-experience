@@ -7,23 +7,23 @@ import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 const textureLoader = new THREE.TextureLoader();
-const repeatValue = 3; // Define the constant repeat value
+const repeatValue = 3;
 
 const colorTexture = textureLoader.load("/textures/island/basecolor.png");
 //   colorTexture.colorSpace = THREE.SRGBColorSpace;
-colorTexture.wrapS = colorTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+colorTexture.wrapS = colorTexture.wrapT = THREE.RepeatWrapping;
 colorTexture.repeat.set(repeatValue, repeatValue);
 const aoTexture = textureLoader.load("/textures/island/ao.png");
-aoTexture.wrapS = aoTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+aoTexture.wrapS = aoTexture.wrapT = THREE.RepeatWrapping;
 aoTexture.repeat.set(repeatValue, repeatValue);
 const roughnessTexture = textureLoader.load("/textures/island/roughness.png");
-roughnessTexture.wrapS = roughnessTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+roughnessTexture.wrapS = roughnessTexture.wrapT = THREE.RepeatWrapping;
 roughnessTexture.repeat.set(repeatValue, repeatValue);
 const normalTexture = textureLoader.load("/textures/island/normal.png");
-normalTexture.wrapS = normalTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+normalTexture.wrapS = normalTexture.wrapT = THREE.RepeatWrapping;
 normalTexture.repeat.set(repeatValue, repeatValue);
 const heightTexture = textureLoader.load("/textures/island/height.png");
-heightTexture.wrapS = heightTexture.wrapT = THREE.RepeatWrapping; // Enable repeating
+heightTexture.wrapS = heightTexture.wrapT = THREE.RepeatWrapping;
 heightTexture.repeat.set(repeatValue ** 2, repeatValue ** 2);
 
 function createSpiralMaterial(color) {
@@ -41,7 +41,6 @@ function createSpiralMaterial(color) {
 
 function SpiralPlant() {
   const { nodes } = useGLTF("/spiralplant.glb");
-  // const [material] = useState();
 
   const purpleMaterial = createSpiralMaterial("#5152E7");
   const blueMaterial = createSpiralMaterial("#417BE7");
@@ -95,14 +94,14 @@ function SpiralPlant() {
       <mesh
         geometry={nodes.Plane006.geometry}
         material={greenMaterial}
-        position={[12.125, 0, 0.906]}
+        position={[12.125, 0.2, 0.906]}
         rotation={[0, 0.362, 0]}
         scale={[1.8, 1.834, 1.885]}
       />
       <mesh
         geometry={nodes.Plane007.geometry}
         material={greenMaterial}
-        position={[12.389, 0, 2.274]}
+        position={[12.389, 0.3, 2.274]}
         rotation={[-3.113, 0.236, 3.018]}
         scale={[0.72, 0.879, 0.903]}
       />
