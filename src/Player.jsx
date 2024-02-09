@@ -18,6 +18,12 @@ const soundFiles = [
   "/sounds/concrete/2.mp3",
   "/sounds/concrete/4.mp3",
 ];
+const waterSoundFiles = [
+  "/sounds/water/1.mp3",
+  "/sounds/water/2.mp3",
+  "/sounds/water/3.mp3",
+  "/sounds/water/4.mp3",
+];
 
 export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
   const { controlsMobile } = useContext(GameContext);
@@ -31,6 +37,8 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
   } = controlsMobile;
 
   const playRandomFootstep = useMultipleSounds(soundFiles);
+  const playRandomWaterSound = useMultipleSounds(waterSoundFiles);
+
   const [playSandSound] = useSound(soundFile, {
     volume: Math.random() * 0.015 + 0.06,
   });
@@ -39,7 +47,9 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
   function playFootstep() {
     const playerYPosition = capsule.start.y;
 
-    if (playerYPosition < 1.3) {
+    if (playerYPosition < 0.6) {
+      playRandomWaterSound();
+    } else if (playerYPosition < 1.3) {
       playSandSound();
     } else {
       playRandomFootstep();
