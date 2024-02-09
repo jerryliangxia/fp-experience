@@ -3,6 +3,9 @@ import { useEffect } from "react";
 import { useMemo, useRef } from "react";
 import { Sphere, Vector3 } from "three";
 import * as Constants from "./Constants";
+import boingSound from "/sounds/boing.mp3";
+import boingHitSound from "/sounds/boinghit.mp3";
+import useSound from "use-sound";
 
 export default function SphereCollider({
   id,
@@ -16,6 +19,8 @@ export default function SphereCollider({
   children,
 }) {
   const ref = useRef();
+  const [playBoingSound] = useSound(boingSound, { volume: 0.1 });
+  const [playBoingHitSound] = useSound(boingHitSound, { volume: 0.2 });
 
   const sphere = useMemo(
     () => new Sphere(new Vector3(...position), radius),
@@ -43,13 +48,14 @@ export default function SphereCollider({
       const factor = -otherResult.normal.dot(velocity);
       velocity.addScaledVector(otherResult.normal, factor * 5.5);
       sphere.center.add(otherResult.normal.multiplyScalar(otherResult.depth));
+      playBoingSound();
     } else if (ballHitResult) {
       const factor = -ballHitResult.normal.dot(velocity);
       velocity.addScaledVector(ballHitResult.normal, factor * 1.5);
       sphere.center.add(
         ballHitResult.normal.multiplyScalar(ballHitResult.depth)
       );
-      console.log("Hello");
+      playBoingHitSound();
     } else {
       velocity.y -= Constants.Gravity * delta;
     }
