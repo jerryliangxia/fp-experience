@@ -20,6 +20,7 @@ import Beach from "./world-components/Beach";
 import Trees from "./world-components/Trees";
 import Grass from "./world-components/Grass";
 import SpiralPlant from "./world-components/SpiralPlant";
+import CirclingBirds from "./Birds";
 // import Clouds from "./world-components/Clouds";
 
 const hexToVec3 = (hex) => {
@@ -107,6 +108,7 @@ export default function Game() {
   return (
     <>
       <Environment files="/img/rustig_koppie_puresky_1k.hdr" background />
+      <CirclingBirds />
       <directionalLight intensity={1} position={[85.0, 80.0, 70.0]} />
       <SpiralPlant />
       <GroundFoliage
