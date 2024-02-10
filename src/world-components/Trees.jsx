@@ -2,26 +2,26 @@ import * as THREE from "three";
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 
+const textureLoader = new THREE.TextureLoader();
+
+const colorTexture = textureLoader.load("/textures/tree/basecolor.jpg");
+colorTexture.colorSpace = THREE.SRGBColorSpace;
+const aoTexture = textureLoader.load("/textures/tree/ao.jpg");
+const roughnessTexture = textureLoader.load("/textures/tree/roughness.jpg");
+const normalTexture = textureLoader.load("/textures/tree/normal.jpg");
+
+const treeMaterial = new THREE.MeshPhysicalMaterial({
+  color: "#472420",
+});
+treeMaterial.map = colorTexture;
+treeMaterial.normalMap = normalTexture;
+treeMaterial.aoMap = aoTexture;
+treeMaterial.roughnessMap = roughnessTexture;
+treeMaterial.iridescence = 0.3;
+treeMaterial.iridescenceIOR = 1.0;
+treeMaterial.iridescenceThicknessRange = [100, 500];
+
 function Trees() {
-  const textureLoader = new THREE.TextureLoader();
-
-  const colorTexture = textureLoader.load("/textures/tree/basecolor.jpg");
-  colorTexture.colorSpace = THREE.SRGBColorSpace;
-  const aoTexture = textureLoader.load("/textures/tree/ao.jpg");
-  const roughnessTexture = textureLoader.load("/textures/tree/roughness.jpg");
-  const normalTexture = textureLoader.load("/textures/tree/normal.jpg");
-
-  const treeMaterial = new THREE.MeshPhysicalMaterial({
-    color: "#472420",
-  });
-  treeMaterial.map = colorTexture;
-  treeMaterial.normalMap = normalTexture;
-  treeMaterial.aoMap = aoTexture;
-  treeMaterial.roughnessMap = roughnessTexture;
-  treeMaterial.iridescence = 0.3;
-  treeMaterial.iridescenceIOR = 1.0;
-  treeMaterial.iridescenceThicknessRange = [100, 500];
-
   const { nodes } = useGLTF("/trees.glb");
   return (
     <group dispose={null}>

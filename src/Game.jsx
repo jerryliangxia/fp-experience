@@ -1,5 +1,5 @@
 import { useGLTF, Environment } from "@react-three/drei";
-import { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import SphereCollider from "./SphereCollider";
 import Ball from "./Ball";
 import useOctree from "./useOctree";
@@ -14,14 +14,16 @@ import TreeLeaves from "./world-components/TreeLeaves";
 import Icoplant from "./world-components/Icoplant";
 import Planets from "./world-components/Planets";
 import * as Constants from "./Constants";
-import Platformer from "./world-components/Platformer";
+// import Platformer from "./world-components/Platformer";
 import Ocean from "./world-components/Ocean";
 import Beach from "./world-components/Beach";
 import Trees from "./world-components/Trees";
 import Grass from "./world-components/Grass";
 import SpiralPlant from "./world-components/SpiralPlant";
 import CirclingBirds from "./Birds";
+import LoadedPlatforms from "./world-components/LoadedPlatforms";
 // import Clouds from "./world-components/Clouds";
+import { GameContext } from "./GameContext";
 
 const hexToVec3 = (hex) => {
   hex = hex.replace(/^#/, "");
@@ -104,6 +106,7 @@ export default function Game() {
   }
 
   const divideBy = 1.4;
+  const { visibleSequences } = useContext(GameContext);
 
   return (
     <>
@@ -112,89 +115,90 @@ export default function Game() {
       <directionalLight intensity={1} position={[85.0, 80.0, 70.0]} />
       <SpiralPlant />
       <GroundFoliage
-        position={[-8.932, 0.3, 9.17]}
+        position={[-8.932, visibleSequences > 1 ? 1.0 : 0.3, 9.17]}
         rotation-y={Math.PI / 2}
         bushesBaseColor={hexToVec3("#8CD15C")}
       />
       <GroundFoliage
-        position={[-7.4, 0.3, 8.5]}
+        position={[-7.4, visibleSequences > 1 ? 1.0 : 0.3, 8.5]}
         bushesBaseColor={hexToVec3("#8CD15C")}
       />
       <Grass
-        position={[-10, 0, 7]}
+        position={[-10, visibleSequences > 1 ? 1.0 : 0, 7]}
         rotation-y={Math.PI / 4}
         options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={15}
         instances={1000 / divideBy}
       />
       <Grass
-        position={[-7, 0, 8]}
+        position={[-7, visibleSequences > 1 ? 1.0 : 0, 8]}
         rotation-y={Math.PI / 3}
         options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={15}
         instances={1100 / divideBy}
       />
       <Grass
-        position={[-8.5, 0, 7.5]}
+        position={[-8.5, visibleSequences > 1 ? 1.0 : 0, 7.5]}
         rotation-y={Math.PI / 3}
         options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={20}
         instances={100 / divideBy}
       />
       <Grass
-        position={[-8.5, 0, 6.5]}
+        position={[-8.5, visibleSequences > 1 ? 1.0 : 0, 6.5]}
         rotation-y={Math.PI / 3}
         options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={25}
         instances={900 / divideBy}
       />
       <Grass
-        position={[-8.5, 0, 6.5]}
+        position={[-8.5, visibleSequences > 1 ? 1.0 : 0, 6.5]}
         rotation-y={Math.PI / 3}
         options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={20}
         instances={800 / divideBy}
       />
       <Grass
-        position={[-8.5, 0, 4.5]}
+        position={[-8.5, visibleSequences > 1 ? 1.0 : 0, 4.5]}
         rotation-y={Math.PI / 3}
         options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={26}
         instances={600 / divideBy}
       />
       <Grass
-        position={[-6.5, 0, 9.5]}
+        position={[-6.5, visibleSequences > 1 ? 1.0 : 0, 9.5]}
         rotation-y={Math.PI / 3}
         options={{ bW: 0.06, bH: randomizeBH(0.5), joints: 5 }}
         width={22}
         instances={600 / divideBy}
       />
       <Icoplant
-        position={[-8.932, 0.1, 9.17]}
+        position={[-8.932, visibleSequences > 1 ? 1.1 : 0.1, 9.17]}
         baseColor={hexToVec3("#9670FF")}
         rando={1.0}
       />
       <Icoplant
-        position={[-7.39, 0.1, 8.278]}
+        position={[-7.39, visibleSequences > 1 ? 1.1 : 0.1, 8.278]}
         baseColor={hexToVec3("#52C7FF")}
         rando={2.0}
       />
       <TreeLeaves
-        position={[-11.484, -0.7, 7.669]}
+        position={[-11.484, visibleSequences > 1 ? 0.0 : -0.7, 7.669]}
         baseColor={hexToVec3("#8CD15C")}
       />
       <TreeLeaves
-        position={[-7.751, 0.6, 5.939]}
+        position={[-7.751, visibleSequences > 1 ? 1.3 : 0.6, 5.939]}
         baseColor={hexToVec3("#8CD15C")}
       />
       {/* <Water /> */}
       <Ocean />
       <Beach />
-      <Trees position-y={-0.1} />
+      <Trees position-y={visibleSequences > 1 ? 0.6 : -0.1} />
       {/* <RagingSea /> */}
       {/* <Clouds position-z={-300} position-y={-5} scale={10} /> */}
       {/* <Model /> */}
-      <Platformer />
+      {/* <Platformer /> */}
+      <LoadedPlatforms />
       {Constants.balls.map(({ position }, i) => (
         <SphereCollider
           key={i}

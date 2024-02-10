@@ -39,9 +39,21 @@ export default function App() {
     }));
   };
 
+  const [visibleSequences, setVisibleSequences] = useState(1);
+  const incrementVisibleSequences = () => {
+    setVisibleSequences((prev) => prev + 1);
+  };
+
   return (
     <>
-      <GameContext.Provider value={{ controlsMobile, handleControlChange }}>
+      <GameContext.Provider
+        value={{
+          controlsMobile,
+          handleControlChange,
+          visibleSequences,
+          incrementVisibleSequences,
+        }}
+      >
         <div
           style={{
             position: "fixed",

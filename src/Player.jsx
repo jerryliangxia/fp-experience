@@ -25,8 +25,16 @@ const waterSoundFiles = [
   "/sounds/water/4.mp3",
 ];
 
+const checkpoints = [
+  new Vector3(-15.387361630881388, 37.20735549926758 + 1, 38.861433807706554), // Adjusted Y position to prevent collisions
+  new Vector3(17.85489054645034, 48.99660110473633 + 1, -18.579042307572948),
+  new Vector3(78.42452415093283, 76.54497528076172 + 1, 12.671296962801945),
+  new Vector3(33.89271564199533, 78.26509857177734 + 1, 1.7014784453861904),
+  new Vector3(4.11610902625964, 114.0535888671875 + 1, 12.244482022397724),
+];
+
 export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
-  const { controlsMobile } = useContext(GameContext);
+  const { controlsMobile, visibleSequences } = useContext(GameContext);
   const {
     upPressed,
     downPressed,
@@ -173,6 +181,15 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
       octreeBouncy,
       playerVelocity
     );
+
+    if (capsule.start.y < 20 && visibleSequences != 1) {
+      const checkpoint = checkpoints[visibleSequences - 2];
+      capsule.start.copy(checkpoint);
+      capsule.end.copy(checkpoint.clone().add(new Vector3(0, 1, 0))); // Adjust end position based on capsule height
+      playerVelocity.set(0, 0, 0); // Reset velocity
+      camera.position.copy(capsule.end); // Update camera position to match the capsule
+    }
+
     camera.position.copy(capsule.end);
     return playerOnFloor;
   }

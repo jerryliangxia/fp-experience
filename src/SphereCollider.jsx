@@ -1,13 +1,14 @@
 import { useFrame } from "@react-three/fiber";
-import { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useMemo, useRef } from "react";
 import { Sphere, Vector3 } from "three";
 import * as Constants from "./Constants";
 import boingSound from "/sounds/boing.mp3";
 import boingHitSound from "/sounds/boinghit.mp3";
 import useSound from "use-sound";
+import { GameContext } from "./GameContext";
 
-export default function SphereCollider({
+function SphereCollider({
   id,
   radius,
   octree,
@@ -29,9 +30,27 @@ export default function SphereCollider({
   const velocity = useMemo(() => new Vector3(), []);
 
   useEffect(() => {
-    console.log("adding reference to this sphere collider");
     colliders[id] = { sphere: sphere, velocity: velocity };
   }, [colliders, id, sphere, velocity]);
+
+  const { visibleSequences, incrementVisibleSequences } =
+    useContext(GameContext);
+
+  function shouldIncrementVisibleSequences() {
+    const { x, y } = sphere.center;
+    switch (visibleSequences) {
+      case 1:
+        return y < 42;
+      case 2:
+        return y > 48 && y < 56;
+      case 3:
+        return x > 70 && y > 74;
+      case 4:
+        return x < 57 && y > 76;
+      default:
+        return false;
+    }
+  }
 
   function updateSphere(delta, octree, octreeBouncy, sphere, velocity) {
     sphere.center.addScaledVector(velocity, delta);
@@ -56,6 +75,9 @@ export default function SphereCollider({
         ballHitResult.normal.multiplyScalar(ballHitResult.depth)
       );
       playBoingHitSound();
+      if (shouldIncrementVisibleSequences()) {
+        incrementVisibleSequences();
+      }
     } else {
       velocity.y -= Constants.Gravity * delta;
     }
@@ -81,3 +103,5 @@ export default function SphereCollider({
     </>
   );
 }
+
+export default React.memo(SphereCollider);
