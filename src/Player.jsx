@@ -97,10 +97,10 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
 
       // Return player to spawn position
       const spawnPosition = new Vector3(0, 1, 0); // Assuming this is the spawn position
-      capsule.start.copy(spawnPosition);
       capsule.end.copy(spawnPosition.clone().add(new Vector3(0, 1, 0))); // Adjust end position based on capsule height
       playerVelocity.set(0, 0, 0); // Reset velocity
       camera.position.copy(capsule.end); // Update camera position to match the capsule
+      capsule.start.copy(spawnPosition);
       setCompleteGameVisible(false);
       setTimeout(() => {
         const canvas = document.querySelector("canvas");
@@ -218,6 +218,7 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
     playerVelocity,
     playerOnFloor
   ) {
+    if (resetGame) return;
     let damping = Math.exp(-8 * delta) - 1;
     if (!playerOnFloor) {
       playerVelocity.y -= GRAVITY * delta;
