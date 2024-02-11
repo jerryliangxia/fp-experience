@@ -6,7 +6,7 @@ import { GameContext } from "../GameContext";
 const textureLoader = new THREE.TextureLoader();
 
 // Sand
-const sandNormalTexture = textureLoader.load("/textures/sand/sand.png");
+const sandNormalTexture = textureLoader.load("/textures/sand/normal.png");
 sandNormalTexture.wrapS = THREE.RepeatWrapping;
 sandNormalTexture.wrapT = THREE.RepeatWrapping;
 sandNormalTexture.repeat.x = 5;
@@ -14,7 +14,7 @@ sandNormalTexture.repeat.y = 5;
 sandNormalTexture.magFilter = THREE.NearestFilter;
 
 // Alpha
-const alphaTexture = textureLoader.load("/textures/sand/sandao.png");
+const alphaTexture = textureLoader.load("/textures/sand/alpha.png");
 
 const sandMaterial = new THREE.MeshPhysicalMaterial({ color: "#C2B280" });
 sandMaterial.normalMap = sandNormalTexture;
