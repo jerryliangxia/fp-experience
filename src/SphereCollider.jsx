@@ -74,7 +74,7 @@ function SphereCollider({
       sphere.center.add(otherResult.normal.multiplyScalar(otherResult.depth));
       if (playAudio) playBoingSound();
     } else if (ballHitResult) {
-      if (shouldIncrementVisibleSequences()) {
+      if (shouldIncrementVisibleSequences() && !collisionProcessed) {
         const now = Date.now();
         if (now - lastIncrementTime > 1000) {
           const factor = -ballHitResult.normal.dot(velocity);

@@ -10,10 +10,10 @@ export const isDesktop = !isMobile && !isTablet;
 export const bw = isTablet ? document.body.clientWidth / 6 : 200;
 export const bh = isTablet ? document.body.clientHeight / 6 : 200;
 
-export const ballCount = 100;
+export const ballCount = 1;
 export const radius = 0.2;
 export const balls = [...Array(ballCount)].map(() => ({
-  position: [Math.random() * 50 - 25, -5, Math.random() * 50 - 25],
+  position: [Math.random() * 50 - 25, -2, Math.random() * 50 - 25],
 }));
 export const v1 = new Vector3();
 export const v2 = new Vector3();

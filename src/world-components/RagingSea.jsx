@@ -5,8 +5,7 @@ import {
   Stars,
 } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
-import { folder, useControls } from "leva";
-import React, { useRef, useState, useEffect, Suspense } from "react";
+import React, { useRef } from "react";
 import * as THREE from "three";
 import oceanVertexShader from "./ocean/vertex.glsl";
 import oceanFragmentShader from "./ocean/fragment.glsl";
