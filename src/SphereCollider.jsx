@@ -39,8 +39,10 @@ function SphereCollider({
   function shouldIncrementVisibleSequences() {
     const { x, y } = sphere.center;
     switch (visibleSequences) {
+      case 0:
+        return y < 10;
       case 1:
-        return y < 42;
+        return y > 20 && y < 42;
       case 2:
         return y > 48 && y < 56;
       case 3:
@@ -69,14 +71,14 @@ function SphereCollider({
       sphere.center.add(otherResult.normal.multiplyScalar(otherResult.depth));
       playBoingSound();
     } else if (ballHitResult) {
-      const factor = -ballHitResult.normal.dot(velocity);
-      velocity.addScaledVector(ballHitResult.normal, factor * 1.5);
-      sphere.center.add(
-        ballHitResult.normal.multiplyScalar(ballHitResult.depth)
-      );
-      playBoingHitSound();
       if (shouldIncrementVisibleSequences()) {
+        const factor = -ballHitResult.normal.dot(velocity);
+        velocity.addScaledVector(ballHitResult.normal, factor * 1.5);
+        sphere.center.add(
+          ballHitResult.normal.multiplyScalar(ballHitResult.depth)
+        );
         incrementVisibleSequences();
+        playBoingHitSound();
       }
     } else {
       velocity.y -= Constants.Gravity * delta;

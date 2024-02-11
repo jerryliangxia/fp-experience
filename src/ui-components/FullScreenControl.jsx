@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Flex, Text, Card, Heading } from "@radix-ui/themes";
+import { GameContext } from "../GameContext";
 import * as SwitchPrimitive from "@radix-ui/react-switch";
 
 export default function FullScreenControl() {
-  const [isVisible, setIsVisible] = useState(true);
+  const { fscIsVisible, setFscIsVisible } = useContext(GameContext);
   const [isFullScreen, setFullScreen] = useState(false);
+  const { setWasJustReset } = useContext(GameContext);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -13,7 +15,7 @@ export default function FullScreenControl() {
         document.mozFullScreenElement ||
         document.webkitFullscreenElement ||
         document.msFullscreenElement;
-      setIsVisible(!isFullscreen);
+      setFscIsVisible(!isFullscreen);
     };
 
     document.addEventListener("fullscreenchange", handleFullscreenChange);
@@ -41,7 +43,11 @@ export default function FullScreenControl() {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape" && !isFullScreen) {
-        setIsVisible(true);
+        setFscIsVisible(true);
+        // The following is for the game over screen; we don't want to show it when the user presses R to restart
+        //(i.e.the game over screen is not shown),
+        // so we introduce a new variable and set it depending on if the game was just reset
+        setWasJustReset(false);
       }
     };
 
@@ -81,7 +87,7 @@ export default function FullScreenControl() {
             cancelable: true,
           });
           canvas.dispatchEvent(event);
-          setIsVisible(false);
+          setFscIsVisible(false);
           if (isFullScreen) {
             if (document.documentElement.requestFullscreen) {
               document.documentElement.requestFullscreen();
@@ -115,7 +121,7 @@ export default function FullScreenControl() {
   }
 
   return (
-    isVisible && (
+    fscIsVisible && (
       <div
         id="fullscreen-control-container"
         style={{

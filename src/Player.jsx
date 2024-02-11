@@ -26,6 +26,7 @@ const waterSoundFiles = [
 ];
 
 const checkpoints = [
+  new Vector3(0, 0 + 1, 0),
   new Vector3(-15.387361630881388, 37.20735549926758 + 1, 38.861433807706554), // Adjusted Y position to prevent collisions
   new Vector3(17.85489054645034, 48.99660110473633 + 1, -18.579042307572948),
   new Vector3(78.42452415093283, 76.54497528076172 + 1, 12.671296962801945),
@@ -34,7 +35,16 @@ const checkpoints = [
 ];
 
 export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
-  const { controlsMobile, visibleSequences } = useContext(GameContext);
+  const {
+    controlsMobile,
+    visibleSequences,
+    setVisibleSequences,
+    completeGameVisible,
+    setCompleteGameVisible,
+    resetGame,
+    setResetGame,
+  } = useContext(GameContext);
+
   const {
     upPressed,
     downPressed,
@@ -59,6 +69,12 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
       playRandomWaterSound();
     } else if (playerYPosition < 1.3) {
       playSandSound();
+    } else if (
+      playerYPosition > 114 &&
+      capsule.start.z < 14.5 &&
+      !completeGameVisible
+    ) {
+      setCompleteGameVisible(true);
     } else {
       playRandomFootstep();
     }
@@ -73,6 +89,41 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
   );
   const { camera } = useThree();
   let clicked = 0;
+
+  useEffect(() => {
+    if (resetGame) {
+      // Reset game state
+      setVisibleSequences(0);
+
+      // Return player to spawn position
+      const spawnPosition = new Vector3(0, 1, 0); // Assuming this is the spawn position
+      capsule.start.copy(spawnPosition);
+      capsule.end.copy(spawnPosition.clone().add(new Vector3(0, 1, 0))); // Adjust end position based on capsule height
+      playerVelocity.set(0, 0, 0); // Reset velocity
+      camera.position.copy(capsule.end); // Update camera position to match the capsule
+      setCompleteGameVisible(false);
+      setTimeout(() => {
+        const canvas = document.querySelector("canvas");
+        if (canvas) {
+          // Ensure the canvas element exists before dispatching the event
+          const event = new MouseEvent("click", {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+          });
+          canvas.dispatchEvent(event);
+        }
+        setResetGame(false);
+      }, 1000); // Delay in milliseconds
+    }
+  }, [
+    resetGame,
+    setVisibleSequences,
+    setResetGame,
+    capsule,
+    playerVelocity,
+    camera,
+  ]);
 
   const onPointerDown = () => {
     if (!canMove() || !isDesktop) return;
@@ -182,8 +233,8 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
       playerVelocity
     );
 
-    if (capsule.start.y < 20 && visibleSequences != 1) {
-      const checkpoint = checkpoints[visibleSequences - 2];
+    if (capsule.start.y < 20 && visibleSequences > 1) {
+      const checkpoint = checkpoints[visibleSequences - 1];
       capsule.start.copy(checkpoint);
       capsule.end.copy(checkpoint.clone().add(new Vector3(0, 1, 0))); // Adjust end position based on capsule height
       playerVelocity.set(0, 0, 0); // Reset velocity
