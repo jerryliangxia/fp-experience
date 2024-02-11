@@ -55,6 +55,8 @@ function SphereCollider({
     }
   }
 
+  const [collisionProcessed, setCollisionProcessed] = useState(false);
+
   function updateSphere(delta, octree, octreeBouncy, sphere, velocity) {
     sphere.center.addScaledVector(velocity, delta);
 
@@ -83,6 +85,8 @@ function SphereCollider({
           incrementVisibleSequences();
           if (playAudio) playBoingHitSound();
           setLastIncrementTime(now);
+          setCollisionProcessed(true);
+          setTimeout(() => setCollisionProcessed(false), 1000);
         }
       }
     } else {

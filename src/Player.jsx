@@ -238,8 +238,10 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
       octreeBouncy,
       playerVelocity
     );
-
-    if (capsule.start.y < 20 && visibleSequences > 1) {
+    if (
+      visibleSequences > 1 &&
+      capsule.start.y < checkpoints[visibleSequences - 1].y - 20
+    ) {
       const checkpoint = checkpoints[visibleSequences - 1];
       capsule.start.copy(checkpoint);
       capsule.end.copy(checkpoint.clone().add(new Vector3(0, 1, 0))); // Adjust end position based on capsule height
