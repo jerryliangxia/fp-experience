@@ -61,8 +61,8 @@ var PointerLockControls = function (camera, domElement) {
     last_x = array_x[array_x.length - 2];
     last_y = array_y[array_y.length - 2];
     // array for euler
-    eulerY = (touches_x - last_x) * 0.004;
-    eulerX = (touches_y - last_y) * 0.004;
+    eulerY = -(touches_x - last_x) * 0.009;
+    eulerX = -(touches_y - last_y) * 0.009;
     if (eulerY) {
       eulerY_angle.push(eulerY);
       eulerX_angle.push(eulerX);

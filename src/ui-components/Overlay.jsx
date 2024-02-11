@@ -12,6 +12,7 @@ export default function Overlay() {
   const [isJumpButtonTouched, setIsJumpButtonTouched] = useState(false);
 
   const handleJump = () => {
+    event.stopPropagation();
     handleControlChange("spacePressed", true);
     setTimeout(() => handleControlChange("spacePressed", false), 100);
     setIsJumpButtonTouched(true);
@@ -19,12 +20,14 @@ export default function Overlay() {
   };
 
   const handleThrowButtonPress = () => {
+    event.stopPropagation();
     handleControlChange("throwPressed", true);
     setTimeout(() => handleControlChange("throwPressed", false), 100);
     setIsThrowButtonTouched(true);
     setTimeout(() => setIsThrowButtonTouched(false), 500);
   };
   const handleTouchMove = (event) => {
+    event.stopPropagation();
     if (!dpadRef.current) return;
 
     const dpadRect = dpadRef.current.getBoundingClientRect();
