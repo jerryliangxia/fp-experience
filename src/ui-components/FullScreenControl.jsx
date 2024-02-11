@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Flex, Text, Card, Heading } from "@radix-ui/themes";
 import { GameContext } from "../GameContext";
 import * as SwitchPrimitive from "@radix-ui/react-switch";
+import { isMobile } from "react-device-detect";
 
 export default function FullScreenControl() {
   const { fscIsVisible, setFscIsVisible } = useContext(GameContext);
@@ -80,6 +81,7 @@ export default function FullScreenControl() {
           transform: isHovered ? "scale(1.1)" : "scale(1)",
         }}
         onClick={() => {
+          console.log("Hi");
           const canvas = document.querySelector("canvas");
           const event = new MouseEvent("click", {
             view: window,
@@ -123,15 +125,27 @@ export default function FullScreenControl() {
   return (
     fscIsVisible && (
       <div
+        //   id="fullscreen-control-container"
+        //   style={{
+        //     position: "absolute",
+        //     display: "flex",
+        //     justifyContent: "center",
+        //     alignItems: "center",
+        //     width: "100%",
+        //     height: "100%",
+        //     zIndex: 4,
+        //   }}
         id="fullscreen-control-container"
         style={{
-          position: "absolute",
+          position: "fixed", // Changed from absolute to fixed to ensure it's relative to the viewport
+          top: 0, // Ensure it starts from the very top of the viewport
+          left: isMobile ? "10vw" : 0, // Ensure it starts from the very left of the viewport
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          width: "100%",
-          height: "100%",
-          zIndex: 4,
+          width: isMobile ? "80vw" : "100vw", // Span the entire width of the viewport
+          height: "100vh", // Span the entire height of the viewport
+          zIndex: 4, // Ensure it's above other content; adjust as necessary
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -165,12 +179,15 @@ export default function FullScreenControl() {
           >
             <Flex gap="3" direction="column" align="center">
               <Heading
-                size="10"
+                size={isMobile ? "6" : "10"}
                 style={{ color: "white", fontFamily: "OrbitronLight" }}
               >
                 TRAPPIST-1 System
               </Heading>
-              <Text style={{ color: "white", fontFamily: "OrbitronLight" }}>
+              <Text
+                size={isMobile ? "2" : "3"}
+                style={{ color: "white", fontFamily: "OrbitronLight" }}
+              >
                 A Frutiger Aero-inspired experience.
               </Text>
               <PSButton />
@@ -191,14 +208,18 @@ export default function FullScreenControl() {
                     className="switch-thumb"
                     style={{
                       display: "block",
-                      width: "21px",
-                      height: "21px",
+                      width: isMobile ? "23px" : "21px",
+                      height: isMobile ? "23px" : "21px",
                       backgroundColor: "#fff",
                       borderRadius: "9999px",
                       transition: "transform 100ms",
                       transform: isFullScreen
-                        ? "translateX(11px) translateY(-1px)"
-                        : "translateX(-6px) translateY(-1px)",
+                        ? `translateX(6px) ${
+                            isMobile ? "translateY(0px)" : "translateY(-1px)"
+                          }`
+                        : `translateX(-11px) ${
+                            isMobile ? "translateY(0px)" : "translateY(-1px)"
+                          }`,
                     }}
                   />
                 </SwitchPrimitive.Root>

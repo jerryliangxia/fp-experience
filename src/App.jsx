@@ -52,6 +52,7 @@ export default function App() {
   // so we introduce a new variable and set it depending on if the game was just reset
   const [wasJustReset, setWasJustReset] = useState(false);
   const [fscIsVisible, setFscIsVisible] = useState(true);
+  const [isMobileFsc, setIsMobileFsc] = useState(true);
 
   // When both full screen and game over are not visible, set the full screen to be visible
   useEffect(() => {
@@ -68,6 +69,15 @@ export default function App() {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+
+  function fullscreenchanged(event) {
+    if (!document.fullscreenElement && !isDesktop) {
+      setFscIsVisible(false);
+      setWasJustReset(false);
+    }
+  }
+
+  document.addEventListener("fullscreenchange", fullscreenchanged);
 
   return (
     <>
@@ -86,6 +96,8 @@ export default function App() {
           setWasJustReset,
           fscIsVisible,
           setFscIsVisible,
+          isMobileFsc,
+          setIsMobileFsc,
         }}
       >
         <div
@@ -110,15 +122,16 @@ export default function App() {
             <Game />
             {isDesktop ? (
               <PointerLockControlsDesktop />
-            ) : (
+            ) : !fscIsVisible ? (
               <PointerLockControlsMobile />
+            ) : (
+              <></>
             )}
           </Canvas>
           {!isDesktop && <Overlay />}
-          {!loadingOpaque &&
-            isDesktop &&
-            !completeGameVisible &&
-            !wasJustReset && <FullScreenControl />}
+          {!loadingOpaque && !completeGameVisible && !wasJustReset && (
+            <FullScreenControl />
+          )}
           {completeGameVisible && <CompleteGame />}
         </div>
       </GameContext.Provider>

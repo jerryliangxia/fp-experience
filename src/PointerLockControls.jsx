@@ -1,5 +1,9 @@
 import { Euler, EventDispatcher, Vector3 } from "three";
 import { bw, bh } from "./Constants";
+// import { GameContext } from "./GameContext";
+// import { useContext } from "react";
+
+// const { isMobileFsc, setIsMobileFsc } = useContext(GameContext);
 
 var mobile = true;
 
