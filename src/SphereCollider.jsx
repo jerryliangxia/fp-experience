@@ -1,5 +1,5 @@
 import { useFrame } from "@react-three/fiber";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { useMemo, useRef } from "react";
 import { Sphere, Vector3 } from "three";
 import * as Constants from "./Constants";
@@ -20,6 +20,7 @@ function SphereCollider({
   children,
 }) {
   const ref = useRef();
+  const [lastIncrementTime, setLastIncrementTime] = useState(0);
   const [playBoingSound] = useSound(boingSound, { volume: 0.1 });
   const [playBoingHitSound] = useSound(boingHitSound, { volume: 0.2 });
 
@@ -72,13 +73,17 @@ function SphereCollider({
       playBoingSound();
     } else if (ballHitResult) {
       if (shouldIncrementVisibleSequences()) {
-        const factor = -ballHitResult.normal.dot(velocity);
-        velocity.addScaledVector(ballHitResult.normal, factor * 1.5);
-        sphere.center.add(
-          ballHitResult.normal.multiplyScalar(ballHitResult.depth)
-        );
-        incrementVisibleSequences();
-        playBoingHitSound();
+        const now = Date.now();
+        if (now - lastIncrementTime > 1000) {
+          const factor = -ballHitResult.normal.dot(velocity);
+          velocity.addScaledVector(ballHitResult.normal, factor * 1.5);
+          sphere.center.add(
+            ballHitResult.normal.multiplyScalar(ballHitResult.depth)
+          );
+          incrementVisibleSequences();
+          playBoingHitSound();
+          setLastIncrementTime(now);
+        }
       }
     } else {
       velocity.y -= Constants.Gravity * delta;
