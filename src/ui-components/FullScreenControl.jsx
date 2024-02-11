@@ -125,27 +125,17 @@ export default function FullScreenControl() {
   return (
     fscIsVisible && (
       <div
-        //   id="fullscreen-control-container"
-        //   style={{
-        //     position: "absolute",
-        //     display: "flex",
-        //     justifyContent: "center",
-        //     alignItems: "center",
-        //     width: "100%",
-        //     height: "100%",
-        //     zIndex: 4,
-        //   }}
         id="fullscreen-control-container"
         style={{
-          position: "fixed", // Changed from absolute to fixed to ensure it's relative to the viewport
-          top: 0, // Ensure it starts from the very top of the viewport
-          left: isMobile ? "10vw" : 0, // Ensure it starts from the very left of the viewport
+          position: "fixed",
+          top: 0,
+          left: isMobile ? "10vw" : 0,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          width: isMobile ? "80vw" : "100vw", // Span the entire width of the viewport
-          height: "100vh", // Span the entire height of the viewport
-          zIndex: 4, // Ensure it's above other content; adjust as necessary
+          width: isMobile ? "80vw" : "100vw",
+          height: "100vh",
+          zIndex: 4,
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -214,10 +204,14 @@ export default function FullScreenControl() {
                       borderRadius: "9999px",
                       transition: "transform 100ms",
                       transform: isFullScreen
-                        ? `translateX(6px) ${
+                        ? `${
+                            isMobile ? "translateX(6px)" : "translateX(11px)"
+                          } ${
                             isMobile ? "translateY(0px)" : "translateY(-1px)"
                           }`
-                        : `translateX(-11px) ${
+                        : `${
+                            isMobile ? "translateX(-11px)" : "translateX(-6px)"
+                          } ${
                             isMobile ? "translateY(0px)" : "translateY(-1px)"
                           }`,
                     }}
