@@ -34,7 +34,7 @@ function SphereCollider({
     colliders[id] = { sphere: sphere, velocity: velocity };
   }, [colliders, id, sphere, velocity]);
 
-  const { visibleSequences, incrementVisibleSequences } =
+  const { visibleSequences, incrementVisibleSequences, playAudio } =
     useContext(GameContext);
 
   function shouldIncrementVisibleSequences() {
@@ -70,7 +70,7 @@ function SphereCollider({
       const factor = -otherResult.normal.dot(velocity);
       velocity.addScaledVector(otherResult.normal, factor * 5.5);
       sphere.center.add(otherResult.normal.multiplyScalar(otherResult.depth));
-      playBoingSound();
+      if (playAudio) playBoingSound();
     } else if (ballHitResult) {
       if (shouldIncrementVisibleSequences()) {
         const now = Date.now();
@@ -81,7 +81,7 @@ function SphereCollider({
             ballHitResult.normal.multiplyScalar(ballHitResult.depth)
           );
           incrementVisibleSequences();
-          playBoingHitSound();
+          if (playAudio) playBoingHitSound();
           setLastIncrementTime(now);
         }
       }

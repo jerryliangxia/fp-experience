@@ -6,8 +6,8 @@ import { isMobile } from "react-device-detect";
 
 export default function FullScreenControl() {
   const { fscIsVisible, setFscIsVisible } = useContext(GameContext);
-  const [isFullScreen, setFullScreen] = useState(false);
-  const { setWasJustReset } = useContext(GameContext);
+  const [isFullScreen, setFullScreen] = useState(true);
+  const { setWasJustReset, playAudio, setPlayAudio } = useContext(GameContext);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -222,6 +222,49 @@ export default function FullScreenControl() {
                   size="1"
                 >
                   Fullscreen
+                </Text>
+              </Flex>
+              <Flex direction="row" gap="1" align="center">
+                <SwitchPrimitive.Root
+                  className="switch-root"
+                  checked={playAudio}
+                  onCheckedChange={setPlayAudio}
+                  style={{
+                    backgroundColor: playAudio ? "#35C7D2" : "transparent",
+                    borderRadius: "9999px",
+                    width: "42px",
+                    height: "25px",
+                    position: "relative",
+                  }}
+                >
+                  <SwitchPrimitive.Thumb
+                    className="switch-thumb"
+                    style={{
+                      display: "block",
+                      width: isMobile ? "23px" : "21px",
+                      height: isMobile ? "23px" : "21px",
+                      backgroundColor: "#fff",
+                      borderRadius: "9999px",
+                      transition: "transform 100ms",
+                      transform: playAudio
+                        ? `${
+                            isMobile ? "translateX(6px)" : "translateX(11px)"
+                          } ${
+                            isMobile ? "translateY(0px)" : "translateY(-1px)"
+                          }`
+                        : `${
+                            isMobile ? "translateX(-11px)" : "translateX(-6px)"
+                          } ${
+                            isMobile ? "translateY(0px)" : "translateY(-1px)"
+                          }`,
+                    }}
+                  />
+                </SwitchPrimitive.Root>
+                <Text
+                  style={{ color: "white", fontFamily: "OrbitronLight" }}
+                  size="1"
+                >
+                  Play Audio
                 </Text>
               </Flex>
             </Flex>

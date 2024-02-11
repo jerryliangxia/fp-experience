@@ -9,6 +9,7 @@ import soundFile from "/sounds/step.mp3";
 import { isDesktop } from "react-device-detect";
 import boingSound from "/sounds/boing.mp3";
 import { useMultipleSounds } from "./useMultipleSounds";
+import throwSound from "/sounds/throw.mp3";
 
 const GRAVITY = 30;
 const STEPS_PER_FRAME = 5;
@@ -43,6 +44,7 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
     setCompleteGameVisible,
     resetGame,
     setResetGame,
+    playAudio,
   } = useContext(GameContext);
 
   const {
@@ -61,6 +63,7 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
     volume: Math.random() * 0.015 + 0.06,
   });
   const [playBoingSound] = useSound(boingSound, { volume: 0.2 });
+  const [playThrowSound] = useSound(throwSound, { volume: 0.05 });
 
   function playFootstep() {
     const playerYPosition = capsule.start.y;
@@ -128,6 +131,7 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
   const onPointerDown = () => {
     if (!canMove() || !isDesktop) return;
     throwBall(camera, capsule, playerDirection, playerVelocity, clicked++);
+    if (playAudio) playThrowSound();
   };
   useEffect(() => {
     document.addEventListener("pointerdown", onPointerDown);
@@ -140,6 +144,7 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
     if (throwPressed) {
       // Assuming throwBall is a function that handles throwing the ball
       throwBall(camera, capsule, playerDirection, playerVelocity, clicked++);
+      if (playAudio) playThrowSound();
       // Reset throwPressed state if necessary
       // handleThrowChange(false); // You'll need to pass handleThrowChange from GameContext
     }
@@ -277,10 +282,12 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
       capsule.translate(result.normal.multiplyScalar(result.depth));
     } else if (otherResult) {
       playerVelocity.y = 50;
-      const now = Date.now();
-      if (now - lastBoingTime > boingCooldown) {
-        playBoingSound();
-        setLastBoingTime(now);
+      if (playAudio) {
+        const now = Date.now();
+        if (now - lastBoingTime > boingCooldown) {
+          playBoingSound();
+          setLastBoingTime(now);
+        }
       }
     }
     return playerOnFloor;
@@ -309,19 +316,21 @@ export default function Player({ octree, octreeBouncy, colliders, ballCount }) {
     );
     const velocityMagnitude = playerVelocity.length();
     if (playerOnFloor.current) {
-      if (
-        velocityMagnitude > 1 &&
-        !isSoundPlayed &&
-        Date.now() - lastPlayed > 500
-      ) {
-        setIsSoundPlayed(true);
-        playFootstep();
-        setLastPlayed(Date.now());
-        setTimeout(() => {
+      if (playAudio) {
+        if (
+          velocityMagnitude > 1 &&
+          !isSoundPlayed &&
+          Date.now() - lastPlayed > 500
+        ) {
+          setIsSoundPlayed(true);
+          playFootstep();
+          setLastPlayed(Date.now());
+          setTimeout(() => {
+            setIsSoundPlayed(false);
+          }, 500);
+        } else if (velocityMagnitude <= 1) {
           setIsSoundPlayed(false);
-        }, 500);
-      } else if (velocityMagnitude <= 1) {
-        setIsSoundPlayed(false);
+        }
       }
     }
     const deltaSteps = Math.min(0.05, delta) / STEPS_PER_FRAME;

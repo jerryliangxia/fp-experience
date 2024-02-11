@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { GameContext } from "../GameContext";
 import * as THREE from "three";
 import { isDesktop } from "react-device-detect";
+import { Card, Text } from "@radix-ui/themes";
 
 function LoadedPlatforms() {
   const { nodes, materials } = useGLTF("/1.glb");
@@ -43,10 +44,12 @@ function LoadedPlatforms() {
             position={[22.064, 2, 27.609]}
             scale={0.387}
           >
-            <Html as="div" center transform>
-              <div style={{ color: "white", fontSize: "20px" }}>
-                {isDesktop ? "Click to shoot" : "Throw at me"}
-              </div>
+            <Html as="div" center transform rotation-y={Math.PI / 4}>
+              <Card>
+                <Text style={{ fontFamily: "OrbitronLight", opacity: 0.8 }}>
+                  {isDesktop ? "Click to shoot" : "Throw at me"}
+                </Text>
+              </Card>
             </Html>
           </mesh>
         </>

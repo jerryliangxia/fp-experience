@@ -53,6 +53,7 @@ export default function App() {
   const [wasJustReset, setWasJustReset] = useState(false);
   const [fscIsVisible, setFscIsVisible] = useState(true);
   const [isMobileFsc, setIsMobileFsc] = useState(true);
+  const [playAudio, setPlayAudio] = useState(true);
 
   // When both full screen and game over are not visible, set the full screen to be visible
   useEffect(() => {
@@ -98,6 +99,8 @@ export default function App() {
           setFscIsVisible,
           isMobileFsc,
           setIsMobileFsc,
+          playAudio,
+          setPlayAudio,
         }}
       >
         <div
