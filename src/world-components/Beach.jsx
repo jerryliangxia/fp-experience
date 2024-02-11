@@ -25,10 +25,29 @@ sandMaterial.iridescenceThicknessRange = [100, 800];
 sandMaterial.transparent = true;
 sandMaterial.alphaMap = alphaTexture;
 
+const sandNormalTexture2 = textureLoader.load(
+  "/textures/sand/alien-normal.jpeg"
+);
+sandNormalTexture2.wrapS = THREE.RepeatWrapping;
+sandNormalTexture2.wrapT = THREE.RepeatWrapping;
+sandNormalTexture2.repeat.x = 4.5;
+sandNormalTexture2.repeat.y = 4.5;
+sandNormalTexture2.generateMipmaps = true;
+sandNormalTexture2.minFilter = THREE.LinearMipmapLinearFilter;
+
+const sandMaterial2 = new THREE.MeshPhysicalMaterial({ color: "#3D3EAE" });
+sandMaterial2.normalMap = sandNormalTexture2;
+sandMaterial2.normalScale.set(0.5, 0.5);
+sandMaterial2.iridescence = 0.25;
+sandMaterial2.iridescenceIOR = 1.0;
+sandMaterial2.iridescenceThicknessRange = [100, 800];
+sandMaterial2.transparent = true;
+sandMaterial2.alphaMap = alphaTexture;
+
 function Beach() {
   const { visibleSequences } = useContext(GameContext);
 
-  const { nodes } = useGLTF("/beach.glb");
+  const { nodes } = useGLTF("/beach2.glb");
 
   return (
     <group dispose={null}>
@@ -37,6 +56,12 @@ function Beach() {
         material={sandMaterial}
         position={[35.546, visibleSequences > 1 ? 1.0 : 0.2, 27.64]}
         scale={[215.33, 215.33, 143.972]}
+      />
+      <mesh
+        geometry={nodes.Beach001.geometry}
+        material={sandMaterial2}
+        position={[265.546, 0, -200.64]}
+        scale={[4115.33, 215.33, 1943.972]}
       />
     </group>
   );
