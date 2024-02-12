@@ -47,7 +47,7 @@ sandMaterial2.alphaMap = alphaTexture;
 function Beach() {
   const { visibleSequences } = useContext(GameContext);
 
-  const { nodes } = useGLTF("/beach2.glb");
+  const { nodes } = useGLTF("/models/beach.glb");
 
   return (
     <group dispose={null}>

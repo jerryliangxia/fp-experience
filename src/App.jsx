@@ -10,6 +10,8 @@ import { isDesktop } from "react-device-detect";
 import FullScreenControl from "./ui-components/FullScreenControl";
 import { LoadingTransition, DreiLoader } from "./ui-components/Loading";
 import CompleteGame from "./ui-components/CompleteGame";
+import useSound from "use-sound";
+import backgroundMusic from "/sounds/equatorialcomplex.mp3";
 
 function PointerLockControlsMobile() {
   const { camera, gl } = useThree();
@@ -54,6 +56,11 @@ export default function App() {
   const [fscIsVisible, setFscIsVisible] = useState(true);
   const [isMobileFsc, setIsMobileFsc] = useState(true);
   const [playAudio, setPlayAudio] = useState(true);
+  const [playMusic, setPlayMusic] = useState(true);
+  const [play, { stop }] = useSound(backgroundMusic, {
+    volume: 0.2,
+    loop: true,
+  });
 
   // When both full screen and game over are not visible, set the full screen to be visible
   useEffect(() => {
@@ -101,6 +108,10 @@ export default function App() {
           setIsMobileFsc,
           playAudio,
           setPlayAudio,
+          playMusic,
+          setPlayMusic,
+          play,
+          stop,
         }}
       >
         <div

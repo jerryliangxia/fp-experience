@@ -57,7 +57,7 @@ function Birds() {
         rotation={[0, x > 0 ? Math.PI : 0, 0]}
         speed={speed}
         factor={factor}
-        url="/bird.glb" // Use the single bird model file
+        url="/models/bird.glb"
       />
     );
   });

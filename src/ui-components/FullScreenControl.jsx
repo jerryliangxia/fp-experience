@@ -2,12 +2,128 @@ import React, { useState, useEffect, useContext } from "react";
 import { Flex, Text, Card, Heading } from "@radix-ui/themes";
 import { GameContext } from "../GameContext";
 import * as SwitchPrimitive from "@radix-ui/react-switch";
+import * as Checkbox from "@radix-ui/react-checkbox";
 import { isMobile } from "react-device-detect";
+import { MusicIcon, AudioIcon } from "./Icons";
 
 export default function FullScreenControl() {
   const { fscIsVisible, setFscIsVisible } = useContext(GameContext);
   const [isFullScreen, setFullScreen] = useState(true);
-  const { setWasJustReset, playAudio, setPlayAudio } = useContext(GameContext);
+  const {
+    setWasJustReset,
+    playAudio,
+    setPlayAudio,
+    playMusic,
+    setPlayMusic,
+    play,
+    stop,
+  } = useContext(GameContext);
+
+  function ToggleAudioMusic() {
+    return (
+      <Flex direction="row" gap="5" align="center" justify="center">
+        {/* Play Audio Checkbox */}
+        <Flex direction="row" gap="2" align="center" justify="center">
+          <Checkbox.Root
+            className="CheckboxRoot"
+            id="playAudio"
+            checked={playAudio}
+            onCheckedChange={setPlayAudio}
+            style={{
+              alignItems: "center",
+              display: "flex",
+              backgroundColor: playAudio ? "#ffffff" : "transparent",
+            }}
+          >
+            <Checkbox.Indicator />
+          </Checkbox.Root>
+          <Text
+            style={{
+              color: "white",
+              fontFamily: "OrbitronLight",
+              marginTop: 8,
+            }}
+          >
+            <AudioIcon />
+          </Text>
+        </Flex>
+        {/* Play Music Checkbox */}
+        <Flex direction="row" gap="2" align="center" justify="center">
+          <Checkbox.Root
+            className="CheckboxRoot"
+            id="playMusic"
+            checked={playMusic}
+            onCheckedChange={setPlayMusic}
+            style={{
+              alignItems: "center",
+              display: "flex",
+              backgroundColor: playMusic ? "#ffffff" : "transparent",
+            }}
+          >
+            <Checkbox.Indicator />
+          </Checkbox.Root>
+          <Text
+            style={{
+              color: "white",
+              fontFamily: "OrbitronLight",
+              marginTop: 8,
+            }}
+          >
+            <MusicIcon />
+          </Text>
+        </Flex>
+      </Flex>
+    );
+  }
+
+  function ToggleFullscreen() {
+    return (
+      <Flex direction="row" gap="2" align="center">
+        <SwitchPrimitive.Root
+          className="switch-root"
+          checked={isFullScreen}
+          onCheckedChange={setFullScreen}
+          style={{
+            backgroundColor: isFullScreen ? "#35C7D2" : "transparent",
+            borderRadius: "9999px",
+            width: "42px",
+            height: "25px",
+            position: "relative",
+          }}
+        >
+          <SwitchPrimitive.Thumb
+            className="switch-thumb"
+            style={{
+              display: "block",
+              width: isMobile ? "23px" : "21px",
+              height: isMobile ? "23px" : "21px",
+              backgroundColor: "#fff",
+              borderRadius: "9999px",
+              transition: "transform 100ms",
+              transform: isFullScreen
+                ? `${isMobile ? "translateX(6px)" : "translateX(11px)"} ${
+                    isMobile ? "translateY(0px)" : "translateY(-1px)"
+                  }`
+                : `${isMobile ? "translateX(-11px)" : "translateX(-6px)"} ${
+                    isMobile ? "translateY(0px)" : "translateY(-1px)"
+                  }`,
+            }}
+          />
+        </SwitchPrimitive.Root>
+        <Text style={{ color: "white", fontFamily: "OrbitronLight" }} size="1">
+          Fullscreen
+        </Text>
+      </Flex>
+    );
+  }
+
+  useEffect(() => {
+    if (playMusic && !fscIsVisible) {
+      play();
+    } else if (!playMusic) {
+      stop();
+    }
+  }, [playMusic, play, stop]);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -81,7 +197,6 @@ export default function FullScreenControl() {
           transform: isHovered ? "scale(1.1)" : "scale(1)",
         }}
         onClick={() => {
-          console.log("Hi");
           const canvas = document.querySelector("canvas");
           const event = new MouseEvent("click", {
             view: window,
@@ -101,6 +216,7 @@ export default function FullScreenControl() {
               document.documentElement.msRequestFullscreen();
             }
           }
+          if (playMusic) play();
         }}
       >
         <Text size="2" style={{ color: "white", fontFamily: "OrbitronLight" }}>
@@ -167,7 +283,7 @@ export default function FullScreenControl() {
               zIndex: 2,
             }}
           >
-            <Flex gap="3" direction="column" align="center">
+            <Flex gap="3" direction="column" align="center" justify="center">
               <Heading
                 size={isMobile ? "6" : "10"}
                 style={{ color: "white", fontFamily: "OrbitronLight" }}
@@ -181,92 +297,8 @@ export default function FullScreenControl() {
                 A Frutiger Aero-inspired experience.
               </Text>
               <PSButton />
-              <Flex direction="row" gap="1" align="center">
-                <SwitchPrimitive.Root
-                  className="switch-root"
-                  checked={isFullScreen}
-                  onCheckedChange={setFullScreen}
-                  style={{
-                    backgroundColor: isFullScreen ? "#35C7D2" : "transparent",
-                    borderRadius: "9999px",
-                    width: "42px",
-                    height: "25px",
-                    position: "relative",
-                  }}
-                >
-                  <SwitchPrimitive.Thumb
-                    className="switch-thumb"
-                    style={{
-                      display: "block",
-                      width: isMobile ? "23px" : "21px",
-                      height: isMobile ? "23px" : "21px",
-                      backgroundColor: "#fff",
-                      borderRadius: "9999px",
-                      transition: "transform 100ms",
-                      transform: isFullScreen
-                        ? `${
-                            isMobile ? "translateX(6px)" : "translateX(11px)"
-                          } ${
-                            isMobile ? "translateY(0px)" : "translateY(-1px)"
-                          }`
-                        : `${
-                            isMobile ? "translateX(-11px)" : "translateX(-6px)"
-                          } ${
-                            isMobile ? "translateY(0px)" : "translateY(-1px)"
-                          }`,
-                    }}
-                  />
-                </SwitchPrimitive.Root>
-                <Text
-                  style={{ color: "white", fontFamily: "OrbitronLight" }}
-                  size="1"
-                >
-                  Fullscreen
-                </Text>
-              </Flex>
-              <Flex direction="row" gap="1" align="center">
-                <SwitchPrimitive.Root
-                  className="switch-root"
-                  checked={playAudio}
-                  onCheckedChange={setPlayAudio}
-                  style={{
-                    backgroundColor: playAudio ? "#35C7D2" : "transparent",
-                    borderRadius: "9999px",
-                    width: "42px",
-                    height: "25px",
-                    position: "relative",
-                  }}
-                >
-                  <SwitchPrimitive.Thumb
-                    className="switch-thumb"
-                    style={{
-                      display: "block",
-                      width: isMobile ? "23px" : "21px",
-                      height: isMobile ? "23px" : "21px",
-                      backgroundColor: "#fff",
-                      borderRadius: "9999px",
-                      transition: "transform 100ms",
-                      transform: playAudio
-                        ? `${
-                            isMobile ? "translateX(6px)" : "translateX(11px)"
-                          } ${
-                            isMobile ? "translateY(0px)" : "translateY(-1px)"
-                          }`
-                        : `${
-                            isMobile ? "translateX(-11px)" : "translateX(-6px)"
-                          } ${
-                            isMobile ? "translateY(0px)" : "translateY(-1px)"
-                          }`,
-                    }}
-                  />
-                </SwitchPrimitive.Root>
-                <Text
-                  style={{ color: "white", fontFamily: "OrbitronLight" }}
-                  size="1"
-                >
-                  Play Audio
-                </Text>
-              </Flex>
+              <ToggleFullscreen />
+              <ToggleAudioMusic />
             </Flex>
           </div>
         </Card>

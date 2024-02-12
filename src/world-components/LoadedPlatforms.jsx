@@ -11,7 +11,7 @@ import { isDesktop } from "react-device-detect";
 import { Card, Text } from "@radix-ui/themes";
 
 function LoadedPlatforms() {
-  const { nodes, materials } = useGLTF("/1.glb");
+  const { nodes, materials } = useGLTF("/models/1.glb");
   const { visibleSequences } = useContext(GameContext);
   const [purpleMatcapTexture] = useMatcapTexture(
     "8955D0_744CC4_EA4AEF_954DA4",
@@ -1254,6 +1254,6 @@ function LoadedPlatforms() {
   );
 }
 
-useGLTF.preload("/1.glb");
+useGLTF.preload("/models/1.glb");
 
 export default React.memo(LoadedPlatforms);

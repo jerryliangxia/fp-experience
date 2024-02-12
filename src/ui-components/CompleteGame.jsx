@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Flex, Text, Card, Heading } from "@radix-ui/themes";
 import { GameContext } from "../GameContext";
 import { isDesktop, isMobile } from "react-device-detect";
+import { Flex, Text, Card, Heading } from "@radix-ui/themes";
 
 export default function CompleteGame() {
   const { completeGameVisible, setResetGame, setWasJustReset } =

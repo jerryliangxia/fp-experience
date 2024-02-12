@@ -32,7 +32,7 @@ export default function Icoplant(props) {
   );
 
   const geometry = useMemo(() => {
-    const gltf = useLoader(GLTFLoader, "/icoplant.glb");
+    const gltf = useLoader(GLTFLoader, "/models/icoplant.glb");
     return gltf.nodes.Icoplant.geometry;
   }, []);
 

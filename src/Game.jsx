@@ -5,16 +5,11 @@ import Ball from "./Ball";
 import useOctree from "./useOctree";
 import Player from "./Player";
 // import useOctreeHelper from "./useOctreeHelper";
-// import Model from "./world-components/Platform";
-// import RagingSea from "./world-components/RagingSea";
-// import Water from "./world-components/Water";
-// import Clouds from "./world-components/Clouds";
 import GroundFoliage from "./world-components/GroundFoliage";
 import TreeLeaves from "./world-components/TreeLeaves";
 import Icoplant from "./world-components/Icoplant";
 import Planets from "./world-components/Planets";
 import * as Constants from "./Constants";
-// import Platformer from "./world-components/Platformer";
 import Ocean from "./world-components/Ocean";
 import Beach from "./world-components/Beach";
 import Trees from "./world-components/Trees";
@@ -22,7 +17,6 @@ import Grass from "./world-components/Grass";
 import SpiralPlant from "./world-components/SpiralPlant";
 import CirclingBirds from "./Birds";
 import LoadedPlatforms from "./world-components/LoadedPlatforms";
-// import Clouds from "./world-components/Clouds";
 import { GameContext } from "./GameContext";
 
 const hexToVec3 = (hex) => {
@@ -38,15 +32,15 @@ function randomizeBH(baseValue) {
 }
 
 export default function Game() {
-  const { scene } = useGLTF("/2.glb");
+  const { scene } = useGLTF("/models/2.glb");
   const octree = useOctree(scene);
   // useOctreeHelper(octree);
 
-  const { scene: bouncyScene } = useGLTF("/3.glb");
+  const { scene: bouncyScene } = useGLTF("/models/3.glb");
   const octreeBouncy = useOctree(bouncyScene);
   // useOctreeHelper(octreeBouncy);
 
-  const { scene: ballHitScene } = useGLTF("4.glb");
+  const { scene: ballHitScene } = useGLTF("/models/4.glb");
   const octreeBallHit = useOctree(ballHitScene);
   // useOctreeHelper(octreeBallHit);
 
@@ -190,14 +184,9 @@ export default function Game() {
         position={[-7.751, visibleSequences > 1 ? 1.3 : 0.6, 5.939]}
         baseColor={hexToVec3("#8CD15C")}
       />
-      {/* <Water /> */}
       <Ocean />
       <Beach />
       <Trees position-y={visibleSequences > 1 ? 0.6 : -0.1} />
-      {/* <RagingSea /> */}
-      {/* <Clouds position-z={-300} position-y={-5} scale={10} /> */}
-      {/* <Model /> */}
-      {/* <Platformer /> */}
       <LoadedPlatforms />
       {Constants.balls.map(({ position }, i) => (
         <SphereCollider

@@ -10,29 +10,18 @@ import { useGLTF } from "@react-three/drei";
 const textureLoader = new THREE.TextureLoader();
 const repeatValue = 3;
 
-const colorTexture = textureLoader.load("/textures/island/basecolor.png");
-//   colorTexture.colorSpace = THREE.SRGBColorSpace;
-colorTexture.wrapS = colorTexture.wrapT = THREE.RepeatWrapping;
-colorTexture.repeat.set(repeatValue, repeatValue);
 const aoTexture = textureLoader.load("/textures/island/ao.png");
 aoTexture.wrapS = aoTexture.wrapT = THREE.RepeatWrapping;
 aoTexture.repeat.set(repeatValue, repeatValue);
-const roughnessTexture = textureLoader.load("/textures/island/roughness.png");
-roughnessTexture.wrapS = roughnessTexture.wrapT = THREE.RepeatWrapping;
-roughnessTexture.repeat.set(repeatValue, repeatValue);
 const normalTexture = textureLoader.load("/textures/island/normal.png");
 normalTexture.wrapS = normalTexture.wrapT = THREE.RepeatWrapping;
 normalTexture.repeat.set(repeatValue, repeatValue);
-const heightTexture = textureLoader.load("/textures/island/height.png");
-heightTexture.wrapS = heightTexture.wrapT = THREE.RepeatWrapping;
-heightTexture.repeat.set(repeatValue ** 2, repeatValue ** 2);
 
 function createSpiralMaterial(color) {
   return new THREE.MeshPhysicalMaterial({
     color: color,
     normalMap: normalTexture,
     aoMap: aoTexture,
-    roughnessMap: roughnessTexture,
     metalness: 0.5,
     iridescence: 0.5,
     iridescenceIOR: 1.0,
@@ -42,7 +31,7 @@ function createSpiralMaterial(color) {
 
 function SpiralPlant() {
   const { visibleSequences } = useContext(GameContext);
-  const { nodes } = useGLTF("/spiralplant.glb");
+  const { nodes } = useGLTF("/models/spiralplant.glb");
 
   const purpleMaterial = createSpiralMaterial("#5152E7");
   const blueMaterial = createSpiralMaterial("#417BE7");
@@ -125,6 +114,6 @@ function SpiralPlant() {
   );
 }
 
-useGLTF.preload("/spiralplant.glb");
+useGLTF.preload("/models/spiralplant.glb");
 
 export default React.memo(SpiralPlant);
