@@ -15,7 +15,7 @@ import Beach from "./world-components/Beach";
 import Trees from "./world-components/Trees";
 import Grass from "./world-components/Grass";
 import SpiralPlant from "./world-components/SpiralPlant";
-import CirclingBirds from "./Birds";
+import CirclingBirds from "./world-components/Birds";
 import LoadedPlatforms from "./world-components/LoadedPlatforms";
 import { GameContext } from "./GameContext";
 

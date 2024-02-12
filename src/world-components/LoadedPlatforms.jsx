@@ -44,10 +44,36 @@ function LoadedPlatforms() {
             position={[22.064, 2, 27.609]}
             scale={0.387}
           >
+            <Html
+              as="div"
+              center
+              transform
+              position={[0, 6, 0]}
+              rotation-y={Math.PI / 4}
+            >
+              <Card
+                style={{
+                  width: "auto",
+                  height: "auto",
+                  padding: "20px",
+                  background: "rgba(53,199,210,0.5)",
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "OrbitronLight",
+                    fontSize: "36px",
+                    color: "white",
+                  }}
+                >
+                  Begin Platformer
+                </Text>
+              </Card>
+            </Html>
             <Html as="div" center transform rotation-y={Math.PI / 4}>
               <Card>
                 <Text style={{ fontFamily: "OrbitronLight", opacity: 0.8 }}>
-                  {isDesktop ? "Click to shoot" : "Throw at me"}
+                  {isDesktop ? "Shoot at me" : "Throw at me"}
                 </Text>
               </Card>
             </Html>
