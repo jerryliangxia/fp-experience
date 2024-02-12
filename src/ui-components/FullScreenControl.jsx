@@ -205,7 +205,7 @@ export default function FullScreenControl() {
           });
           canvas.dispatchEvent(event);
           setFscIsVisible(false);
-          if (isFullScreen) {
+          if (isFullScreen && isDesktop) {
             if (document.documentElement.requestFullscreen) {
               document.documentElement.requestFullscreen();
             } else if (document.documentElement.mozRequestFullScreen) {
