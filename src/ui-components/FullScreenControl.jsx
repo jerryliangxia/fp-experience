@@ -3,7 +3,7 @@ import { Flex, Text, Card, Heading } from "@radix-ui/themes";
 import { GameContext } from "../GameContext";
 import * as SwitchPrimitive from "@radix-ui/react-switch";
 import * as Checkbox from "@radix-ui/react-checkbox";
-import { isMobile } from "react-device-detect";
+import { isDesktop, isMobile } from "react-device-detect";
 import { MusicIcon, AudioIcon } from "./Icons";
 
 export default function FullScreenControl() {
@@ -297,7 +297,7 @@ export default function FullScreenControl() {
                 A Frutiger Aero-inspired experience.
               </Text>
               <PSButton />
-              <ToggleFullscreen />
+              {isDesktop && <ToggleFullscreen />}
               <ToggleAudioMusic />
             </Flex>
           </div>
