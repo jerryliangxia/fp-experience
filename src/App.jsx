@@ -78,14 +78,14 @@ export default function App() {
     };
   }, []);
 
-  function fullscreenchanged(event) {
-    if (!document.fullscreenElement && !isDesktop) {
-      setFscIsVisible(false);
-      setWasJustReset(false);
-    }
-  }
+  // function fullscreenchanged(event) {
+  //   if (!document.fullscreenElement && !isDesktop) {
+  //     setFscIsVisible(false);
+  //     setWasJustReset(false);
+  //   }
+  // }
 
-  document.addEventListener("fullscreenchange", fullscreenchanged);
+  // document.addEventListener("fullscreenchange", fullscreenchanged);
 
   return (
     <>
