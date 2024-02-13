@@ -216,6 +216,7 @@ export default function FullScreenControl() {
               document.documentElement.msRequestFullscreen();
             }
           }
+          stop();
           if (playMusic) play();
         }}
       >

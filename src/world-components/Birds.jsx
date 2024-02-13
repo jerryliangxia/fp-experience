@@ -10,10 +10,7 @@ function Bird({ speed, factor, url, ...props }) {
   const mesh = useRef();
   const [start] = useState(() => Math.random() * 5000);
   const [mixer] = useState(() => new THREE.AnimationMixer());
-  useEffect(
-    () => void mixer.clipAction(animations[0], group.current).play(),
-    []
-  );
+
   useFrame((state, delta) => {
     mesh.current.position.y = Math.sin(start + state.clock.elapsedTime) * 5;
     mesh.current.rotation.x =
