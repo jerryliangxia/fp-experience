@@ -1,5 +1,5 @@
 import { GameContext } from "../GameContext";
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import { bw, bh } from "../Constants";
 
 export default function Overlay() {
@@ -10,6 +10,7 @@ export default function Overlay() {
   const [isTouched, setIsTouched] = useState(false);
   const [isThrowButtonTouched, setIsThrowButtonTouched] = useState(false);
   const [isJumpButtonTouched, setIsJumpButtonTouched] = useState(false);
+  const [touchPosition, setTouchPosition] = useState({ x: 0, y: 0 });
 
   const handleJump = () => {
     event.stopPropagation();
@@ -26,6 +27,7 @@ export default function Overlay() {
     setIsThrowButtonTouched(true);
     setTimeout(() => setIsThrowButtonTouched(false), 500);
   };
+
   const handleTouchMove = (event) => {
     event.stopPropagation();
     if (!dpadRef.current) return;
@@ -37,34 +39,31 @@ export default function Overlay() {
     };
 
     const touchPos = {
-      x: event.touches[0].clientX,
-      y: event.touches[0].clientY,
+      x: event.touches[0].clientX - dpadCenter.x,
+      y: event.touches[0].clientY - dpadCenter.y,
     };
 
-    const dx = touchPos.x - dpadCenter.x;
-    const dy = touchPos.y - dpadCenter.y;
+    const radius = dpadRect.width / 2;
+    const distance = Math.sqrt(touchPos.x ** 2 + touchPos.y ** 2);
+    const angle = Math.atan2(touchPos.y, touchPos.x);
 
-    // Reset all controls
-    handleControlChange("upPressed", false);
-    handleControlChange("downPressed", false);
-    handleControlChange("leftPressed", false);
-    handleControlChange("rightPressed", false);
+    const clampedDistance = Math.min(distance, radius);
+    const clampedX = clampedDistance * Math.cos(angle);
+    const clampedY = clampedDistance * Math.sin(angle);
 
-    // Determine which direction is pressed based on the touch position
-    if (Math.abs(dx) > Math.abs(dy)) {
-      // Left or right
-      if (dx > 0) {
-        handleControlChange("rightPressed", true);
-      } else {
-        handleControlChange("leftPressed", true);
-      }
-    } else {
-      // Up or down
-      if (dy > 0) {
-        handleControlChange("downPressed", true);
-      } else {
-        handleControlChange("upPressed", true);
-      }
+    setTouchPosition({ x: clampedX, y: clampedY });
+
+    const direction = (angle + Math.PI * 2) % (Math.PI * 2);
+    resetAllControls();
+
+    if (direction < Math.PI / 4 || direction > (Math.PI * 7) / 4) {
+      handleControlChange("rightPressed", true);
+    } else if (direction < (Math.PI * 3) / 4) {
+      handleControlChange("downPressed", true);
+    } else if (direction < (Math.PI * 5) / 4) {
+      handleControlChange("leftPressed", true);
+    } else if (direction < (Math.PI * 7) / 4) {
+      handleControlChange("upPressed", true);
     }
   };
 
@@ -74,6 +73,23 @@ export default function Overlay() {
     handleControlChange("leftPressed", false);
     handleControlChange("rightPressed", false);
   }
+
+  useEffect(() => {
+    let animationFrameId;
+    const lerpTouchPosition = () => {
+      setTouchPosition((prev) => ({
+        x: prev.x * 0.8,
+        y: prev.y * 0.8,
+      }));
+      animationFrameId = requestAnimationFrame(lerpTouchPosition);
+    };
+
+    if (!isTouched) {
+      lerpTouchPosition();
+    }
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isTouched]);
 
   const buttonOpacity = (isButtonTouched) =>
     isButtonTouched || isTouched ? 0.5 : 0;
@@ -89,11 +105,16 @@ export default function Overlay() {
           bottom: "1vh",
           zIndex: 3,
           opacity: isTouched ? 0.5 : 0,
-          transition: "opacity 0.25s ease-in-out",
-          width: bw,
-          height: bh,
+          transition: "opacity 0.5s ease-in-out",
+          width: bw * 0.8,
+          height: bw * 0.8,
+          borderRadius: "50%",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
         }}
-        onTouchStart={() => setIsTouched(true)}
+        onTouchStart={(event) => {
+          setIsTouched(true);
+          handleTouchMove(event);
+        }}
         onTouchMove={handleTouchMove}
         onTouchEnd={() => {
           resetAllControls();
@@ -102,12 +123,18 @@ export default function Overlay() {
       >
         <div
           style={{
-            background: "black",
-            width: "100%",
-            height: "100%",
-            borderRadius: "8px",
+            position: "absolute",
+            left: `calc(50% + ${touchPosition.x}px)`,
+            top: `calc(50% + ${touchPosition.y}px)`,
+            width: "80px",
+            height: "80px",
+            borderRadius: "50%",
+            border: "2px solid white",
+            transform: "translate(-50%, -50%)",
+            opacity: isTouched ? 1 : 0,
+            transition: "opacity 0.5s ease-in-out",
           }}
-        ></div>
+        />
       </div>
       <div
         ref={throwButtonRef}
